@@ -1,6 +1,6 @@
 {
   "name": "@unomed/react-native-matrix-sdk",
-  "version": "0.9.1",
+  "version": "0.10.0-fork.0",
   "description": "⚡️ FFI bindings for matrix-rust-sdk in a React Native Turbo Module ⚡️",
   "source": "./src/index.tsx",
   "main": "./lib/commonjs/index.js",
@@ -19,6 +19,7 @@
   },
   "files": [
     "src",
+    "build",
     "lib",
     "android",
     "ios",
@@ -44,7 +45,8 @@
     "ubrn:ios:build": "CARGO_FEATURE_NO_NEON=1 ubrn build ios --config ubrn.yaml --native-bindings --and-generate",
     "ubrn:ios:build:release": "yarn ubrn:ios:build --release",
     "ubrn:ios:post-process": "del-cli swift && mv ios/swift swift && (cd example/ios && pod install) && rm -rf src/index.web.ts",
-    "ubrn:checkout": "( test -d rust_modules/matrix-rust-sdk && git -C rust_modules/matrix-rust-sdk reset --hard HEAD ); ubrn checkout --config ubrn.yaml",
+    "ubrn:checkout": "( test -d rust_modules/matrix-rust-sdk && git -C rust_modules/matrix-rust-sdk reset --hard HEAD ); ubrn checkout --config ubrn.yaml && yarn ubrn:patch",
+    "ubrn:patch": "git -C rust_modules/matrix-rust-sdk apply --verbose ../../patches/matrix-rust-sdk-slimming.patch",
     "ubrn:clean": "del-cli -v cpp android/src/main/java ios \"src/Native*\" src/generated \"src/index.ts*\"",
     "ubrn:clean:android": "del-cli -v android/src/main/java \"src/Native*\" src/generated \"src/index.ts*\"",
     "ubrn:clean:ios": "del-cli -v ios swift \"src/Native*\" src/generated \"src/index.ts*\"",
@@ -71,17 +73,15 @@
   ],
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/unomed-dev/react-native-matrix-sdk.git"
+    "url": "git+https://github.com/Andrey-Lomakin/react-native-matrix-sdk.git"
   },
   "author": "Johannes Marbach <n0-0ne+github@mailbox.org> (https://github.com/Johennes)",
   "license": "Apache-2.0",
   "bugs": {
-    "url": "https://github.com/unomed-dev/react-native-matrix-sdk/issues"
+    "url": "https://github.com/Andrey-Lomakin/react-native-matrix-sdk/issues"
   },
-  "homepage": "https://github.com/unomed-dev/react-native-matrix-sdk#readme",
-  "publishConfig": {
-    "registry": "https://registry.npmjs.org/"
-  },
+  "homepage": "https://github.com/Andrey-Lomakin/react-native-matrix-sdk#readme",
+  "private": true,
   "devDependencies": {
     "@commitlint/config-conventional": "^17.0.2",
     "@evilmartians/lefthook": "^1.5.0",

@@ -1,7 +1,7 @@
 ---
 crate:
   repo: https://github.com/matrix-org/matrix-rust-sdk
-  rev: cf099deb272f2ef44a0b8b8f7afd96004c3a822a # matrix-sdk-0.17.0
+  rev: 1c44fb66214667c6d00acaf72ab592493653708b # matrix-sdk-0.18.0
   manifestPath: bindings/matrix-sdk-ffi/Cargo.toml
 android:
   cargoExtras: []
@@ -9,17 +9,21 @@ android:
   native_bindings_dir: kotlin
   useSharedLibrary: true
   jniLibs: src/main/jniLibs
+  # MessaApp ships arm64-v8a only (android/gradle.properties:
+  # reactNativeArchitectures=arm64-v8a), so armeabi-v7a is dead weight and
+  # doubles every Rust build.
   targets:
     - arm64-v8a
-    - armeabi-v7a
 ios:
   cargoExtras: []
   directory: ios
   native_bindings_dir: swift
+  # x86_64-apple-ios is the Intel-Mac simulator slice. Everyone builds on Apple
+  # Silicon, so it costs a third of every iOS build for nothing. Put it back if
+  # someone joins on an Intel Mac.
   targets:
     - aarch64-apple-ios
     - aarch64-apple-ios-sim
-    - x86_64-apple-ios
   xcodebuildExtras: []
   frameworkName: build/RnMatrixRustSdk
 noOverwrite:
