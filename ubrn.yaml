@@ -11,7 +11,6 @@ android:
   jniLibs: src/main/jniLibs
   targets:
     - arm64-v8a
-    - armeabi-v7a
 ios:
   cargoExtras: []
   directory: ios

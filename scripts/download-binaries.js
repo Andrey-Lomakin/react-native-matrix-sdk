@@ -42,6 +42,10 @@ async function downloadBinaries() {
     console.log('Binaries already exist, skipping download.');
     return;
   }
+  if (fs.existsSync(path.join(__dirname, '..', 'android', 'src', 'main', 'jniLibs', 'arm64-v8a', 'libmatrix_sdk_ffi.so'))) {
+    console.log('Android binary already exists, skipping download.');
+    return;
+  }
 
   console.log(`Downloading binaries for ${VERSION}...`);
   
