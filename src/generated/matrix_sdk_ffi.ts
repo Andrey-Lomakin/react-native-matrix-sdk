@@ -69,7 +69,6 @@ import nativeModule, {
 import {
   type OAuthAuthorizationDataLike,
   type RoomPowerLevelChanges,
-  type ServerVendorInfo,
   type TileServerInfo,
   BackupDownloadStrategy,
   PaginationStatus,
@@ -151,7 +150,6 @@ const {
   FfiConverterTypePaginationStatus,
   FfiConverterTypeRoomMemberRole,
   FfiConverterTypeRoomPowerLevelChanges,
-  FfiConverterTypeServerVendorInfo,
   FfiConverterTypeTileServerInfo,
 } = uniffiMatrixSdkModule.converters;
 const {
@@ -38162,15 +38160,6 @@ export interface ClientLike {
    * name, then the homeserver has been discovered, and we know both.
    */
   server(): string | undefined;
-  /**
-   * Get server vendor information from the federation API.
-   *
-   * This method retrieves information about the server's name and version
-   * by calling the `/_matrix/federation/v1/version` endpoint.
-   */
-  serverVendorInfo(asyncOpts_?: {
-    signal: AbortSignal;
-  }) /*throws*/ : Promise<ServerVendorInfo>;
   session() /*throws*/ : Session;
   /**
    * Set the given account data content for the given event type.
@@ -41106,49 +41095,6 @@ export class Client extends UniffiAbstractObject implements ClientLike {
         /*liftString:*/ FfiConverterString.lift
       )
     );
-  }
-
-  /**
-   * Get server vendor information from the federation API.
-   *
-   * This method retrieves information about the server's name and version
-   * by calling the `/_matrix/federation/v1/version` endpoint.
-   */
-  async serverVendorInfo(asyncOpts_?: {
-    signal: AbortSignal;
-  }): Promise<ServerVendorInfo> /*throws*/ {
-    const __stack = uniffiIsDebug ? new Error().stack : undefined;
-    try {
-      return await uniffiRustCallAsync(
-        /*rustCaller:*/ uniffiCaller,
-        /*rustFutureFunc:*/ () => {
-          return nativeModule().ubrn_uniffi_matrix_sdk_ffi_fn_method_client_server_vendor_info(
-            uniffiTypeClientObjectFactory.clonePointer(this)
-          );
-        },
-        /*pollFunc:*/ nativeModule()
-          .ubrn_ffi_matrix_sdk_ffi_rust_future_poll_rust_buffer,
-        /*cancelFunc:*/ nativeModule()
-          .ubrn_ffi_matrix_sdk_ffi_rust_future_cancel_rust_buffer,
-        /*completeFunc:*/ nativeModule()
-          .ubrn_ffi_matrix_sdk_ffi_rust_future_complete_rust_buffer,
-        /*freeFunc:*/ nativeModule()
-          .ubrn_ffi_matrix_sdk_ffi_rust_future_free_rust_buffer,
-        /*liftFunc:*/ FfiConverterTypeServerVendorInfo.lift.bind(
-          FfiConverterTypeServerVendorInfo
-        ),
-        /*liftString:*/ FfiConverterString.lift,
-        /*asyncOpts:*/ asyncOpts_,
-        /*errorHandler:*/ FfiConverterTypeClientError.lift.bind(
-          FfiConverterTypeClientError
-        )
-      );
-    } catch (__error: any) {
-      if (uniffiIsDebug && __error instanceof Error) {
-        __error.stack = __stack;
-      }
-      throw __error;
-    }
   }
 
   session(): Session /*throws*/ {
@@ -60196,14 +60142,6 @@ function uniffiEnsureInitialized() {
   ) {
     throw new UniffiInternalError.ApiChecksumMismatch(
       'uniffi_matrix_sdk_ffi_checksum_method_client_server'
-    );
-  }
-  if (
-    nativeModule().ubrn_uniffi_matrix_sdk_ffi_checksum_method_client_server_vendor_info() !==
-    25767
-  ) {
-    throw new UniffiInternalError.ApiChecksumMismatch(
-      'uniffi_matrix_sdk_ffi_checksum_method_client_server_vendor_info'
     );
   }
   if (

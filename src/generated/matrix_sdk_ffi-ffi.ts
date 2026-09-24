@@ -375,9 +375,6 @@ interface NativeModuleInterface {
     ptr: bigint,
     uniffi_out_err: UniffiRustCallStatus
   ): Uint8Array;
-  ubrn_uniffi_matrix_sdk_ffi_fn_method_client_server_vendor_info(
-    ptr: bigint
-  ): bigint;
   ubrn_uniffi_matrix_sdk_ffi_fn_method_client_session(
     ptr: bigint,
     uniffi_out_err: UniffiRustCallStatus
@@ -2641,7 +2638,6 @@ interface NativeModuleInterface {
   ubrn_uniffi_matrix_sdk_ffi_checksum_method_client_rooms(): number;
   ubrn_uniffi_matrix_sdk_ffi_checksum_method_client_search_users(): number;
   ubrn_uniffi_matrix_sdk_ffi_checksum_method_client_server(): number;
-  ubrn_uniffi_matrix_sdk_ffi_checksum_method_client_server_vendor_info(): number;
   ubrn_uniffi_matrix_sdk_ffi_checksum_method_client_session(): number;
   ubrn_uniffi_matrix_sdk_ffi_checksum_method_client_set_account_data(): number;
   ubrn_uniffi_matrix_sdk_ffi_checksum_method_client_set_avatar_url(): number;

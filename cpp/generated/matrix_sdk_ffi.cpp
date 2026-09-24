@@ -835,9 +835,6 @@ extern "C" {
         /*handle*/ uint64_t ptr, 
         RustCallStatus *uniffi_out_err
     );
-    /*handle*/ uint64_t uniffi_matrix_sdk_ffi_fn_method_client_server_vendor_info(
-        /*handle*/ uint64_t ptr
-    );
     RustBuffer uniffi_matrix_sdk_ffi_fn_method_client_session(
         /*handle*/ uint64_t ptr, 
         RustCallStatus *uniffi_out_err
@@ -3302,8 +3299,6 @@ extern "C" {
     uint16_t uniffi_matrix_sdk_ffi_checksum_method_client_search_users(
     );
     uint16_t uniffi_matrix_sdk_ffi_checksum_method_client_server(
-    );
-    uint16_t uniffi_matrix_sdk_ffi_checksum_method_client_server_vendor_info(
     );
     uint16_t uniffi_matrix_sdk_ffi_checksum_method_client_session(
     );
@@ -20005,14 +20000,6 @@ NativeMatrixSdkFfi::NativeMatrixSdkFfi(
             return this->cpp_uniffi_matrix_sdk_ffi_fn_method_client_server(rt, thisVal, args, count);
         }
     );
-    props["ubrn_uniffi_matrix_sdk_ffi_fn_method_client_server_vendor_info"] = jsi::Function::createFromHostFunction(
-        rt,
-        jsi::PropNameID::forAscii(rt, "ubrn_uniffi_matrix_sdk_ffi_fn_method_client_server_vendor_info"),
-        1,
-        [this](jsi::Runtime &rt, const jsi::Value &thisVal, const jsi::Value *args, size_t count) -> jsi::Value {
-            return this->cpp_uniffi_matrix_sdk_ffi_fn_method_client_server_vendor_info(rt, thisVal, args, count);
-        }
-    );
     props["ubrn_uniffi_matrix_sdk_ffi_fn_method_client_session"] = jsi::Function::createFromHostFunction(
         rt,
         jsi::PropNameID::forAscii(rt, "ubrn_uniffi_matrix_sdk_ffi_fn_method_client_session"),
@@ -25197,14 +25184,6 @@ NativeMatrixSdkFfi::NativeMatrixSdkFfi(
             return this->cpp_uniffi_matrix_sdk_ffi_checksum_method_client_server(rt, thisVal, args, count);
         }
     );
-    props["ubrn_uniffi_matrix_sdk_ffi_checksum_method_client_server_vendor_info"] = jsi::Function::createFromHostFunction(
-        rt,
-        jsi::PropNameID::forAscii(rt, "ubrn_uniffi_matrix_sdk_ffi_checksum_method_client_server_vendor_info"),
-        0,
-        [this](jsi::Runtime &rt, const jsi::Value &thisVal, const jsi::Value *args, size_t count) -> jsi::Value {
-            return this->cpp_uniffi_matrix_sdk_ffi_checksum_method_client_server_vendor_info(rt, thisVal, args, count);
-        }
-    );
     props["ubrn_uniffi_matrix_sdk_ffi_checksum_method_client_session"] = jsi::Function::createFromHostFunction(
         rt,
         jsi::PropNameID::forAscii(rt, "ubrn_uniffi_matrix_sdk_ffi_checksum_method_client_session"),
@@ -29939,13 +29918,6 @@ jsi::Value NativeMatrixSdkFfi::cpp_uniffi_matrix_sdk_ffi_fn_method_client_server
 
         
         return uniffi::matrix_sdk_ffi::Bridging<RustBuffer>::toJs(rt, callInvoker, value);
-}
-jsi::Value NativeMatrixSdkFfi::cpp_uniffi_matrix_sdk_ffi_fn_method_client_server_vendor_info(jsi::Runtime& rt, const jsi::Value& thisVal, const jsi::Value* args, size_t count) {
-        auto value = uniffi_matrix_sdk_ffi_fn_method_client_server_vendor_info(uniffi_jsi::Bridging</*handle*/ uint64_t>::fromJs(rt, callInvoker, args[0])
-        );
-
-        
-        return uniffi_jsi::Bridging</*handle*/ uint64_t>::toJs(rt, callInvoker, value);
 }
 jsi::Value NativeMatrixSdkFfi::cpp_uniffi_matrix_sdk_ffi_fn_method_client_session(jsi::Runtime& rt, const jsi::Value& thisVal, const jsi::Value* args, size_t count) {
         RustCallStatus status = uniffi::matrix_sdk_ffi::Bridging<RustCallStatus>::rustSuccess(rt);
@@ -35674,13 +35646,6 @@ jsi::Value NativeMatrixSdkFfi::cpp_uniffi_matrix_sdk_ffi_checksum_method_client_
 }
 jsi::Value NativeMatrixSdkFfi::cpp_uniffi_matrix_sdk_ffi_checksum_method_client_server(jsi::Runtime& rt, const jsi::Value& thisVal, const jsi::Value* args, size_t count) {
         auto value = uniffi_matrix_sdk_ffi_checksum_method_client_server(
-        );
-
-        
-        return uniffi_jsi::Bridging<uint16_t>::toJs(rt, callInvoker, value);
-}
-jsi::Value NativeMatrixSdkFfi::cpp_uniffi_matrix_sdk_ffi_checksum_method_client_server_vendor_info(jsi::Runtime& rt, const jsi::Value& thisVal, const jsi::Value* args, size_t count) {
-        auto value = uniffi_matrix_sdk_ffi_checksum_method_client_server_vendor_info(
         );
 
         

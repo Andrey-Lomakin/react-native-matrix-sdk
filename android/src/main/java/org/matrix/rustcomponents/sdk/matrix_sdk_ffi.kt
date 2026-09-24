@@ -46,13 +46,11 @@ import uniffi.matrix_sdk.FfiConverterTypeOAuthAuthorizationData
 import uniffi.matrix_sdk.FfiConverterTypePaginationStatus
 import uniffi.matrix_sdk.FfiConverterTypeRoomMemberRole
 import uniffi.matrix_sdk.FfiConverterTypeRoomPowerLevelChanges
-import uniffi.matrix_sdk.FfiConverterTypeServerVendorInfo
 import uniffi.matrix_sdk.FfiConverterTypeTileServerInfo
 import uniffi.matrix_sdk.OAuthAuthorizationData
 import uniffi.matrix_sdk.PaginationStatus
 import uniffi.matrix_sdk.RoomMemberRole
 import uniffi.matrix_sdk.RoomPowerLevelChanges
-import uniffi.matrix_sdk.ServerVendorInfo
 import uniffi.matrix_sdk.TileServerInfo
 import uniffi.matrix_sdk_base.DmRoomDefinition
 import uniffi.matrix_sdk_base.EncryptionState
@@ -87,7 +85,6 @@ import uniffi.matrix_sdk.RustBuffer as RustBufferOAuthAuthorizationData
 import uniffi.matrix_sdk.RustBuffer as RustBufferPaginationStatus
 import uniffi.matrix_sdk.RustBuffer as RustBufferRoomMemberRole
 import uniffi.matrix_sdk.RustBuffer as RustBufferRoomPowerLevelChanges
-import uniffi.matrix_sdk.RustBuffer as RustBufferServerVendorInfo
 import uniffi.matrix_sdk.RustBuffer as RustBufferTileServerInfo
 import uniffi.matrix_sdk_base.RustBuffer as RustBufferDmRoomDefinition
 import uniffi.matrix_sdk_base.RustBuffer as RustBufferEncryptionState
@@ -1647,8 +1644,6 @@ external fun uniffi_matrix_sdk_ffi_checksum_method_client_search_users(
 ): Short
 external fun uniffi_matrix_sdk_ffi_checksum_method_client_server(
 ): Short
-external fun uniffi_matrix_sdk_ffi_checksum_method_client_server_vendor_info(
-): Short
 external fun uniffi_matrix_sdk_ffi_checksum_method_client_session(
 ): Short
 external fun uniffi_matrix_sdk_ffi_checksum_method_client_set_account_data(
@@ -2685,8 +2680,6 @@ external fun uniffi_matrix_sdk_ffi_fn_method_client_search_users(`ptr`: Long,`se
 ): Long
 external fun uniffi_matrix_sdk_ffi_fn_method_client_server(`ptr`: Long,uniffi_out_err: UniffiRustCallStatus, 
 ): RustBuffer.ByValue
-external fun uniffi_matrix_sdk_ffi_fn_method_client_server_vendor_info(`ptr`: Long,
-): Long
 external fun uniffi_matrix_sdk_ffi_fn_method_client_session(`ptr`: Long,uniffi_out_err: UniffiRustCallStatus, 
 ): RustBuffer.ByValue
 external fun uniffi_matrix_sdk_ffi_fn_method_client_set_account_data(`ptr`: Long,`eventType`: RustBuffer.ByValue,`content`: RustBuffer.ByValue,
@@ -4929,14 +4922,6 @@ public interface ClientInterface {
      */
     fun `server`(): kotlin.String?
     
-    /**
-     * Get server vendor information from the federation API.
-     *
-     * This method retrieves information about the server's name and version
-     * by calling the `/_matrix/federation/v1/version` endpoint.
-     */
-    suspend fun `serverVendorInfo`(): ServerVendorInfo
-    
     fun `session`(): Session
     
     /**
@@ -6955,33 +6940,6 @@ open class Client: Disposable, AutoCloseable, ClientInterface
     )
     }
     
-
-    
-    /**
-     * Get server vendor information from the federation API.
-     *
-     * This method retrieves information about the server's name and version
-     * by calling the `/_matrix/federation/v1/version` endpoint.
-     */
-    @Throws(ClientException::class)
-    @Suppress("ASSIGNED_BUT_NEVER_ACCESSED_VARIABLE")
-    override suspend fun `serverVendorInfo`() : ServerVendorInfo {
-        return uniffiRustCallAsync(
-        callWithHandle { uniffiHandle ->
-            UniffiLib.uniffi_matrix_sdk_ffi_fn_method_client_server_vendor_info(
-                uniffiHandle,
-                
-            )
-        },
-        { future, callback, continuation -> UniffiLib.ffi_matrix_sdk_ffi_rust_future_poll_rust_buffer(future, callback, continuation) },
-        { future, continuation -> UniffiLib.ffi_matrix_sdk_ffi_rust_future_complete_rust_buffer(future, continuation).let { RustBufferServerVendorInfo.create(it.capacity.toULong(), it.len.toULong(), it.data) } },
-        { future -> UniffiLib.ffi_matrix_sdk_ffi_rust_future_free_rust_buffer(future) },
-        // lift function
-        { FfiConverterTypeServerVendorInfo.lift(it) },
-        // Error FFI converter
-        ClientException.ErrorHandler,
-    )
-    }
 
     
     @Throws(ClientException::class)override fun `session`(): Session {
@@ -53740,8 +53698,6 @@ public object FfiConverterMapTypeTimelineEventTypeLong: FfiConverterRustBuffer<M
  */
 public typealias Timestamp = kotlin.ULong
 public typealias FfiConverterTypeTimestamp = FfiConverterULong
-
-
 
 
 

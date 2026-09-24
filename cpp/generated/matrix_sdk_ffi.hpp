@@ -109,7 +109,6 @@ class NativeMatrixSdkFfi : public jsi::HostObject {
     jsi::Value cpp_uniffi_matrix_sdk_ffi_fn_method_client_rooms(jsi::Runtime& rt, const jsi::Value& thisVal, const jsi::Value* args, size_t count);
     jsi::Value cpp_uniffi_matrix_sdk_ffi_fn_method_client_search_users(jsi::Runtime& rt, const jsi::Value& thisVal, const jsi::Value* args, size_t count);
     jsi::Value cpp_uniffi_matrix_sdk_ffi_fn_method_client_server(jsi::Runtime& rt, const jsi::Value& thisVal, const jsi::Value* args, size_t count);
-    jsi::Value cpp_uniffi_matrix_sdk_ffi_fn_method_client_server_vendor_info(jsi::Runtime& rt, const jsi::Value& thisVal, const jsi::Value* args, size_t count);
     jsi::Value cpp_uniffi_matrix_sdk_ffi_fn_method_client_session(jsi::Runtime& rt, const jsi::Value& thisVal, const jsi::Value* args, size_t count);
     jsi::Value cpp_uniffi_matrix_sdk_ffi_fn_method_client_set_account_data(jsi::Runtime& rt, const jsi::Value& thisVal, const jsi::Value* args, size_t count);
     jsi::Value cpp_uniffi_matrix_sdk_ffi_fn_method_client_set_avatar_url(jsi::Runtime& rt, const jsi::Value& thisVal, const jsi::Value* args, size_t count);
@@ -758,7 +757,6 @@ class NativeMatrixSdkFfi : public jsi::HostObject {
     jsi::Value cpp_uniffi_matrix_sdk_ffi_checksum_method_client_rooms(jsi::Runtime& rt, const jsi::Value& thisVal, const jsi::Value* args, size_t count);
     jsi::Value cpp_uniffi_matrix_sdk_ffi_checksum_method_client_search_users(jsi::Runtime& rt, const jsi::Value& thisVal, const jsi::Value* args, size_t count);
     jsi::Value cpp_uniffi_matrix_sdk_ffi_checksum_method_client_server(jsi::Runtime& rt, const jsi::Value& thisVal, const jsi::Value* args, size_t count);
-    jsi::Value cpp_uniffi_matrix_sdk_ffi_checksum_method_client_server_vendor_info(jsi::Runtime& rt, const jsi::Value& thisVal, const jsi::Value* args, size_t count);
     jsi::Value cpp_uniffi_matrix_sdk_ffi_checksum_method_client_session(jsi::Runtime& rt, const jsi::Value& thisVal, const jsi::Value* args, size_t count);
     jsi::Value cpp_uniffi_matrix_sdk_ffi_checksum_method_client_set_account_data(jsi::Runtime& rt, const jsi::Value& thisVal, const jsi::Value* args, size_t count);
     jsi::Value cpp_uniffi_matrix_sdk_ffi_checksum_method_client_set_avatar_url(jsi::Runtime& rt, const jsi::Value& thisVal, const jsi::Value* args, size_t count);

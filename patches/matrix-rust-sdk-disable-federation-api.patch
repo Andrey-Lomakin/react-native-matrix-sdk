@@ -1,0 +1,29 @@
+diff --git a/bindings/matrix-sdk-ffi/Cargo.toml b/bindings/matrix-sdk-ffi/Cargo.toml
+--- a/bindings/matrix-sdk-ffi/Cargo.toml
++++ b/bindings/matrix-sdk-ffi/Cargo.toml
+@@ -54,7 +54,6 @@
+     "e2e-encryption",
+     "markdown",
+     "uniffi",
+-    "federation-api",
+ ] }
+ matrix-sdk-base.workspace = true
+ matrix-sdk-common.workspace = true
+diff --git a/bindings/matrix-sdk-ffi/src/client.rs b/bindings/matrix-sdk-ffi/src/client.rs
+--- a/bindings/matrix-sdk-ffi/src/client.rs
++++ b/bindings/matrix-sdk-ffi/src/client.rs
+@@ -1950,14 +1950,6 @@
+             && self.inner.unstable_features().await?.contains(&ruma::api::FeatureFlag::Msc4108))
+     }
+ 
+-    /// Get server vendor information from the federation API.
+-    ///
+-    /// This method retrieves information about the server's name and version
+-    /// by calling the `/_matrix/federation/v1/version` endpoint.
+-    pub async fn server_vendor_info(&self) -> Result<matrix_sdk::ServerVendorInfo, ClientError> {
+-        Ok(self.inner.server_vendor_info(None).await?)
+-    }
+-
+     /// Subscribe to changes in the media preview configuration.
+     pub async fn subscribe_to_media_preview_config(
+         &self,
