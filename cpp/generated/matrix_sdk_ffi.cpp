@@ -975,13 +975,6 @@ extern "C" {
         /*handle*/ uint64_t ptr, 
         RustCallStatus *uniffi_out_err
     );
-    /*handle*/ uint64_t uniffi_matrix_sdk_ffi_fn_method_client_add_recent_emoji(
-        /*handle*/ uint64_t ptr, 
-        RustBuffer emoji
-    );
-    /*handle*/ uint64_t uniffi_matrix_sdk_ffi_fn_method_client_get_recent_emojis(
-        /*handle*/ uint64_t ptr
-    );
     /*handle*/ uint64_t uniffi_matrix_sdk_ffi_fn_clone_homeservercapabilities(
         /*handle*/ uint64_t handle, 
         RustCallStatus *uniffi_out_err
@@ -3369,10 +3362,6 @@ extern "C" {
     uint16_t uniffi_matrix_sdk_ffi_checksum_method_client_user_id(
     );
     uint16_t uniffi_matrix_sdk_ffi_checksum_method_client_user_id_server_name(
-    );
-    uint16_t uniffi_matrix_sdk_ffi_checksum_method_client_add_recent_emoji(
-    );
-    uint16_t uniffi_matrix_sdk_ffi_checksum_method_client_get_recent_emojis(
     );
     uint16_t uniffi_matrix_sdk_ffi_checksum_method_homeservercapabilities_can_change_avatar(
     );
@@ -20256,22 +20245,6 @@ NativeMatrixSdkFfi::NativeMatrixSdkFfi(
             return this->cpp_uniffi_matrix_sdk_ffi_fn_method_client_user_id_server_name(rt, thisVal, args, count);
         }
     );
-    props["ubrn_uniffi_matrix_sdk_ffi_fn_method_client_add_recent_emoji"] = jsi::Function::createFromHostFunction(
-        rt,
-        jsi::PropNameID::forAscii(rt, "ubrn_uniffi_matrix_sdk_ffi_fn_method_client_add_recent_emoji"),
-        2,
-        [this](jsi::Runtime &rt, const jsi::Value &thisVal, const jsi::Value *args, size_t count) -> jsi::Value {
-            return this->cpp_uniffi_matrix_sdk_ffi_fn_method_client_add_recent_emoji(rt, thisVal, args, count);
-        }
-    );
-    props["ubrn_uniffi_matrix_sdk_ffi_fn_method_client_get_recent_emojis"] = jsi::Function::createFromHostFunction(
-        rt,
-        jsi::PropNameID::forAscii(rt, "ubrn_uniffi_matrix_sdk_ffi_fn_method_client_get_recent_emojis"),
-        1,
-        [this](jsi::Runtime &rt, const jsi::Value &thisVal, const jsi::Value *args, size_t count) -> jsi::Value {
-            return this->cpp_uniffi_matrix_sdk_ffi_fn_method_client_get_recent_emojis(rt, thisVal, args, count);
-        }
-    );
     props["ubrn_uniffi_matrix_sdk_ffi_fn_clone_homeservercapabilities"] = jsi::Function::createFromHostFunction(
         rt,
         jsi::PropNameID::forAscii(rt, "ubrn_uniffi_matrix_sdk_ffi_fn_clone_homeservercapabilities"),
@@ -25464,22 +25437,6 @@ NativeMatrixSdkFfi::NativeMatrixSdkFfi(
             return this->cpp_uniffi_matrix_sdk_ffi_checksum_method_client_user_id_server_name(rt, thisVal, args, count);
         }
     );
-    props["ubrn_uniffi_matrix_sdk_ffi_checksum_method_client_add_recent_emoji"] = jsi::Function::createFromHostFunction(
-        rt,
-        jsi::PropNameID::forAscii(rt, "ubrn_uniffi_matrix_sdk_ffi_checksum_method_client_add_recent_emoji"),
-        0,
-        [this](jsi::Runtime &rt, const jsi::Value &thisVal, const jsi::Value *args, size_t count) -> jsi::Value {
-            return this->cpp_uniffi_matrix_sdk_ffi_checksum_method_client_add_recent_emoji(rt, thisVal, args, count);
-        }
-    );
-    props["ubrn_uniffi_matrix_sdk_ffi_checksum_method_client_get_recent_emojis"] = jsi::Function::createFromHostFunction(
-        rt,
-        jsi::PropNameID::forAscii(rt, "ubrn_uniffi_matrix_sdk_ffi_checksum_method_client_get_recent_emojis"),
-        0,
-        [this](jsi::Runtime &rt, const jsi::Value &thisVal, const jsi::Value *args, size_t count) -> jsi::Value {
-            return this->cpp_uniffi_matrix_sdk_ffi_checksum_method_client_get_recent_emojis(rt, thisVal, args, count);
-        }
-    );
     props["ubrn_uniffi_matrix_sdk_ffi_checksum_method_homeservercapabilities_can_change_avatar"] = jsi::Function::createFromHostFunction(
         rt,
         jsi::PropNameID::forAscii(rt, "ubrn_uniffi_matrix_sdk_ffi_checksum_method_homeservercapabilities_can_change_avatar"),
@@ -30222,20 +30179,6 @@ jsi::Value NativeMatrixSdkFfi::cpp_uniffi_matrix_sdk_ffi_fn_method_client_user_i
 
         
         return uniffi::matrix_sdk_ffi::Bridging<RustBuffer>::toJs(rt, callInvoker, value);
-}
-jsi::Value NativeMatrixSdkFfi::cpp_uniffi_matrix_sdk_ffi_fn_method_client_add_recent_emoji(jsi::Runtime& rt, const jsi::Value& thisVal, const jsi::Value* args, size_t count) {
-        auto value = uniffi_matrix_sdk_ffi_fn_method_client_add_recent_emoji(uniffi_jsi::Bridging</*handle*/ uint64_t>::fromJs(rt, callInvoker, args[0]), uniffi::matrix_sdk_ffi::Bridging<RustBuffer>::fromJs(rt, callInvoker, args[1])
-        );
-
-        
-        return uniffi_jsi::Bridging</*handle*/ uint64_t>::toJs(rt, callInvoker, value);
-}
-jsi::Value NativeMatrixSdkFfi::cpp_uniffi_matrix_sdk_ffi_fn_method_client_get_recent_emojis(jsi::Runtime& rt, const jsi::Value& thisVal, const jsi::Value* args, size_t count) {
-        auto value = uniffi_matrix_sdk_ffi_fn_method_client_get_recent_emojis(uniffi_jsi::Bridging</*handle*/ uint64_t>::fromJs(rt, callInvoker, args[0])
-        );
-
-        
-        return uniffi_jsi::Bridging</*handle*/ uint64_t>::toJs(rt, callInvoker, value);
 }
 jsi::Value NativeMatrixSdkFfi::cpp_uniffi_matrix_sdk_ffi_fn_clone_homeservercapabilities(jsi::Runtime& rt, const jsi::Value& thisVal, const jsi::Value* args, size_t count) {
         RustCallStatus status = uniffi::matrix_sdk_ffi::Bridging<RustCallStatus>::rustSuccess(rt);
@@ -35941,20 +35884,6 @@ jsi::Value NativeMatrixSdkFfi::cpp_uniffi_matrix_sdk_ffi_checksum_method_client_
 }
 jsi::Value NativeMatrixSdkFfi::cpp_uniffi_matrix_sdk_ffi_checksum_method_client_user_id_server_name(jsi::Runtime& rt, const jsi::Value& thisVal, const jsi::Value* args, size_t count) {
         auto value = uniffi_matrix_sdk_ffi_checksum_method_client_user_id_server_name(
-        );
-
-        
-        return uniffi_jsi::Bridging<uint16_t>::toJs(rt, callInvoker, value);
-}
-jsi::Value NativeMatrixSdkFfi::cpp_uniffi_matrix_sdk_ffi_checksum_method_client_add_recent_emoji(jsi::Runtime& rt, const jsi::Value& thisVal, const jsi::Value* args, size_t count) {
-        auto value = uniffi_matrix_sdk_ffi_checksum_method_client_add_recent_emoji(
-        );
-
-        
-        return uniffi_jsi::Bridging<uint16_t>::toJs(rt, callInvoker, value);
-}
-jsi::Value NativeMatrixSdkFfi::cpp_uniffi_matrix_sdk_ffi_checksum_method_client_get_recent_emojis(jsi::Runtime& rt, const jsi::Value& thisVal, const jsi::Value* args, size_t count) {
-        auto value = uniffi_matrix_sdk_ffi_checksum_method_client_get_recent_emojis(
         );
 
         

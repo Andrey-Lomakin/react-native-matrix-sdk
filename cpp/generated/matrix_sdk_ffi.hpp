@@ -139,8 +139,6 @@ class NativeMatrixSdkFfi : public jsi::HostObject {
     jsi::Value cpp_uniffi_matrix_sdk_ffi_fn_method_client_url_for_oauth(jsi::Runtime& rt, const jsi::Value& thisVal, const jsi::Value* args, size_t count);
     jsi::Value cpp_uniffi_matrix_sdk_ffi_fn_method_client_user_id(jsi::Runtime& rt, const jsi::Value& thisVal, const jsi::Value* args, size_t count);
     jsi::Value cpp_uniffi_matrix_sdk_ffi_fn_method_client_user_id_server_name(jsi::Runtime& rt, const jsi::Value& thisVal, const jsi::Value* args, size_t count);
-    jsi::Value cpp_uniffi_matrix_sdk_ffi_fn_method_client_add_recent_emoji(jsi::Runtime& rt, const jsi::Value& thisVal, const jsi::Value* args, size_t count);
-    jsi::Value cpp_uniffi_matrix_sdk_ffi_fn_method_client_get_recent_emojis(jsi::Runtime& rt, const jsi::Value& thisVal, const jsi::Value* args, size_t count);
     jsi::Value cpp_uniffi_matrix_sdk_ffi_fn_clone_homeservercapabilities(jsi::Runtime& rt, const jsi::Value& thisVal, const jsi::Value* args, size_t count);
     jsi::Value cpp_uniffi_matrix_sdk_ffi_fn_free_homeservercapabilities(jsi::Runtime& rt, const jsi::Value& thisVal, const jsi::Value* args, size_t count);
     jsi::Value cpp_uniffi_matrix_sdk_ffi_fn_method_homeservercapabilities_can_change_avatar(jsi::Runtime& rt, const jsi::Value& thisVal, const jsi::Value* args, size_t count);
@@ -790,8 +788,6 @@ class NativeMatrixSdkFfi : public jsi::HostObject {
     jsi::Value cpp_uniffi_matrix_sdk_ffi_checksum_method_client_url_for_oauth(jsi::Runtime& rt, const jsi::Value& thisVal, const jsi::Value* args, size_t count);
     jsi::Value cpp_uniffi_matrix_sdk_ffi_checksum_method_client_user_id(jsi::Runtime& rt, const jsi::Value& thisVal, const jsi::Value* args, size_t count);
     jsi::Value cpp_uniffi_matrix_sdk_ffi_checksum_method_client_user_id_server_name(jsi::Runtime& rt, const jsi::Value& thisVal, const jsi::Value* args, size_t count);
-    jsi::Value cpp_uniffi_matrix_sdk_ffi_checksum_method_client_add_recent_emoji(jsi::Runtime& rt, const jsi::Value& thisVal, const jsi::Value* args, size_t count);
-    jsi::Value cpp_uniffi_matrix_sdk_ffi_checksum_method_client_get_recent_emojis(jsi::Runtime& rt, const jsi::Value& thisVal, const jsi::Value* args, size_t count);
     jsi::Value cpp_uniffi_matrix_sdk_ffi_checksum_method_homeservercapabilities_can_change_avatar(jsi::Runtime& rt, const jsi::Value& thisVal, const jsi::Value* args, size_t count);
     jsi::Value cpp_uniffi_matrix_sdk_ffi_checksum_method_homeservercapabilities_can_change_displayname(jsi::Runtime& rt, const jsi::Value& thisVal, const jsi::Value* args, size_t count);
     jsi::Value cpp_uniffi_matrix_sdk_ffi_checksum_method_homeservercapabilities_can_change_password(jsi::Runtime& rt, const jsi::Value& thisVal, const jsi::Value* args, size_t count);

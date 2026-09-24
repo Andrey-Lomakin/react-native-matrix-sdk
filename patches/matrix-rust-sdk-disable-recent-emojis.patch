@@ -1,0 +1,11 @@
+--- a/bindings/matrix-sdk-ffi/Cargo.toml
++++ b/bindings/matrix-sdk-ffi/Cargo.toml
+@@ -24,7 +24,7 @@
+ ]
+ 
+ [features]
+-default = ["bundled-sqlite", "unstable-msc4274", "experimental-element-recent-emojis", "experimental-push-secrets"]
++default = ["bundled-sqlite", "unstable-msc4274", "experimental-push-secrets"]
+ experimental-search = ["matrix-sdk/experimental-search"]
+ # Use SQLite for the session storage.
+ sqlite = ["matrix-sdk/sqlite"]

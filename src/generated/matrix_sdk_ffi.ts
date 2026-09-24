@@ -5703,60 +5703,6 @@ const FfiConverterTypeReceipt = (() => {
 })();
 
 /**
- * Represents an emoji recently used for reactions.
- */
-export type RecentEmoji = {
-  /**
-   * The actual emoji text representation.
-   */
-  emoji: string;
-  /**
-   * The number of times this emoji has been used for reactions.
-   */
-  count: /*u64*/ bigint;
-};
-
-/**
- * Generated factory for {@link RecentEmoji} record objects.
- */
-export const RecentEmoji = (() => {
-  const defaults = () => ({});
-  const create = (() => {
-    return uniffiCreateRecord<RecentEmoji, ReturnType<typeof defaults>>(
-      defaults
-    );
-  })();
-  return Object.freeze({
-    create,
-    new: create,
-    defaults: () => Object.freeze(defaults()) as Partial<RecentEmoji>,
-  });
-})();
-
-const FfiConverterTypeRecentEmoji = (() => {
-  type TypeName = RecentEmoji;
-  class FFIConverter extends AbstractFfiConverterByteArray<TypeName> {
-    read(from: RustBuffer): TypeName {
-      return {
-        emoji: FfiConverterString.read(from),
-        count: FfiConverterUInt64.read(from),
-      };
-    }
-    write(value: TypeName, into: RustBuffer): void {
-      FfiConverterString.write(value.emoji, into);
-      FfiConverterUInt64.write(value.count, into);
-    }
-    allocationSize(value: TypeName): number {
-      return (
-        FfiConverterString.allocationSize(value.emoji) +
-        FfiConverterUInt64.allocationSize(value.count)
-      );
-    }
-  }
-  return new FFIConverter();
-})();
-
-/**
  * The config to use for HTTP requests by default in this client.
  */
 export type RequestConfig = {
@@ -38461,21 +38407,6 @@ export interface ClientLike {
    * The server name part of the current user ID
    */
   userIdServerName() /*throws*/ : string;
-  /**
-   * Adds a recently used emoji to the list and uploads the updated
-   * `io.element.recent_emoji` content to the global account data.
-   */
-  addRecentEmoji(
-    emoji: string,
-    asyncOpts_?: { signal: AbortSignal }
-  ) /*throws*/ : Promise<void>;
-  /**
-   * Gets the list of recently used emojis from the
-   * `io.element.recent_emoji` global account data.
-   */
-  getRecentEmojis(asyncOpts_?: {
-    signal: AbortSignal;
-  }) /*throws*/ : Promise<Array<RecentEmoji>>;
 }
 /**
  * @deprecated Use `ClientLike` instead.
@@ -42255,88 +42186,6 @@ export class Client extends UniffiAbstractObject implements ClientLike {
         /*liftString:*/ FfiConverterString.lift
       )
     );
-  }
-
-  /**
-   * Adds a recently used emoji to the list and uploads the updated
-   * `io.element.recent_emoji` content to the global account data.
-   */
-  async addRecentEmoji(
-    emoji: string,
-    asyncOpts_?: { signal: AbortSignal }
-  ): Promise<void> /*throws*/ {
-    const __stack = uniffiIsDebug ? new Error().stack : undefined;
-    try {
-      return await uniffiRustCallAsync(
-        /*rustCaller:*/ uniffiCaller,
-        /*rustFutureFunc:*/ () => {
-          return nativeModule().ubrn_uniffi_matrix_sdk_ffi_fn_method_client_add_recent_emoji(
-            uniffiTypeClientObjectFactory.clonePointer(this),
-            FfiConverterString.lower(emoji)
-          );
-        },
-        /*pollFunc:*/ nativeModule()
-          .ubrn_ffi_matrix_sdk_ffi_rust_future_poll_void,
-        /*cancelFunc:*/ nativeModule()
-          .ubrn_ffi_matrix_sdk_ffi_rust_future_cancel_void,
-        /*completeFunc:*/ nativeModule()
-          .ubrn_ffi_matrix_sdk_ffi_rust_future_complete_void,
-        /*freeFunc:*/ nativeModule()
-          .ubrn_ffi_matrix_sdk_ffi_rust_future_free_void,
-        /*liftFunc:*/ (_v) => {},
-        /*liftString:*/ FfiConverterString.lift,
-        /*asyncOpts:*/ asyncOpts_,
-        /*errorHandler:*/ FfiConverterTypeClientError.lift.bind(
-          FfiConverterTypeClientError
-        )
-      );
-    } catch (__error: any) {
-      if (uniffiIsDebug && __error instanceof Error) {
-        __error.stack = __stack;
-      }
-      throw __error;
-    }
-  }
-
-  /**
-   * Gets the list of recently used emojis from the
-   * `io.element.recent_emoji` global account data.
-   */
-  async getRecentEmojis(asyncOpts_?: {
-    signal: AbortSignal;
-  }): Promise<Array<RecentEmoji>> /*throws*/ {
-    const __stack = uniffiIsDebug ? new Error().stack : undefined;
-    try {
-      return await uniffiRustCallAsync(
-        /*rustCaller:*/ uniffiCaller,
-        /*rustFutureFunc:*/ () => {
-          return nativeModule().ubrn_uniffi_matrix_sdk_ffi_fn_method_client_get_recent_emojis(
-            uniffiTypeClientObjectFactory.clonePointer(this)
-          );
-        },
-        /*pollFunc:*/ nativeModule()
-          .ubrn_ffi_matrix_sdk_ffi_rust_future_poll_rust_buffer,
-        /*cancelFunc:*/ nativeModule()
-          .ubrn_ffi_matrix_sdk_ffi_rust_future_cancel_rust_buffer,
-        /*completeFunc:*/ nativeModule()
-          .ubrn_ffi_matrix_sdk_ffi_rust_future_complete_rust_buffer,
-        /*freeFunc:*/ nativeModule()
-          .ubrn_ffi_matrix_sdk_ffi_rust_future_free_rust_buffer,
-        /*liftFunc:*/ FfiConverterArrayTypeRecentEmoji.lift.bind(
-          FfiConverterArrayTypeRecentEmoji
-        ),
-        /*liftString:*/ FfiConverterString.lift,
-        /*asyncOpts:*/ asyncOpts_,
-        /*errorHandler:*/ FfiConverterTypeClientError.lift.bind(
-          FfiConverterTypeClientError
-        )
-      );
-    } catch (__error: any) {
-      if (uniffiIsDebug && __error instanceof Error) {
-        __error.stack = __stack;
-      }
-      throw __error;
-    }
   }
 
   /**
@@ -59188,11 +59037,6 @@ const FfiConverterArrayTypeReactionSenderData = new FfiConverterArray(
   FfiConverterTypeReactionSenderData
 );
 
-// FfiConverter for Array<RecentEmoji>
-const FfiConverterArrayTypeRecentEmoji = new FfiConverterArray(
-  FfiConverterTypeRecentEmoji
-);
-
 // FfiConverter for Array<RoomHero>
 const FfiConverterArrayTypeRoomHero = new FfiConverterArray(
   FfiConverterTypeRoomHero
@@ -60592,22 +60436,6 @@ function uniffiEnsureInitialized() {
   ) {
     throw new UniffiInternalError.ApiChecksumMismatch(
       'uniffi_matrix_sdk_ffi_checksum_method_client_user_id_server_name'
-    );
-  }
-  if (
-    nativeModule().ubrn_uniffi_matrix_sdk_ffi_checksum_method_client_add_recent_emoji() !==
-    15952
-  ) {
-    throw new UniffiInternalError.ApiChecksumMismatch(
-      'uniffi_matrix_sdk_ffi_checksum_method_client_add_recent_emoji'
-    );
-  }
-  if (
-    nativeModule().ubrn_uniffi_matrix_sdk_ffi_checksum_method_client_get_recent_emojis() !==
-    49975
-  ) {
-    throw new UniffiInternalError.ApiChecksumMismatch(
-      'uniffi_matrix_sdk_ffi_checksum_method_client_get_recent_emojis'
     );
   }
   if (
@@ -63765,7 +63593,6 @@ export default Object.freeze({
     FfiConverterTypeReactionSenderData,
     FfiConverterTypeReceipt,
     FfiConverterTypeReceiptType,
-    FfiConverterTypeRecentEmoji,
     FfiConverterTypeRecoveryError,
     FfiConverterTypeRecoveryState,
     FfiConverterTypeRequestConfig,

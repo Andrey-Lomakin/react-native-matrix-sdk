@@ -513,13 +513,6 @@ interface NativeModuleInterface {
     ptr: bigint,
     uniffi_out_err: UniffiRustCallStatus
   ): Uint8Array;
-  ubrn_uniffi_matrix_sdk_ffi_fn_method_client_add_recent_emoji(
-    ptr: bigint,
-    emoji: Uint8Array
-  ): bigint;
-  ubrn_uniffi_matrix_sdk_ffi_fn_method_client_get_recent_emojis(
-    ptr: bigint
-  ): bigint;
   ubrn_uniffi_matrix_sdk_ffi_fn_clone_homeservercapabilities(
     handle: bigint,
     uniffi_out_err: UniffiRustCallStatus
@@ -2678,8 +2671,6 @@ interface NativeModuleInterface {
   ubrn_uniffi_matrix_sdk_ffi_checksum_method_client_url_for_oauth(): number;
   ubrn_uniffi_matrix_sdk_ffi_checksum_method_client_user_id(): number;
   ubrn_uniffi_matrix_sdk_ffi_checksum_method_client_user_id_server_name(): number;
-  ubrn_uniffi_matrix_sdk_ffi_checksum_method_client_add_recent_emoji(): number;
-  ubrn_uniffi_matrix_sdk_ffi_checksum_method_client_get_recent_emojis(): number;
   ubrn_uniffi_matrix_sdk_ffi_checksum_method_homeservercapabilities_can_change_avatar(): number;
   ubrn_uniffi_matrix_sdk_ffi_checksum_method_homeservercapabilities_can_change_displayname(): number;
   ubrn_uniffi_matrix_sdk_ffi_checksum_method_homeservercapabilities_can_change_password(): number;

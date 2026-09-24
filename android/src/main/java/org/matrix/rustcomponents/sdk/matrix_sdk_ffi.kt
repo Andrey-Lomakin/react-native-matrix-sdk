@@ -1707,10 +1707,6 @@ external fun uniffi_matrix_sdk_ffi_checksum_method_client_user_id(
 ): Short
 external fun uniffi_matrix_sdk_ffi_checksum_method_client_user_id_server_name(
 ): Short
-external fun uniffi_matrix_sdk_ffi_checksum_method_client_add_recent_emoji(
-): Short
-external fun uniffi_matrix_sdk_ffi_checksum_method_client_get_recent_emojis(
-): Short
 external fun uniffi_matrix_sdk_ffi_checksum_method_homeservercapabilities_can_change_avatar(
 ): Short
 external fun uniffi_matrix_sdk_ffi_checksum_method_homeservercapabilities_can_change_displayname(
@@ -2749,10 +2745,6 @@ external fun uniffi_matrix_sdk_ffi_fn_method_client_user_id(`ptr`: Long,uniffi_o
 ): RustBuffer.ByValue
 external fun uniffi_matrix_sdk_ffi_fn_method_client_user_id_server_name(`ptr`: Long,uniffi_out_err: UniffiRustCallStatus, 
 ): RustBuffer.ByValue
-external fun uniffi_matrix_sdk_ffi_fn_method_client_add_recent_emoji(`ptr`: Long,`emoji`: RustBuffer.ByValue,
-): Long
-external fun uniffi_matrix_sdk_ffi_fn_method_client_get_recent_emojis(`ptr`: Long,
-): Long
 external fun uniffi_matrix_sdk_ffi_fn_clone_homeservercapabilities(`handle`: Long,uniffi_out_err: UniffiRustCallStatus, 
 ): Long
 external fun uniffi_matrix_sdk_ffi_fn_free_homeservercapabilities(`handle`: Long,uniffi_out_err: UniffiRustCallStatus, 
@@ -5131,18 +5123,6 @@ public interface ClientInterface {
      * The server name part of the current user ID
      */
     fun `userIdServerName`(): kotlin.String
-    
-    /**
-     * Adds a recently used emoji to the list and uploads the updated
-     * `io.element.recent_emoji` content to the global account data.
-     */
-    suspend fun `addRecentEmoji`(`emoji`: kotlin.String)
-    
-    /**
-     * Gets the list of recently used emojis from the
-     * `io.element.recent_emoji` global account data.
-     */
-    suspend fun `getRecentEmojis`(): List<RecentEmoji>
     
     companion object
 }
@@ -7674,57 +7654,6 @@ open class Client: Disposable, AutoCloseable, ClientInterface
     )
     }
     
-
-    
-    /**
-     * Adds a recently used emoji to the list and uploads the updated
-     * `io.element.recent_emoji` content to the global account data.
-     */
-    @Throws(ClientException::class)
-    @Suppress("ASSIGNED_BUT_NEVER_ACCESSED_VARIABLE")
-    override suspend fun `addRecentEmoji`(`emoji`: kotlin.String) {
-        return uniffiRustCallAsync(
-        callWithHandle { uniffiHandle ->
-            UniffiLib.uniffi_matrix_sdk_ffi_fn_method_client_add_recent_emoji(
-                uniffiHandle,
-                FfiConverterString.lower(`emoji`),
-            )
-        },
-        { future, callback, continuation -> UniffiLib.ffi_matrix_sdk_ffi_rust_future_poll_void(future, callback, continuation) },
-        { future, continuation -> UniffiLib.ffi_matrix_sdk_ffi_rust_future_complete_void(future, continuation) },
-        { future -> UniffiLib.ffi_matrix_sdk_ffi_rust_future_free_void(future) },
-        // lift function
-        { Unit },
-        
-        // Error FFI converter
-        ClientException.ErrorHandler,
-    )
-    }
-
-    
-    /**
-     * Gets the list of recently used emojis from the
-     * `io.element.recent_emoji` global account data.
-     */
-    @Throws(ClientException::class)
-    @Suppress("ASSIGNED_BUT_NEVER_ACCESSED_VARIABLE")
-    override suspend fun `getRecentEmojis`() : List<RecentEmoji> {
-        return uniffiRustCallAsync(
-        callWithHandle { uniffiHandle ->
-            UniffiLib.uniffi_matrix_sdk_ffi_fn_method_client_get_recent_emojis(
-                uniffiHandle,
-                
-            )
-        },
-        { future, callback, continuation -> UniffiLib.ffi_matrix_sdk_ffi_rust_future_poll_rust_buffer(future, callback, continuation) },
-        { future, continuation -> UniffiLib.ffi_matrix_sdk_ffi_rust_future_complete_rust_buffer(future, continuation) },
-        { future -> UniffiLib.ffi_matrix_sdk_ffi_rust_future_free_rust_buffer(future) },
-        // lift function
-        { FfiConverterSequenceTypeRecentEmoji.lift(it) },
-        // Error FFI converter
-        ClientException.ErrorHandler,
-    )
-    }
 
     
 
@@ -29045,53 +28974,6 @@ public object FfiConverterTypeReceipt: FfiConverterRustBuffer<Receipt> {
 
     override fun write(value: Receipt, buf: ByteBuffer) {
             FfiConverterOptionalTypeTimestamp.write(value.`timestamp`, buf)
-    }
-}
-
-
-
-/**
- * Represents an emoji recently used for reactions.
- */
-data class RecentEmoji (
-    /**
-     * The actual emoji text representation.
-     */
-    var `emoji`: kotlin.String
-    , 
-    /**
-     * The number of times this emoji has been used for reactions.
-     */
-    var `count`: kotlin.ULong
-    
-){
-    
-
-    
-
-    
-    companion object
-}
-
-/**
- * @suppress
- */
-public object FfiConverterTypeRecentEmoji: FfiConverterRustBuffer<RecentEmoji> {
-    override fun read(buf: ByteBuffer): RecentEmoji {
-        return RecentEmoji(
-            FfiConverterString.read(buf),
-            FfiConverterULong.read(buf),
-        )
-    }
-
-    override fun allocationSize(value: RecentEmoji) = (
-            FfiConverterString.allocationSize(value.`emoji`) +
-            FfiConverterULong.allocationSize(value.`count`)
-    )
-
-    override fun write(value: RecentEmoji, buf: ByteBuffer) {
-            FfiConverterString.write(value.`emoji`, buf)
-            FfiConverterULong.write(value.`count`, buf)
     }
 }
 
@@ -52850,34 +52732,6 @@ public object FfiConverterSequenceTypeReactionSenderData: FfiConverterRustBuffer
         buf.putInt(value.size)
         value.iterator().forEach {
             FfiConverterTypeReactionSenderData.write(it, buf)
-        }
-    }
-}
-
-
-
-
-/**
- * @suppress
- */
-public object FfiConverterSequenceTypeRecentEmoji: FfiConverterRustBuffer<List<RecentEmoji>> {
-    override fun read(buf: ByteBuffer): List<RecentEmoji> {
-        val len = buf.getInt()
-        return List<RecentEmoji>(len) {
-            FfiConverterTypeRecentEmoji.read(buf)
-        }
-    }
-
-    override fun allocationSize(value: List<RecentEmoji>): ULong {
-        val sizeForLength = 4UL
-        val sizeForItems = value.map { FfiConverterTypeRecentEmoji.allocationSize(it) }.sum()
-        return sizeForLength + sizeForItems
-    }
-
-    override fun write(value: List<RecentEmoji>, buf: ByteBuffer) {
-        buf.putInt(value.size)
-        value.iterator().forEach {
-            FfiConverterTypeRecentEmoji.write(it, buf)
         }
     }
 }
