@@ -603,8 +603,6 @@ class NativeMatrixSdkFfi : public jsi::HostObject {
     jsi::Value cpp_uniffi_matrix_sdk_ffi_fn_func_content_without_relation_from_message(jsi::Runtime& rt, const jsi::Value& thisVal, const jsi::Value* args, size_t count);
     jsi::Value cpp_uniffi_matrix_sdk_ffi_fn_func_message_event_content_from_html(jsi::Runtime& rt, const jsi::Value& thisVal, const jsi::Value* args, size_t count);
     jsi::Value cpp_uniffi_matrix_sdk_ffi_fn_func_message_event_content_from_html_as_emote(jsi::Runtime& rt, const jsi::Value& thisVal, const jsi::Value* args, size_t count);
-    jsi::Value cpp_uniffi_matrix_sdk_ffi_fn_func_message_event_content_from_markdown(jsi::Runtime& rt, const jsi::Value& thisVal, const jsi::Value* args, size_t count);
-    jsi::Value cpp_uniffi_matrix_sdk_ffi_fn_func_message_event_content_from_markdown_as_emote(jsi::Runtime& rt, const jsi::Value& thisVal, const jsi::Value* args, size_t count);
     jsi::Value cpp_uniffi_matrix_sdk_ffi_fn_func_message_event_content_new(jsi::Runtime& rt, const jsi::Value& thisVal, const jsi::Value* args, size_t count);
     jsi::Value cpp_uniffi_matrix_sdk_ffi_fn_func_parse_matrix_entity_from(jsi::Runtime& rt, const jsi::Value& thisVal, const jsi::Value* args, size_t count);
     jsi::Value cpp_uniffi_matrix_sdk_ffi_fn_func_create_caption_edit(jsi::Runtime& rt, const jsi::Value& thisVal, const jsi::Value* args, size_t count);
@@ -672,8 +670,6 @@ class NativeMatrixSdkFfi : public jsi::HostObject {
     jsi::Value cpp_uniffi_matrix_sdk_ffi_checksum_func_content_without_relation_from_message(jsi::Runtime& rt, const jsi::Value& thisVal, const jsi::Value* args, size_t count);
     jsi::Value cpp_uniffi_matrix_sdk_ffi_checksum_func_message_event_content_from_html(jsi::Runtime& rt, const jsi::Value& thisVal, const jsi::Value* args, size_t count);
     jsi::Value cpp_uniffi_matrix_sdk_ffi_checksum_func_message_event_content_from_html_as_emote(jsi::Runtime& rt, const jsi::Value& thisVal, const jsi::Value* args, size_t count);
-    jsi::Value cpp_uniffi_matrix_sdk_ffi_checksum_func_message_event_content_from_markdown(jsi::Runtime& rt, const jsi::Value& thisVal, const jsi::Value* args, size_t count);
-    jsi::Value cpp_uniffi_matrix_sdk_ffi_checksum_func_message_event_content_from_markdown_as_emote(jsi::Runtime& rt, const jsi::Value& thisVal, const jsi::Value* args, size_t count);
     jsi::Value cpp_uniffi_matrix_sdk_ffi_checksum_func_message_event_content_new(jsi::Runtime& rt, const jsi::Value& thisVal, const jsi::Value* args, size_t count);
     jsi::Value cpp_uniffi_matrix_sdk_ffi_checksum_func_parse_matrix_entity_from(jsi::Runtime& rt, const jsi::Value& thisVal, const jsi::Value* args, size_t count);
     jsi::Value cpp_uniffi_matrix_sdk_ffi_checksum_func_create_caption_edit(jsi::Runtime& rt, const jsi::Value& thisVal, const jsi::Value* args, size_t count);

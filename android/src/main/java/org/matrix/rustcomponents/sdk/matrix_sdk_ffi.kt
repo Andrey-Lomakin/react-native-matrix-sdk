@@ -1474,10 +1474,6 @@ external fun uniffi_matrix_sdk_ffi_checksum_func_message_event_content_from_html
 ): Short
 external fun uniffi_matrix_sdk_ffi_checksum_func_message_event_content_from_html_as_emote(
 ): Short
-external fun uniffi_matrix_sdk_ffi_checksum_func_message_event_content_from_markdown(
-): Short
-external fun uniffi_matrix_sdk_ffi_checksum_func_message_event_content_from_markdown_as_emote(
-): Short
 external fun uniffi_matrix_sdk_ffi_checksum_func_message_event_content_new(
 ): Short
 external fun uniffi_matrix_sdk_ffi_checksum_func_parse_matrix_entity_from(
@@ -3667,10 +3663,6 @@ external fun uniffi_matrix_sdk_ffi_fn_func_content_without_relation_from_message
 external fun uniffi_matrix_sdk_ffi_fn_func_message_event_content_from_html(`body`: RustBuffer.ByValue,`htmlBody`: RustBuffer.ByValue,uniffi_out_err: UniffiRustCallStatus, 
 ): Long
 external fun uniffi_matrix_sdk_ffi_fn_func_message_event_content_from_html_as_emote(`body`: RustBuffer.ByValue,`htmlBody`: RustBuffer.ByValue,uniffi_out_err: UniffiRustCallStatus, 
-): Long
-external fun uniffi_matrix_sdk_ffi_fn_func_message_event_content_from_markdown(`md`: RustBuffer.ByValue,uniffi_out_err: UniffiRustCallStatus, 
-): Long
-external fun uniffi_matrix_sdk_ffi_fn_func_message_event_content_from_markdown_as_emote(`md`: RustBuffer.ByValue,uniffi_out_err: UniffiRustCallStatus, 
 ): Long
 external fun uniffi_matrix_sdk_ffi_fn_func_message_event_content_new(`msgtype`: RustBuffer.ByValue,uniffi_out_err: UniffiRustCallStatus, 
 ): Long
@@ -53981,26 +53973,6 @@ public typealias FfiConverterTypeTimestamp = FfiConverterULong
     )
     }
     
- fun `messageEventContentFromMarkdown`(`md`: kotlin.String): RoomMessageEventContentWithoutRelation {
-            return FfiConverterTypeRoomMessageEventContentWithoutRelation.lift(
-    uniffiRustCall() { _status ->
-    UniffiLib.uniffi_matrix_sdk_ffi_fn_func_message_event_content_from_markdown(
-    
-        FfiConverterString.lower(`md`),_status)
-}
-    )
-    }
-    
- fun `messageEventContentFromMarkdownAsEmote`(`md`: kotlin.String): RoomMessageEventContentWithoutRelation {
-            return FfiConverterTypeRoomMessageEventContentWithoutRelation.lift(
-    uniffiRustCall() { _status ->
-    UniffiLib.uniffi_matrix_sdk_ffi_fn_func_message_event_content_from_markdown_as_emote(
-    
-        FfiConverterString.lower(`md`),_status)
-}
-    )
-    }
-    
 
     @Throws(ClientException::class) fun `messageEventContentNew`(`msgtype`: MessageType): RoomMessageEventContentWithoutRelation {
             return FfiConverterTypeRoomMessageEventContentWithoutRelation.lift(
@@ -54030,8 +54002,7 @@ public typealias FfiConverterTypeTimestamp = FfiConverterULong
         /**
          * Create a caption edit.
          *
-         * If no `formatted_caption` is provided, then it's assumed the `caption`
-         * represents valid Markdown that can be used as the formatted caption.
+         * A supplied HTML caption is preserved; otherwise the caption stays plain text.
          */ fun `createCaptionEdit`(`caption`: kotlin.String?, `formattedCaption`: FormattedBody?, `mentions`: Mentions?): EditedContent {
             return FfiConverterTypeEditedContent.lift(
     uniffiRustCall() { _status ->

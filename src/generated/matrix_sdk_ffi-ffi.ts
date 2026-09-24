@@ -2383,14 +2383,6 @@ interface NativeModuleInterface {
     htmlBody: Uint8Array,
     uniffi_out_err: UniffiRustCallStatus
   ): bigint;
-  ubrn_uniffi_matrix_sdk_ffi_fn_func_message_event_content_from_markdown(
-    md: Uint8Array,
-    uniffi_out_err: UniffiRustCallStatus
-  ): bigint;
-  ubrn_uniffi_matrix_sdk_ffi_fn_func_message_event_content_from_markdown_as_emote(
-    md: Uint8Array,
-    uniffi_out_err: UniffiRustCallStatus
-  ): bigint;
   ubrn_uniffi_matrix_sdk_ffi_fn_func_message_event_content_new(
     msgtype: Uint8Array,
     uniffi_out_err: UniffiRustCallStatus
@@ -2553,8 +2545,6 @@ interface NativeModuleInterface {
   ubrn_uniffi_matrix_sdk_ffi_checksum_func_content_without_relation_from_message(): number;
   ubrn_uniffi_matrix_sdk_ffi_checksum_func_message_event_content_from_html(): number;
   ubrn_uniffi_matrix_sdk_ffi_checksum_func_message_event_content_from_html_as_emote(): number;
-  ubrn_uniffi_matrix_sdk_ffi_checksum_func_message_event_content_from_markdown(): number;
-  ubrn_uniffi_matrix_sdk_ffi_checksum_func_message_event_content_from_markdown_as_emote(): number;
   ubrn_uniffi_matrix_sdk_ffi_checksum_func_message_event_content_new(): number;
   ubrn_uniffi_matrix_sdk_ffi_checksum_func_parse_matrix_entity_from(): number;
   ubrn_uniffi_matrix_sdk_ffi_checksum_func_create_caption_edit(): number;

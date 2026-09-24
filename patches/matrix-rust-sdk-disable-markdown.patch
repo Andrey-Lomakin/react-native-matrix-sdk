@@ -1,0 +1,105 @@
+diff --git a/bindings/matrix-sdk-ffi/Cargo.toml b/bindings/matrix-sdk-ffi/Cargo.toml
+--- a/bindings/matrix-sdk-ffi/Cargo.toml
++++ b/bindings/matrix-sdk-ffi/Cargo.toml
+@@ -52,7 +52,6 @@
+ matrix-sdk = { workspace = true, features = [
+     "anyhow",
+     "e2e-encryption",
+-    "markdown",
+     "uniffi",
+ ] }
+ matrix-sdk-base.workspace = true
+diff --git a/bindings/matrix-sdk-ffi/src/ruma.rs b/bindings/matrix-sdk-ffi/src/ruma.rs
+--- a/bindings/matrix-sdk-ffi/src/ruma.rs
++++ b/bindings/matrix-sdk-ffi/src/ruma.rs
+@@ -199,20 +199,6 @@
+ }
+ 
+ #[matrix_sdk_ffi_macros::export]
+-pub fn message_event_content_from_markdown(
+-    md: String,
+-) -> Arc<RoomMessageEventContentWithoutRelation> {
+-    Arc::new(RoomMessageEventContentWithoutRelation::new(RumaMessageType::text_markdown(md)))
+-}
+-
+-#[matrix_sdk_ffi_macros::export]
+-pub fn message_event_content_from_markdown_as_emote(
+-    md: String,
+-) -> Arc<RoomMessageEventContentWithoutRelation> {
+-    Arc::new(RoomMessageEventContentWithoutRelation::new(RumaMessageType::emote_markdown(md)))
+-}
+-
+-#[matrix_sdk_ffi_macros::export]
+ pub fn message_event_content_from_html(
+     body: String,
+     html_body: String,
+diff --git a/bindings/matrix-sdk-ffi/src/timeline/mod.rs b/bindings/matrix-sdk-ffi/src/timeline/mod.rs
+--- a/bindings/matrix-sdk-ffi/src/timeline/mod.rs
++++ b/bindings/matrix-sdk-ffi/src/timeline/mod.rs
+@@ -79,7 +79,6 @@
+ mod reply;
+ pub mod threads;
+ 
+-use matrix_sdk::utils::formatted_body_from;
+ use matrix_sdk_common::{SendOutsideWasm, SyncOutsideWasm};
+ 
+ use crate::error::QueueWedgeError;
+@@ -114,8 +113,7 @@
+             .map_err(|_| RoomError::InvalidRepliedToEventId)?;
+ 
+         let caption = params.caption.map(|caption| {
+-            let formatted =
+-                formatted_body_from(Some(&caption), params.formatted_caption.map(Into::into));
++            let formatted = params.formatted_caption.map(Into::into);
+             assign!(TextMessageEventContent::plain(caption), { formatted })
+         });
+ 
+@@ -1273,16 +1271,14 @@
+ 
+ /// Create a caption edit.
+ ///
+-/// If no `formatted_caption` is provided, then it's assumed the `caption`
+-/// represents valid Markdown that can be used as the formatted caption.
++/// A supplied HTML caption is preserved; otherwise the caption stays plain text.
+ #[matrix_sdk_ffi_macros::export]
+ fn create_caption_edit(
+     caption: Option<String>,
+     formatted_caption: Option<FormattedBody>,
+     mentions: Option<Mentions>,
+ ) -> EditedContent {
+-    let formatted_caption =
+-        formatted_body_from(caption.as_deref(), formatted_caption.map(Into::into));
++    let formatted_caption = formatted_caption.map(Into::into);
+     EditedContent::MediaCaption {
+         caption,
+         formatted_caption: formatted_caption.as_ref().map(Into::into),
+@@ -1394,7 +1390,6 @@
+         attachment::{
+             AttachmentInfo, BaseAudioInfo, BaseFileInfo, BaseImageInfo, BaseVideoInfo, Thumbnail,
+         },
+-        utils::formatted_body_from,
+     };
+     use matrix_sdk_common::executor::{AbortHandle, JoinHandle};
+     use matrix_sdk_ui::timeline::GalleryConfig;
+@@ -1539,10 +1534,7 @@
+             let mime_type =
+                 mime_str.parse::<Mime>().map_err(|_| RoomError::InvalidAttachmentMimeType)?;
+             let caption = self.caption().as_ref().map(|caption| {
+-                let formatted = formatted_body_from(
+-                    Some(caption),
+-                    self.formatted_caption().clone().map(Into::into),
+-                );
++                let formatted = self.formatted_caption().clone().map(Into::into);
+                 assign!(TextMessageEventContent::plain(caption), { formatted })
+             });
+             Ok(matrix_sdk_ui::timeline::GalleryItemInfo {
+@@ -1609,8 +1601,7 @@
+             item_infos: Vec<GalleryItemInfo>,
+         ) -> Result<Arc<SendGalleryJoinHandle>, RoomError> {
+             let caption = params.caption.map(|caption| {
+-                let formatted =
+-                    formatted_body_from(Some(&caption), params.formatted_caption.map(Into::into));
++                let formatted = params.formatted_caption.map(Into::into);
+                 assign!(TextMessageEventContent::plain(caption), { formatted })
+             });
+ 

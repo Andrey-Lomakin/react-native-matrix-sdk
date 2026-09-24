@@ -537,36 +537,6 @@ export function messageEventContentFromHtmlAsEmote(
     )
   );
 }
-export function messageEventContentFromMarkdown(
-  md: string
-): RoomMessageEventContentWithoutRelationLike {
-  return FfiConverterTypeRoomMessageEventContentWithoutRelation.lift(
-    uniffiCaller.rustCall(
-      /*caller:*/ (callStatus) => {
-        return nativeModule().ubrn_uniffi_matrix_sdk_ffi_fn_func_message_event_content_from_markdown(
-          FfiConverterString.lower(md),
-          callStatus
-        );
-      },
-      /*liftString:*/ FfiConverterString.lift
-    )
-  );
-}
-export function messageEventContentFromMarkdownAsEmote(
-  md: string
-): RoomMessageEventContentWithoutRelationLike {
-  return FfiConverterTypeRoomMessageEventContentWithoutRelation.lift(
-    uniffiCaller.rustCall(
-      /*caller:*/ (callStatus) => {
-        return nativeModule().ubrn_uniffi_matrix_sdk_ffi_fn_func_message_event_content_from_markdown_as_emote(
-          FfiConverterString.lower(md),
-          callStatus
-        );
-      },
-      /*liftString:*/ FfiConverterString.lift
-    )
-  );
-}
 export function messageEventContentNew(
   msgtype: MessageType
 ): RoomMessageEventContentWithoutRelationLike /*throws*/ {
@@ -605,8 +575,7 @@ export function parseMatrixEntityFrom(uri: string): MatrixEntity | undefined {
 /**
  * Create a caption edit.
  *
- * If no `formatted_caption` is provided, then it's assumed the `caption`
- * represents valid Markdown that can be used as the formatted caption.
+ * A supplied HTML caption is preserved; otherwise the caption stays plain text.
  */
 export function createCaptionEdit(
   caption: string | undefined,
@@ -59465,22 +59434,6 @@ function uniffiEnsureInitialized() {
     );
   }
   if (
-    nativeModule().ubrn_uniffi_matrix_sdk_ffi_checksum_func_message_event_content_from_markdown() !==
-    53788
-  ) {
-    throw new UniffiInternalError.ApiChecksumMismatch(
-      'uniffi_matrix_sdk_ffi_checksum_func_message_event_content_from_markdown'
-    );
-  }
-  if (
-    nativeModule().ubrn_uniffi_matrix_sdk_ffi_checksum_func_message_event_content_from_markdown_as_emote() !==
-    33485
-  ) {
-    throw new UniffiInternalError.ApiChecksumMismatch(
-      'uniffi_matrix_sdk_ffi_checksum_func_message_event_content_from_markdown_as_emote'
-    );
-  }
-  if (
     nativeModule().ubrn_uniffi_matrix_sdk_ffi_checksum_func_message_event_content_new() !==
     33472
   ) {
@@ -59498,7 +59451,7 @@ function uniffiEnsureInitialized() {
   }
   if (
     nativeModule().ubrn_uniffi_matrix_sdk_ffi_checksum_func_create_caption_edit() !==
-    57776
+    32139
   ) {
     throw new UniffiInternalError.ApiChecksumMismatch(
       'uniffi_matrix_sdk_ffi_checksum_func_create_caption_edit'
