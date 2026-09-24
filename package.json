@@ -1,6 +1,6 @@
 {
   "name": "@unomed/react-native-matrix-sdk",
-  "version": "0.10.0-fork.6",
+  "version": "0.10.0-fork.7",
   "description": "⚡️ FFI bindings for matrix-rust-sdk in a React Native Turbo Module ⚡️",
   "source": "./src/index.tsx",
   "main": "./lib/commonjs/index.js",
@@ -44,7 +44,7 @@
     "ubrn:ios:build": "CARGO_FEATURE_NO_NEON=1 ubrn build ios --config ubrn.yaml --native-bindings --and-generate",
     "ubrn:ios:build:release": "yarn ubrn:ios:build --release",
     "ubrn:ios:post-process": "del-cli swift && mv ios/swift swift && (cd example/ios && pod install) && rm -rf src/index.web.ts",
-    "ubrn:checkout": "( test -d rust_modules/matrix-rust-sdk && git -C rust_modules/matrix-rust-sdk reset --hard HEAD ); ubrn checkout --config ubrn.yaml && git -C rust_modules/matrix-rust-sdk apply ../../patches/matrix-rust-sdk-ffi-pruning.patch && git -C rust_modules/matrix-rust-sdk apply ../../patches/matrix-rust-sdk-optional-encryption-sync.patch && git -C rust_modules/matrix-rust-sdk apply ../../patches/matrix-rust-sdk-disable-search.patch && git -C rust_modules/matrix-rust-sdk apply ../../patches/matrix-rust-sdk-disable-recent-emojis.patch",
+    "ubrn:checkout": "( test -d rust_modules/matrix-rust-sdk && git -C rust_modules/matrix-rust-sdk reset --hard HEAD ); ubrn checkout --config ubrn.yaml && git -C rust_modules/matrix-rust-sdk apply ../../patches/matrix-rust-sdk-ffi-pruning.patch && git -C rust_modules/matrix-rust-sdk apply ../../patches/matrix-rust-sdk-optional-encryption-sync.patch && git -C rust_modules/matrix-rust-sdk apply ../../patches/matrix-rust-sdk-disable-search.patch && git -C rust_modules/matrix-rust-sdk apply ../../patches/matrix-rust-sdk-disable-recent-emojis.patch && git -C rust_modules/matrix-rust-sdk apply ../../patches/matrix-rust-sdk-disable-widgets.patch",
     "ubrn:clean": "del-cli -v cpp android/src/main/java ios \"src/Native*\" src/generated \"src/index.ts*\"",
     "ubrn:clean:android": "del-cli -v android/src/main/java \"src/Native*\" src/generated \"src/index.ts*\"",
     "ubrn:clean:ios": "del-cli -v ios swift \"src/Native*\" src/generated \"src/index.ts*\"",

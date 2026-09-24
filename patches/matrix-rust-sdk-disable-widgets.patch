@@ -1,0 +1,10 @@
+--- a/bindings/matrix-sdk-ffi/Cargo.toml
++++ b/bindings/matrix-sdk-ffi/Cargo.toml
+@@ -52,7 +52,6 @@
+ matrix-sdk = { workspace = true, features = [
+     "anyhow",
+     "e2e-encryption",
+-    "experimental-widgets",
+     "markdown",
+     "socks",
+     "uniffi",
