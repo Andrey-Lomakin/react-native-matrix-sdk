@@ -472,6 +472,7 @@ class NativeMatrixSdkFfi : public jsi::HostObject {
     jsi::Value cpp_uniffi_matrix_sdk_ffi_fn_clone_syncservicebuilder(jsi::Runtime& rt, const jsi::Value& thisVal, const jsi::Value* args, size_t count);
     jsi::Value cpp_uniffi_matrix_sdk_ffi_fn_free_syncservicebuilder(jsi::Runtime& rt, const jsi::Value& thisVal, const jsi::Value* args, size_t count);
     jsi::Value cpp_uniffi_matrix_sdk_ffi_fn_method_syncservicebuilder_finish(jsi::Runtime& rt, const jsi::Value& thisVal, const jsi::Value* args, size_t count);
+    jsi::Value cpp_uniffi_matrix_sdk_ffi_fn_method_syncservicebuilder_with_encryption_sync(jsi::Runtime& rt, const jsi::Value& thisVal, const jsi::Value* args, size_t count);
     jsi::Value cpp_uniffi_matrix_sdk_ffi_fn_method_syncservicebuilder_with_offline_mode(jsi::Runtime& rt, const jsi::Value& thisVal, const jsi::Value* args, size_t count);
     jsi::Value cpp_uniffi_matrix_sdk_ffi_fn_method_syncservicebuilder_with_room_list_connection_id(jsi::Runtime& rt, const jsi::Value& thisVal, const jsi::Value* args, size_t count);
     jsi::Value cpp_uniffi_matrix_sdk_ffi_fn_method_syncservicebuilder_with_room_list_timeline_limit(jsi::Runtime& rt, const jsi::Value& thisVal, const jsi::Value* args, size_t count);
@@ -1068,6 +1069,7 @@ class NativeMatrixSdkFfi : public jsi::HostObject {
     jsi::Value cpp_uniffi_matrix_sdk_ffi_checksum_method_syncservice_state(jsi::Runtime& rt, const jsi::Value& thisVal, const jsi::Value* args, size_t count);
     jsi::Value cpp_uniffi_matrix_sdk_ffi_checksum_method_syncservice_stop(jsi::Runtime& rt, const jsi::Value& thisVal, const jsi::Value* args, size_t count);
     jsi::Value cpp_uniffi_matrix_sdk_ffi_checksum_method_syncservicebuilder_finish(jsi::Runtime& rt, const jsi::Value& thisVal, const jsi::Value* args, size_t count);
+    jsi::Value cpp_uniffi_matrix_sdk_ffi_checksum_method_syncservicebuilder_with_encryption_sync(jsi::Runtime& rt, const jsi::Value& thisVal, const jsi::Value* args, size_t count);
     jsi::Value cpp_uniffi_matrix_sdk_ffi_checksum_method_syncservicebuilder_with_offline_mode(jsi::Runtime& rt, const jsi::Value& thisVal, const jsi::Value* args, size_t count);
     jsi::Value cpp_uniffi_matrix_sdk_ffi_checksum_method_syncservicebuilder_with_room_list_connection_id(jsi::Runtime& rt, const jsi::Value& thisVal, const jsi::Value* args, size_t count);
     jsi::Value cpp_uniffi_matrix_sdk_ffi_checksum_method_syncservicebuilder_with_room_list_timeline_limit(jsi::Runtime& rt, const jsi::Value& thisVal, const jsi::Value* args, size_t count);

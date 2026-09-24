@@ -2247,6 +2247,8 @@ external fun uniffi_matrix_sdk_ffi_checksum_method_syncservice_stop(
 ): Short
 external fun uniffi_matrix_sdk_ffi_checksum_method_syncservicebuilder_finish(
 ): Short
+external fun uniffi_matrix_sdk_ffi_checksum_method_syncservicebuilder_with_encryption_sync(
+): Short
 external fun uniffi_matrix_sdk_ffi_checksum_method_syncservicebuilder_with_offline_mode(
 ): Short
 external fun uniffi_matrix_sdk_ffi_checksum_method_syncservicebuilder_with_room_list_connection_id(
@@ -3422,6 +3424,8 @@ external fun uniffi_matrix_sdk_ffi_fn_clone_syncservicebuilder(`handle`: Long,un
 external fun uniffi_matrix_sdk_ffi_fn_free_syncservicebuilder(`handle`: Long,uniffi_out_err: UniffiRustCallStatus, 
 ): Unit
 external fun uniffi_matrix_sdk_ffi_fn_method_syncservicebuilder_finish(`ptr`: Long,
+): Long
+external fun uniffi_matrix_sdk_ffi_fn_method_syncservicebuilder_with_encryption_sync(`ptr`: Long,`enable`: Byte,uniffi_out_err: UniffiRustCallStatus, 
 ): Long
 external fun uniffi_matrix_sdk_ffi_fn_method_syncservicebuilder_with_offline_mode(`ptr`: Long,uniffi_out_err: UniffiRustCallStatus, 
 ): Long
@@ -22664,6 +22668,17 @@ public interface SyncServiceBuilderInterface {
     suspend fun `finish`(): SyncService
     
     /**
+     * Whether the [`SyncService`] runs an encryption sync alongside the room
+     * list. Enabled by default.
+     *
+     * Disabling it removes the second sliding sync connection and everything
+     * it drives: to-device handling, one-time key upload and rotation, device
+     * list queries and crypto store traffic. Only for clients that never take
+     * part in end-to-end encryption.
+     */
+    fun `withEncryptionSync`(`enable`: kotlin.Boolean): SyncServiceBuilder
+    
+    /**
      * Enable the "offline" mode for the [`SyncService`].
      */
     fun `withOfflineMode`(): SyncServiceBuilder
@@ -22807,6 +22822,28 @@ open class SyncServiceBuilder: Disposable, AutoCloseable, SyncServiceBuilderInte
         ClientException.ErrorHandler,
     )
     }
+
+    
+    /**
+     * Whether the [`SyncService`] runs an encryption sync alongside the room
+     * list. Enabled by default.
+     *
+     * Disabling it removes the second sliding sync connection and everything
+     * it drives: to-device handling, one-time key upload and rotation, device
+     * list queries and crypto store traffic. Only for clients that never take
+     * part in end-to-end encryption.
+     */override fun `withEncryptionSync`(`enable`: kotlin.Boolean): SyncServiceBuilder {
+            return FfiConverterTypeSyncServiceBuilder.lift(
+    callWithHandle {
+    uniffiRustCall() { _status ->
+    UniffiLib.uniffi_matrix_sdk_ffi_fn_method_syncservicebuilder_with_encryption_sync(
+        it,
+        FfiConverterBoolean.lower(`enable`),_status)
+}
+    }
+    )
+    }
+    
 
     
     /**

@@ -1854,6 +1854,11 @@ interface NativeModuleInterface {
   ubrn_uniffi_matrix_sdk_ffi_fn_method_syncservicebuilder_finish(
     ptr: bigint
   ): bigint;
+  ubrn_uniffi_matrix_sdk_ffi_fn_method_syncservicebuilder_with_encryption_sync(
+    ptr: bigint,
+    enable: number,
+    uniffi_out_err: UniffiRustCallStatus
+  ): bigint;
   ubrn_uniffi_matrix_sdk_ffi_fn_method_syncservicebuilder_with_offline_mode(
     ptr: bigint,
     uniffi_out_err: UniffiRustCallStatus
@@ -2983,6 +2988,7 @@ interface NativeModuleInterface {
   ubrn_uniffi_matrix_sdk_ffi_checksum_method_syncservice_state(): number;
   ubrn_uniffi_matrix_sdk_ffi_checksum_method_syncservice_stop(): number;
   ubrn_uniffi_matrix_sdk_ffi_checksum_method_syncservicebuilder_finish(): number;
+  ubrn_uniffi_matrix_sdk_ffi_checksum_method_syncservicebuilder_with_encryption_sync(): number;
   ubrn_uniffi_matrix_sdk_ffi_checksum_method_syncservicebuilder_with_offline_mode(): number;
   ubrn_uniffi_matrix_sdk_ffi_checksum_method_syncservicebuilder_with_room_list_connection_id(): number;
   ubrn_uniffi_matrix_sdk_ffi_checksum_method_syncservicebuilder_with_room_list_timeline_limit(): number;

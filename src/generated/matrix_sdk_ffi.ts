@@ -56301,6 +56301,16 @@ export interface SyncServiceBuilderLike {
     signal: AbortSignal;
   }) /*throws*/ : Promise<SyncServiceLike>;
   /**
+   * Whether the [`SyncService`] runs an encryption sync alongside the room
+   * list. Enabled by default.
+   *
+   * Disabling it removes the second sliding sync connection and everything
+   * it drives: to-device handling, one-time key upload and rotation, device
+   * list queries and crypto store traffic. Only for clients that never take
+   * part in end-to-end encryption.
+   */
+  withEncryptionSync(enable: boolean): SyncServiceBuilderLike;
+  /**
    * Enable the "offline" mode for the [`SyncService`].
    */
   withOfflineMode(): SyncServiceBuilderLike;
@@ -56377,6 +56387,30 @@ export class SyncServiceBuilder
       }
       throw __error;
     }
+  }
+
+  /**
+   * Whether the [`SyncService`] runs an encryption sync alongside the room
+   * list. Enabled by default.
+   *
+   * Disabling it removes the second sliding sync connection and everything
+   * it drives: to-device handling, one-time key upload and rotation, device
+   * list queries and crypto store traffic. Only for clients that never take
+   * part in end-to-end encryption.
+   */
+  withEncryptionSync(enable: boolean): SyncServiceBuilderLike {
+    return FfiConverterTypeSyncServiceBuilder.lift(
+      uniffiCaller.rustCall(
+        /*caller:*/ (callStatus) => {
+          return nativeModule().ubrn_uniffi_matrix_sdk_ffi_fn_method_syncservicebuilder_with_encryption_sync(
+            uniffiTypeSyncServiceBuilderObjectFactory.clonePointer(this),
+            FfiConverterBool.lower(enable),
+            callStatus
+          );
+        },
+        /*liftString:*/ FfiConverterString.lift
+      )
+    );
   }
 
   /**
@@ -63492,6 +63526,14 @@ function uniffiEnsureInitialized() {
   ) {
     throw new UniffiInternalError.ApiChecksumMismatch(
       'uniffi_matrix_sdk_ffi_checksum_method_syncservicebuilder_finish'
+    );
+  }
+  if (
+    nativeModule().ubrn_uniffi_matrix_sdk_ffi_checksum_method_syncservicebuilder_with_encryption_sync() !==
+    31678
+  ) {
+    throw new UniffiInternalError.ApiChecksumMismatch(
+      'uniffi_matrix_sdk_ffi_checksum_method_syncservicebuilder_with_encryption_sync'
     );
   }
   if (
