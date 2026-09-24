@@ -1,5 +1,7 @@
 # react-native-matrix-sdk
 
+Mobile app fork: see [FORK.md](./FORK.md) for the removed functionality, local native build, and app packaging procedure.
+
 ⚡️ FFI bindings for [matrix-rust-sdk] in a React Native Turbo Module ⚡️
 
 [![lint](https://github.com/unomed-dev/react-native-matrix-sdk/actions/workflows/lint.yml/badge.svg)](https://github.com/unomed-dev/react-native-matrix-sdk/actions/workflows/lint.yml)
