@@ -352,7 +352,7 @@ private func uniffiTraitInterfaceCallWithError<T, E>(
         callStatus.pointee.errorBuf = FfiConverterString.lower(String(describing: error))
     }
 }
-// Initial value and increment amount for handles. 
+// Initial value and increment amount for handles.
 // These ensure that SWIFT handles always have the lowest bit set
 fileprivate let UNIFFI_HANDLEMAP_INITIAL: UInt64 = 1
 fileprivate let UNIFFI_HANDLEMAP_DELTA: UInt64 = 2
@@ -435,22 +435,6 @@ fileprivate struct FfiConverterInt64: FfiConverterPrimitive {
 #if swift(>=5.8)
 @_documentation(visibility: private)
 #endif
-fileprivate struct FfiConverterDouble: FfiConverterPrimitive {
-    typealias FfiType = Double
-    typealias SwiftType = Double
-
-    public static func read(from buf: inout (data: Data, offset: Data.Index)) throws -> Double {
-        return try lift(readDouble(&buf))
-    }
-
-    public static func write(_ value: Double, into buf: inout [UInt8]) {
-        writeDouble(&buf, lower(value))
-    }
-}
-
-#if swift(>=5.8)
-@_documentation(visibility: private)
-#endif
 fileprivate struct FfiConverterBool : FfiConverter {
     typealias FfiType = Int8
     typealias SwiftType = Bool
@@ -520,12 +504,12 @@ fileprivate struct FfiConverterString: FfiConverter {
  * The data needed to perform authorization using OAuth 2.0.
  */
 public protocol OAuthAuthorizationDataProtocol: AnyObject, Sendable {
-    
+
     /**
      * The login URL to use for authorization.
      */
     func loginUrl()  -> String
-    
+
 }
 /**
  * The data needed to perform authorization using OAuth 2.0.
@@ -580,9 +564,9 @@ open class OAuthAuthorizationData: OAuthAuthorizationDataProtocol, @unchecked Se
         try! rustCall { uniffi_matrix_sdk_fn_free_oauthauthorizationdata(handle, $0) }
     }
 
-    
 
-    
+
+
     /**
      * The login URL to use for authorization.
      */
@@ -593,9 +577,9 @@ open func loginUrl() -> String  {
     )
 })
 }
-    
 
-    
+
+
 }
 
 
@@ -706,40 +690,40 @@ public struct RoomPowerLevelChanges: Equatable, Hashable {
     public init(
         /**
          * The level required to ban a user.
-         */ban: Int64? = nil, 
+         */ban: Int64? = nil,
         /**
          * The level required to invite a user.
-         */invite: Int64? = nil, 
+         */invite: Int64? = nil,
         /**
          * The level required to kick a user.
-         */kick: Int64? = nil, 
+         */kick: Int64? = nil,
         /**
          * The level required to redact an event.
-         */redact: Int64? = nil, 
+         */redact: Int64? = nil,
         /**
          * The default level required to send message events.
-         */eventsDefault: Int64? = nil, 
+         */eventsDefault: Int64? = nil,
         /**
          * The default level required to send state events.
-         */stateDefault: Int64? = nil, 
+         */stateDefault: Int64? = nil,
         /**
          * The default power level for every user in the room.
-         */usersDefault: Int64? = nil, 
+         */usersDefault: Int64? = nil,
         /**
          * The level required to change the room's name.
-         */roomName: Int64? = nil, 
+         */roomName: Int64? = nil,
         /**
          * The level required to change the room's avatar.
-         */roomAvatar: Int64? = nil, 
+         */roomAvatar: Int64? = nil,
         /**
          * The level required to change the room's topic.
-         */roomTopic: Int64? = nil, 
+         */roomTopic: Int64? = nil,
         /**
          * The level required to change the space's children.
-         */spaceChild: Int64? = nil, 
+         */spaceChild: Int64? = nil,
         /**
          * The level required to send a beacon (live location) message event.
-         */beacon: Int64? = nil, 
+         */beacon: Int64? = nil,
         /**
          * The level required to send a beacon info state event.
          */beaconInfo: Int64? = nil) {
@@ -758,9 +742,9 @@ public struct RoomPowerLevelChanges: Equatable, Hashable {
         self.beaconInfo = beaconInfo
     }
 
-    
 
-    
+
+
 }
 
 #if compiler(>=6)
@@ -774,18 +758,18 @@ public struct FfiConverterTypeRoomPowerLevelChanges: FfiConverterRustBuffer {
     public static func read(from buf: inout (data: Data, offset: Data.Index)) throws -> RoomPowerLevelChanges {
         return
             try RoomPowerLevelChanges(
-                ban: FfiConverterOptionInt64.read(from: &buf), 
-                invite: FfiConverterOptionInt64.read(from: &buf), 
-                kick: FfiConverterOptionInt64.read(from: &buf), 
-                redact: FfiConverterOptionInt64.read(from: &buf), 
-                eventsDefault: FfiConverterOptionInt64.read(from: &buf), 
-                stateDefault: FfiConverterOptionInt64.read(from: &buf), 
-                usersDefault: FfiConverterOptionInt64.read(from: &buf), 
-                roomName: FfiConverterOptionInt64.read(from: &buf), 
-                roomAvatar: FfiConverterOptionInt64.read(from: &buf), 
-                roomTopic: FfiConverterOptionInt64.read(from: &buf), 
-                spaceChild: FfiConverterOptionInt64.read(from: &buf), 
-                beacon: FfiConverterOptionInt64.read(from: &buf), 
+                ban: FfiConverterOptionInt64.read(from: &buf),
+                invite: FfiConverterOptionInt64.read(from: &buf),
+                kick: FfiConverterOptionInt64.read(from: &buf),
+                redact: FfiConverterOptionInt64.read(from: &buf),
+                eventsDefault: FfiConverterOptionInt64.read(from: &buf),
+                stateDefault: FfiConverterOptionInt64.read(from: &buf),
+                usersDefault: FfiConverterOptionInt64.read(from: &buf),
+                roomName: FfiConverterOptionInt64.read(from: &buf),
+                roomAvatar: FfiConverterOptionInt64.read(from: &buf),
+                roomTopic: FfiConverterOptionInt64.read(from: &buf),
+                spaceChild: FfiConverterOptionInt64.read(from: &buf),
+                beacon: FfiConverterOptionInt64.read(from: &buf),
                 beaconInfo: FfiConverterOptionInt64.read(from: &buf)
         )
     }
@@ -841,7 +825,7 @@ public struct ServerVendorInfo: Equatable, Hashable {
     public init(
         /**
          * The server name.
-         */serverName: String, 
+         */serverName: String,
         /**
          * The server version.
          */version: String) {
@@ -849,9 +833,9 @@ public struct ServerVendorInfo: Equatable, Hashable {
         self.version = version
     }
 
-    
 
-    
+
+
 }
 
 #if compiler(>=6)
@@ -865,7 +849,7 @@ public struct FfiConverterTypeServerVendorInfo: FfiConverterRustBuffer {
     public static func read(from buf: inout (data: Data, offset: Data.Index)) throws -> ServerVendorInfo {
         return
             try ServerVendorInfo(
-                serverName: FfiConverterString.read(from: &buf), 
+                serverName: FfiConverterString.read(from: &buf),
                 version: FfiConverterString.read(from: &buf)
         )
     }
@@ -915,9 +899,9 @@ public struct TileServerInfo: Equatable, Hashable {
         self.mapStyleUrl = mapStyleUrl
     }
 
-    
 
-    
+
+
 }
 
 #if compiler(>=6)
@@ -955,416 +939,6 @@ public func FfiConverterTypeTileServerInfo_lower(_ value: TileServerInfo) -> Rus
     return FfiConverterTypeTileServerInfo.lower(value)
 }
 
-
-/**
- * Configuration parameters, to create a new virtual Element Call widget.
- *
- * If `intent` is provided the appropriate default values for all other
- * parameters will be used by element call.
- * In most cases its enough to only set the intent. Use the other properties
- * only if you want to deviate from the `intent` defaults.
- *
- * Set [`docs/url-params.md`](https://github.com/element-hq/element-call/blob/livekit/docs/url-params.md)
- * to find out more about the parameters and their defaults.
- */
-public struct VirtualElementCallWidgetConfig: Equatable, Hashable {
-    /**
-     * The intent of showing the call.
-     * If the user wants to start a call or join an existing one.
-     * Controls if the lobby is skipped or not.
-     */
-    public var intent: Intent?
-    /**
-     * Skip the lobby when joining a call.
-     */
-    public var skipLobby: Bool?
-    /**
-     * Whether the branding header of Element call should be shown or if a
-     * mobile header navbar should be render.
-     *
-     * Default: [`HeaderStyle::Standard`]
-     */
-    public var header: HeaderStyle?
-    /**
-     * Whether the branding header of Element call should be hidden.
-     *
-     * Default: `true`
-     */
-    public var hideHeader: Bool?
-    /**
-     * If set, the lobby will be skipped and the widget will join the
-     * call on the `io.element.join` action.
-     *
-     * Default: `false`
-     */
-    public var preload: Bool?
-    /**
-     * Whether element call should prompt the user to open in the browser or
-     * the app.
-     *
-     * Default: `false`
-     */
-    public var appPrompt: Bool?
-    /**
-     * Make it not possible to get to the calls list in the webview.
-     *
-     * Default: `true`
-     */
-    public var confineToRoom: Bool?
-    /**
-     * Do not show the screenshare button.
-     */
-    public var hideScreensharing: Bool?
-    /**
-     * Make the audio devices be controlled by the os instead of the
-     * element-call webview.
-     */
-    public var controlledAudioDevices: Bool?
-    /**
-     * Whether and what type of notification Element Call should send, when
-     * starting a call.
-     */
-    public var sendNotificationType: NotificationType?
-
-    // Default memberwise initializers are never public by default, so we
-    // declare one manually.
-    public init(
-        /**
-         * The intent of showing the call.
-         * If the user wants to start a call or join an existing one.
-         * Controls if the lobby is skipped or not.
-         */intent: Intent?, 
-        /**
-         * Skip the lobby when joining a call.
-         */skipLobby: Bool? = nil, 
-        /**
-         * Whether the branding header of Element call should be shown or if a
-         * mobile header navbar should be render.
-         *
-         * Default: [`HeaderStyle::Standard`]
-         */header: HeaderStyle? = nil, 
-        /**
-         * Whether the branding header of Element call should be hidden.
-         *
-         * Default: `true`
-         */hideHeader: Bool? = nil, 
-        /**
-         * If set, the lobby will be skipped and the widget will join the
-         * call on the `io.element.join` action.
-         *
-         * Default: `false`
-         */preload: Bool? = nil, 
-        /**
-         * Whether element call should prompt the user to open in the browser or
-         * the app.
-         *
-         * Default: `false`
-         */appPrompt: Bool? = nil, 
-        /**
-         * Make it not possible to get to the calls list in the webview.
-         *
-         * Default: `true`
-         */confineToRoom: Bool? = nil, 
-        /**
-         * Do not show the screenshare button.
-         */hideScreensharing: Bool? = nil, 
-        /**
-         * Make the audio devices be controlled by the os instead of the
-         * element-call webview.
-         */controlledAudioDevices: Bool? = nil, 
-        /**
-         * Whether and what type of notification Element Call should send, when
-         * starting a call.
-         */sendNotificationType: NotificationType? = nil) {
-        self.intent = intent
-        self.skipLobby = skipLobby
-        self.header = header
-        self.hideHeader = hideHeader
-        self.preload = preload
-        self.appPrompt = appPrompt
-        self.confineToRoom = confineToRoom
-        self.hideScreensharing = hideScreensharing
-        self.controlledAudioDevices = controlledAudioDevices
-        self.sendNotificationType = sendNotificationType
-    }
-
-    
-
-    
-}
-
-#if compiler(>=6)
-extension VirtualElementCallWidgetConfig: Sendable {}
-#endif
-
-#if swift(>=5.8)
-@_documentation(visibility: private)
-#endif
-public struct FfiConverterTypeVirtualElementCallWidgetConfig: FfiConverterRustBuffer {
-    public static func read(from buf: inout (data: Data, offset: Data.Index)) throws -> VirtualElementCallWidgetConfig {
-        return
-            try VirtualElementCallWidgetConfig(
-                intent: FfiConverterOptionTypeIntent.read(from: &buf), 
-                skipLobby: FfiConverterOptionBool.read(from: &buf), 
-                header: FfiConverterOptionTypeHeaderStyle.read(from: &buf), 
-                hideHeader: FfiConverterOptionBool.read(from: &buf), 
-                preload: FfiConverterOptionBool.read(from: &buf), 
-                appPrompt: FfiConverterOptionBool.read(from: &buf), 
-                confineToRoom: FfiConverterOptionBool.read(from: &buf), 
-                hideScreensharing: FfiConverterOptionBool.read(from: &buf), 
-                controlledAudioDevices: FfiConverterOptionBool.read(from: &buf), 
-                sendNotificationType: FfiConverterOptionTypeNotificationType.read(from: &buf)
-        )
-    }
-
-    public static func write(_ value: VirtualElementCallWidgetConfig, into buf: inout [UInt8]) {
-        FfiConverterOptionTypeIntent.write(value.intent, into: &buf)
-        FfiConverterOptionBool.write(value.skipLobby, into: &buf)
-        FfiConverterOptionTypeHeaderStyle.write(value.header, into: &buf)
-        FfiConverterOptionBool.write(value.hideHeader, into: &buf)
-        FfiConverterOptionBool.write(value.preload, into: &buf)
-        FfiConverterOptionBool.write(value.appPrompt, into: &buf)
-        FfiConverterOptionBool.write(value.confineToRoom, into: &buf)
-        FfiConverterOptionBool.write(value.hideScreensharing, into: &buf)
-        FfiConverterOptionBool.write(value.controlledAudioDevices, into: &buf)
-        FfiConverterOptionTypeNotificationType.write(value.sendNotificationType, into: &buf)
-    }
-}
-
-
-#if swift(>=5.8)
-@_documentation(visibility: private)
-#endif
-public func FfiConverterTypeVirtualElementCallWidgetConfig_lift(_ buf: RustBuffer) throws -> VirtualElementCallWidgetConfig {
-    return try FfiConverterTypeVirtualElementCallWidgetConfig.lift(buf)
-}
-
-#if swift(>=5.8)
-@_documentation(visibility: private)
-#endif
-public func FfiConverterTypeVirtualElementCallWidgetConfig_lower(_ value: VirtualElementCallWidgetConfig) -> RustBuffer {
-    return FfiConverterTypeVirtualElementCallWidgetConfig.lower(value)
-}
-
-
-/**
- * Properties to create a new virtual Element Call widget.
- *
- * All these are required to start the widget in the first place.
- * This is different from the `VirtualElementCallWidgetConfiguration` which
- * configures the widgets behavior.
- */
-public struct VirtualElementCallWidgetProperties: Equatable, Hashable {
-    /**
-     * The url to the app.
-     *
-     * E.g. <https://call.element.io>, <https://call.element.dev>, <https://call.element.dev/room>
-     */
-    public var elementCallUrl: String
-    /**
-     * The widget id.
-     */
-    public var widgetId: String
-    /**
-     * The url that is used as the target for the PostMessages sent
-     * by the widget (to the client).
-     *
-     * For a web app client this is the client url. In case of using other
-     * platforms the client most likely is setup up to listen to
-     * postmessages in the same webview the widget is hosted. In this case
-     * the `parent_url` is set to the url of the webview with the widget. Be
-     * aware that this means that the widget will receive its own postmessage
-     * messages. The `matrix-widget-api` (js) ignores those so this works but
-     * it might break custom implementations.
-     *
-     * Defaults to `element_call_url` for the non-iframe (dedicated webview)
-     * usecase.
-     */
-    public var parentUrl: String?
-    /**
-     * The font scale which will be used inside element call.
-     *
-     * Default: `1`
-     */
-    public var fontScale: Double?
-    /**
-     * The font to use, to adapt to the system font.
-     */
-    public var font: String?
-    /**
-     * The encryption system to use.
-     *
-     * Use `EncryptionSystem::Unencrypted` to disable encryption.
-     */
-    public var encryption: EncryptionSystem
-    /**
-     * Can be used to pass a PostHog id to element call.
-     */
-    public var posthogUserId: String?
-    /**
-     * The host of the posthog api.
-     * This is only used by the embedded package of Element Call.
-     */
-    public var posthogApiHost: String?
-    /**
-     * The key for the posthog api.
-     * This is only used by the embedded package of Element Call.
-     */
-    public var posthogApiKey: String?
-    /**
-     * The url to use for submitting rageshakes.
-     * This is only used by the embedded package of Element Call.
-     */
-    public var rageshakeSubmitUrl: String?
-    /**
-     * Sentry [DSN](https://docs.sentry.io/concepts/key-terms/dsn-explainer/)
-     * This is only used by the embedded package of Element Call.
-     */
-    public var sentryDsn: String?
-    /**
-     * Sentry [environment](https://docs.sentry.io/concepts/key-terms/key-terms/)
-     * This is only used by the embedded package of Element Call.
-     */
-    public var sentryEnvironment: String?
-
-    // Default memberwise initializers are never public by default, so we
-    // declare one manually.
-    public init(
-        /**
-         * The url to the app.
-         *
-         * E.g. <https://call.element.io>, <https://call.element.dev>, <https://call.element.dev/room>
-         */elementCallUrl: String, 
-        /**
-         * The widget id.
-         */widgetId: String, 
-        /**
-         * The url that is used as the target for the PostMessages sent
-         * by the widget (to the client).
-         *
-         * For a web app client this is the client url. In case of using other
-         * platforms the client most likely is setup up to listen to
-         * postmessages in the same webview the widget is hosted. In this case
-         * the `parent_url` is set to the url of the webview with the widget. Be
-         * aware that this means that the widget will receive its own postmessage
-         * messages. The `matrix-widget-api` (js) ignores those so this works but
-         * it might break custom implementations.
-         *
-         * Defaults to `element_call_url` for the non-iframe (dedicated webview)
-         * usecase.
-         */parentUrl: String? = nil, 
-        /**
-         * The font scale which will be used inside element call.
-         *
-         * Default: `1`
-         */fontScale: Double? = nil, 
-        /**
-         * The font to use, to adapt to the system font.
-         */font: String? = nil, 
-        /**
-         * The encryption system to use.
-         *
-         * Use `EncryptionSystem::Unencrypted` to disable encryption.
-         */encryption: EncryptionSystem, 
-        /**
-         * Can be used to pass a PostHog id to element call.
-         */posthogUserId: String? = nil, 
-        /**
-         * The host of the posthog api.
-         * This is only used by the embedded package of Element Call.
-         */posthogApiHost: String? = nil, 
-        /**
-         * The key for the posthog api.
-         * This is only used by the embedded package of Element Call.
-         */posthogApiKey: String? = nil, 
-        /**
-         * The url to use for submitting rageshakes.
-         * This is only used by the embedded package of Element Call.
-         */rageshakeSubmitUrl: String? = nil, 
-        /**
-         * Sentry [DSN](https://docs.sentry.io/concepts/key-terms/dsn-explainer/)
-         * This is only used by the embedded package of Element Call.
-         */sentryDsn: String? = nil, 
-        /**
-         * Sentry [environment](https://docs.sentry.io/concepts/key-terms/key-terms/)
-         * This is only used by the embedded package of Element Call.
-         */sentryEnvironment: String? = nil) {
-        self.elementCallUrl = elementCallUrl
-        self.widgetId = widgetId
-        self.parentUrl = parentUrl
-        self.fontScale = fontScale
-        self.font = font
-        self.encryption = encryption
-        self.posthogUserId = posthogUserId
-        self.posthogApiHost = posthogApiHost
-        self.posthogApiKey = posthogApiKey
-        self.rageshakeSubmitUrl = rageshakeSubmitUrl
-        self.sentryDsn = sentryDsn
-        self.sentryEnvironment = sentryEnvironment
-    }
-
-    
-
-    
-}
-
-#if compiler(>=6)
-extension VirtualElementCallWidgetProperties: Sendable {}
-#endif
-
-#if swift(>=5.8)
-@_documentation(visibility: private)
-#endif
-public struct FfiConverterTypeVirtualElementCallWidgetProperties: FfiConverterRustBuffer {
-    public static func read(from buf: inout (data: Data, offset: Data.Index)) throws -> VirtualElementCallWidgetProperties {
-        return
-            try VirtualElementCallWidgetProperties(
-                elementCallUrl: FfiConverterString.read(from: &buf), 
-                widgetId: FfiConverterString.read(from: &buf), 
-                parentUrl: FfiConverterOptionString.read(from: &buf), 
-                fontScale: FfiConverterOptionDouble.read(from: &buf), 
-                font: FfiConverterOptionString.read(from: &buf), 
-                encryption: FfiConverterTypeEncryptionSystem.read(from: &buf), 
-                posthogUserId: FfiConverterOptionString.read(from: &buf), 
-                posthogApiHost: FfiConverterOptionString.read(from: &buf), 
-                posthogApiKey: FfiConverterOptionString.read(from: &buf), 
-                rageshakeSubmitUrl: FfiConverterOptionString.read(from: &buf), 
-                sentryDsn: FfiConverterOptionString.read(from: &buf), 
-                sentryEnvironment: FfiConverterOptionString.read(from: &buf)
-        )
-    }
-
-    public static func write(_ value: VirtualElementCallWidgetProperties, into buf: inout [UInt8]) {
-        FfiConverterString.write(value.elementCallUrl, into: &buf)
-        FfiConverterString.write(value.widgetId, into: &buf)
-        FfiConverterOptionString.write(value.parentUrl, into: &buf)
-        FfiConverterOptionDouble.write(value.fontScale, into: &buf)
-        FfiConverterOptionString.write(value.font, into: &buf)
-        FfiConverterTypeEncryptionSystem.write(value.encryption, into: &buf)
-        FfiConverterOptionString.write(value.posthogUserId, into: &buf)
-        FfiConverterOptionString.write(value.posthogApiHost, into: &buf)
-        FfiConverterOptionString.write(value.posthogApiKey, into: &buf)
-        FfiConverterOptionString.write(value.rageshakeSubmitUrl, into: &buf)
-        FfiConverterOptionString.write(value.sentryDsn, into: &buf)
-        FfiConverterOptionString.write(value.sentryEnvironment, into: &buf)
-    }
-}
-
-
-#if swift(>=5.8)
-@_documentation(visibility: private)
-#endif
-public func FfiConverterTypeVirtualElementCallWidgetProperties_lift(_ buf: RustBuffer) throws -> VirtualElementCallWidgetProperties {
-    return try FfiConverterTypeVirtualElementCallWidgetProperties.lift(buf)
-}
-
-#if swift(>=5.8)
-@_documentation(visibility: private)
-#endif
-public func FfiConverterTypeVirtualElementCallWidgetProperties_lower(_ value: VirtualElementCallWidgetProperties) -> RustBuffer {
-    return FfiConverterTypeVirtualElementCallWidgetProperties.lower(value)
-}
-
 // Note that we don't yet support `indirect` for enums.
 // See https://github.com/mozilla/uniffi-rs/issues/396 for further discussion.
 /**
@@ -1372,7 +946,7 @@ public func FfiConverterTypeVirtualElementCallWidgetProperties_lower(_ value: Vi
  */
 
 public enum BackupDownloadStrategy: Equatable, Hashable {
-    
+
     /**
      * Automatically download all room keys from the backup when the backup
      * recovery key has been received. The backup recovery key can be received
@@ -1417,32 +991,32 @@ public struct FfiConverterTypeBackupDownloadStrategy: FfiConverterRustBuffer {
     public static func read(from buf: inout (data: Data, offset: Data.Index)) throws -> BackupDownloadStrategy {
         let variant: Int32 = try readInt(&buf)
         switch variant {
-        
+
         case 1: return .oneShot
-        
+
         case 2: return .afterDecryptionFailure
-        
+
         case 3: return .manual
-        
+
         default: throw UniffiInternalError.unexpectedEnumCase
         }
     }
 
     public static func write(_ value: BackupDownloadStrategy, into buf: inout [UInt8]) {
         switch value {
-        
-        
+
+
         case .oneShot:
             writeInt(&buf, Int32(1))
-        
-        
+
+
         case .afterDecryptionFailure:
             writeInt(&buf, Int32(2))
-        
-        
+
+
         case .manual:
             writeInt(&buf, Int32(3))
-        
+
         }
     }
 }
@@ -1466,390 +1040,11 @@ public func FfiConverterTypeBackupDownloadStrategy_lower(_ value: BackupDownload
 // Note that we don't yet support `indirect` for enums.
 // See https://github.com/mozilla/uniffi-rs/issues/396 for further discussion.
 /**
- * Defines if a call is encrypted and which encryption system should be used.
- *
- * This controls the url parameters: `perParticipantE2EE`, `password`.
- */
-
-public enum EncryptionSystem: Equatable, Hashable {
-    
-    /**
-     * Equivalent to the element call url parameter: `perParticipantE2EE=false`
-     * and no password.
-     */
-    case unencrypted
-    /**
-     * Equivalent to the element call url parameters:
-     * `perParticipantE2EE=true`
-     */
-    case perParticipantKeys
-    /**
-     * Equivalent to the element call url parameters:
-     * `password={secret}`
-     */
-    case sharedSecret(
-        /**
-         * The secret/password which is used in the url.
-         */secret: String
-    )
-
-
-
-
-
-}
-
-#if compiler(>=6)
-extension EncryptionSystem: Sendable {}
-#endif
-
-#if swift(>=5.8)
-@_documentation(visibility: private)
-#endif
-public struct FfiConverterTypeEncryptionSystem: FfiConverterRustBuffer {
-    typealias SwiftType = EncryptionSystem
-
-    public static func read(from buf: inout (data: Data, offset: Data.Index)) throws -> EncryptionSystem {
-        let variant: Int32 = try readInt(&buf)
-        switch variant {
-        
-        case 1: return .unencrypted
-        
-        case 2: return .perParticipantKeys
-        
-        case 3: return .sharedSecret(secret: try FfiConverterString.read(from: &buf)
-        )
-        
-        default: throw UniffiInternalError.unexpectedEnumCase
-        }
-    }
-
-    public static func write(_ value: EncryptionSystem, into buf: inout [UInt8]) {
-        switch value {
-        
-        
-        case .unencrypted:
-            writeInt(&buf, Int32(1))
-        
-        
-        case .perParticipantKeys:
-            writeInt(&buf, Int32(2))
-        
-        
-        case let .sharedSecret(secret):
-            writeInt(&buf, Int32(3))
-            FfiConverterString.write(secret, into: &buf)
-            
-        }
-    }
-}
-
-
-#if swift(>=5.8)
-@_documentation(visibility: private)
-#endif
-public func FfiConverterTypeEncryptionSystem_lift(_ buf: RustBuffer) throws -> EncryptionSystem {
-    return try FfiConverterTypeEncryptionSystem.lift(buf)
-}
-
-#if swift(>=5.8)
-@_documentation(visibility: private)
-#endif
-public func FfiConverterTypeEncryptionSystem_lower(_ value: EncryptionSystem) -> RustBuffer {
-    return FfiConverterTypeEncryptionSystem.lower(value)
-}
-
-
-// Note that we don't yet support `indirect` for enums.
-// See https://github.com/mozilla/uniffi-rs/issues/396 for further discussion.
-/**
- * Defines how (if) element-call renders a header.
- */
-
-public enum HeaderStyle: Equatable, Hashable {
-    
-    /**
-     * The normal header with branding.
-     */
-    case standard
-    /**
-     * Render a header with a back button (useful on mobile platforms).
-     */
-    case appBar
-    /**
-     * No Header (useful for webapps).
-     */
-    case none
-
-
-
-
-
-}
-
-#if compiler(>=6)
-extension HeaderStyle: Sendable {}
-#endif
-
-#if swift(>=5.8)
-@_documentation(visibility: private)
-#endif
-public struct FfiConverterTypeHeaderStyle: FfiConverterRustBuffer {
-    typealias SwiftType = HeaderStyle
-
-    public static func read(from buf: inout (data: Data, offset: Data.Index)) throws -> HeaderStyle {
-        let variant: Int32 = try readInt(&buf)
-        switch variant {
-        
-        case 1: return .standard
-        
-        case 2: return .appBar
-        
-        case 3: return .none
-        
-        default: throw UniffiInternalError.unexpectedEnumCase
-        }
-    }
-
-    public static func write(_ value: HeaderStyle, into buf: inout [UInt8]) {
-        switch value {
-        
-        
-        case .standard:
-            writeInt(&buf, Int32(1))
-        
-        
-        case .appBar:
-            writeInt(&buf, Int32(2))
-        
-        
-        case .none:
-            writeInt(&buf, Int32(3))
-        
-        }
-    }
-}
-
-
-#if swift(>=5.8)
-@_documentation(visibility: private)
-#endif
-public func FfiConverterTypeHeaderStyle_lift(_ buf: RustBuffer) throws -> HeaderStyle {
-    return try FfiConverterTypeHeaderStyle.lift(buf)
-}
-
-#if swift(>=5.8)
-@_documentation(visibility: private)
-#endif
-public func FfiConverterTypeHeaderStyle_lower(_ value: HeaderStyle) -> RustBuffer {
-    return FfiConverterTypeHeaderStyle.lower(value)
-}
-
-
-// Note that we don't yet support `indirect` for enums.
-// See https://github.com/mozilla/uniffi-rs/issues/396 for further discussion.
-/**
- * Defines the intent of showing the call.
- *
- * This controls whether to show or skip the lobby.
- */
-
-public enum Intent: Equatable, Hashable {
-    
-    /**
-     * The user wants to start a call.
-     */
-    case startCall
-    /**
-     * The user wants to join an existing call.
-     */
-    case joinExisting
-    /**
-     * The user wants to join an existing call that is a "Direct Message" (DM)
-     * room.
-     */
-    case joinExistingDm
-    /**
-     * The user wants to start a call in a "Direct Message" (DM) room.
-     */
-    case startCallDm
-    /**
-     * The user wants to start a voice call in a "Direct Message" (DM) room.
-     */
-    case startCallDmVoice
-    /**
-     * The user wants to join an existing  voice call that is a "Direct
-     * Message" (DM) room.
-     */
-    case joinExistingDmVoice
-
-
-
-
-
-}
-
-#if compiler(>=6)
-extension Intent: Sendable {}
-#endif
-
-#if swift(>=5.8)
-@_documentation(visibility: private)
-#endif
-public struct FfiConverterTypeIntent: FfiConverterRustBuffer {
-    typealias SwiftType = Intent
-
-    public static func read(from buf: inout (data: Data, offset: Data.Index)) throws -> Intent {
-        let variant: Int32 = try readInt(&buf)
-        switch variant {
-        
-        case 1: return .startCall
-        
-        case 2: return .joinExisting
-        
-        case 3: return .joinExistingDm
-        
-        case 4: return .startCallDm
-        
-        case 5: return .startCallDmVoice
-        
-        case 6: return .joinExistingDmVoice
-        
-        default: throw UniffiInternalError.unexpectedEnumCase
-        }
-    }
-
-    public static func write(_ value: Intent, into buf: inout [UInt8]) {
-        switch value {
-        
-        
-        case .startCall:
-            writeInt(&buf, Int32(1))
-        
-        
-        case .joinExisting:
-            writeInt(&buf, Int32(2))
-        
-        
-        case .joinExistingDm:
-            writeInt(&buf, Int32(3))
-        
-        
-        case .startCallDm:
-            writeInt(&buf, Int32(4))
-        
-        
-        case .startCallDmVoice:
-            writeInt(&buf, Int32(5))
-        
-        
-        case .joinExistingDmVoice:
-            writeInt(&buf, Int32(6))
-        
-        }
-    }
-}
-
-
-#if swift(>=5.8)
-@_documentation(visibility: private)
-#endif
-public func FfiConverterTypeIntent_lift(_ buf: RustBuffer) throws -> Intent {
-    return try FfiConverterTypeIntent.lift(buf)
-}
-
-#if swift(>=5.8)
-@_documentation(visibility: private)
-#endif
-public func FfiConverterTypeIntent_lower(_ value: Intent) -> RustBuffer {
-    return FfiConverterTypeIntent.lower(value)
-}
-
-
-// Note that we don't yet support `indirect` for enums.
-// See https://github.com/mozilla/uniffi-rs/issues/396 for further discussion.
-/**
- * Types of call notifications.
- */
-
-public enum NotificationType: Equatable, Hashable {
-    
-    /**
-     * The receiving client should display a visual notification.
-     */
-    case notification
-    /**
-     * The receiving client should ring with an audible sound.
-     */
-    case ring
-
-
-
-
-
-}
-
-#if compiler(>=6)
-extension NotificationType: Sendable {}
-#endif
-
-#if swift(>=5.8)
-@_documentation(visibility: private)
-#endif
-public struct FfiConverterTypeNotificationType: FfiConverterRustBuffer {
-    typealias SwiftType = NotificationType
-
-    public static func read(from buf: inout (data: Data, offset: Data.Index)) throws -> NotificationType {
-        let variant: Int32 = try readInt(&buf)
-        switch variant {
-        
-        case 1: return .notification
-        
-        case 2: return .ring
-        
-        default: throw UniffiInternalError.unexpectedEnumCase
-        }
-    }
-
-    public static func write(_ value: NotificationType, into buf: inout [UInt8]) {
-        switch value {
-        
-        
-        case .notification:
-            writeInt(&buf, Int32(1))
-        
-        
-        case .ring:
-            writeInt(&buf, Int32(2))
-        
-        }
-    }
-}
-
-
-#if swift(>=5.8)
-@_documentation(visibility: private)
-#endif
-public func FfiConverterTypeNotificationType_lift(_ buf: RustBuffer) throws -> NotificationType {
-    return try FfiConverterTypeNotificationType.lift(buf)
-}
-
-#if swift(>=5.8)
-@_documentation(visibility: private)
-#endif
-public func FfiConverterTypeNotificationType_lower(_ value: NotificationType) -> RustBuffer {
-    return FfiConverterTypeNotificationType.lower(value)
-}
-
-
-// Note that we don't yet support `indirect` for enums.
-// See https://github.com/mozilla/uniffi-rs/issues/396 for further discussion.
-/**
  * Status for the pagination on a cache.
  */
 
 public enum PaginationStatus: Equatable, Hashable {
-    
+
     /**
      * No pagination is happening right now.
      */
@@ -1883,28 +1078,28 @@ public struct FfiConverterTypePaginationStatus: FfiConverterRustBuffer {
     public static func read(from buf: inout (data: Data, offset: Data.Index)) throws -> PaginationStatus {
         let variant: Int32 = try readInt(&buf)
         switch variant {
-        
+
         case 1: return .idle(hitTimelineStart: try FfiConverterBool.read(from: &buf)
         )
-        
+
         case 2: return .paginating
-        
+
         default: throw UniffiInternalError.unexpectedEnumCase
         }
     }
 
     public static func write(_ value: PaginationStatus, into buf: inout [UInt8]) {
         switch value {
-        
-        
+
+
         case let .idle(hitTimelineStart):
             writeInt(&buf, Int32(1))
             FfiConverterBool.write(hitTimelineStart, into: &buf)
-            
-        
+
+
         case .paginating:
             writeInt(&buf, Int32(2))
-        
+
         }
     }
 }
@@ -1932,7 +1127,7 @@ public func FfiConverterTypePaginationStatus_lower(_ value: PaginationStatus) ->
  */
 
 public enum PaginatorState: Equatable, Hashable {
-    
+
     /**
      * The initial state of the paginator.
      */
@@ -1970,38 +1165,38 @@ public struct FfiConverterTypePaginatorState: FfiConverterRustBuffer {
     public static func read(from buf: inout (data: Data, offset: Data.Index)) throws -> PaginatorState {
         let variant: Int32 = try readInt(&buf)
         switch variant {
-        
+
         case 1: return .initial
-        
+
         case 2: return .fetchingTargetEvent
-        
+
         case 3: return .idle
-        
+
         case 4: return .paginating
-        
+
         default: throw UniffiInternalError.unexpectedEnumCase
         }
     }
 
     public static func write(_ value: PaginatorState, into buf: inout [UInt8]) {
         switch value {
-        
-        
+
+
         case .initial:
             writeInt(&buf, Int32(1))
-        
-        
+
+
         case .fetchingTargetEvent:
             writeInt(&buf, Int32(2))
-        
-        
+
+
         case .idle:
             writeInt(&buf, Int32(3))
-        
-        
+
+
         case .paginating:
             writeInt(&buf, Int32(4))
-        
+
         }
     }
 }
@@ -2029,79 +1224,79 @@ public func FfiConverterTypePaginatorState_lower(_ value: PaginatorState) -> Rus
  */
 public enum QrCodeLoginError: Swift.Error, Equatable, Hashable, Foundation.LocalizedError {
 
-    
-    
+
+
     /**
      * An error happened while we were communicating with the OAuth 2.0
      * authorization server.
      */
     case OAuth(message: String)
-    
+
     /**
      * The other device has signaled to us that the login has failed.
      */
     case LoginFailure(message: String)
-    
+
     /**
      * An unexpected message was received from the other device.
      */
     case UnexpectedMessage(message: String)
-    
+
     /**
      * An error happened while exchanging messages with the other device.
      */
     case SecureChannel(message: String)
-    
+
     /**
      * The rendezvous session was not found and might have expired.
      */
     case NotFound(message: String)
-    
+
     /**
      * The cross-process refresh lock failed to be initialized.
      */
     case CrossProcessRefreshLock(message: String)
-    
+
     /**
      * An error happened while we were trying to discover our user and device
      * ID, after we have acquired an access token from the OAuth 2.0
      * authorization server.
      */
     case UserIdDiscovery(message: String)
-    
+
     /**
      * We failed to set the session tokens after we figured out our device and
      * user IDs.
      */
     case SessionTokens(message: String)
-    
+
     /**
      * The device keys failed to be uploaded after we successfully logged in.
      */
     case DeviceKeyUpload(message: String)
-    
+
     /**
      * The secrets bundle we received from the existing device failed to be
      * imported.
      */
     case SecretImport(message: String)
-    
+
     /**
      * The other party told us to use a different homeserver but we failed to
      * reset the server URL.
      */
     case ServerReset(message: String)
-    
 
-    
 
-    
 
-    
+
+
+
+
     public var errorDescription: String? {
         String(reflecting: self)
     }
-    
+
 }
 
 #if compiler(>=6)
@@ -2118,53 +1313,53 @@ public struct FfiConverterTypeQRCodeLoginError: FfiConverterRustBuffer {
         let variant: Int32 = try readInt(&buf)
         switch variant {
 
-        
 
-        
+
+
         case 1: return .OAuth(
             message: try FfiConverterString.read(from: &buf)
         )
-        
+
         case 2: return .LoginFailure(
             message: try FfiConverterString.read(from: &buf)
         )
-        
+
         case 3: return .UnexpectedMessage(
             message: try FfiConverterString.read(from: &buf)
         )
-        
+
         case 4: return .SecureChannel(
             message: try FfiConverterString.read(from: &buf)
         )
-        
+
         case 5: return .NotFound(
             message: try FfiConverterString.read(from: &buf)
         )
-        
+
         case 6: return .CrossProcessRefreshLock(
             message: try FfiConverterString.read(from: &buf)
         )
-        
+
         case 7: return .UserIdDiscovery(
             message: try FfiConverterString.read(from: &buf)
         )
-        
+
         case 8: return .SessionTokens(
             message: try FfiConverterString.read(from: &buf)
         )
-        
+
         case 9: return .DeviceKeyUpload(
             message: try FfiConverterString.read(from: &buf)
         )
-        
+
         case 10: return .SecretImport(
             message: try FfiConverterString.read(from: &buf)
         )
-        
+
         case 11: return .ServerReset(
             message: try FfiConverterString.read(from: &buf)
         )
-        
+
 
         default: throw UniffiInternalError.unexpectedEnumCase
         }
@@ -2173,9 +1368,9 @@ public struct FfiConverterTypeQRCodeLoginError: FfiConverterRustBuffer {
     public static func write(_ value: QrCodeLoginError, into buf: inout [UInt8]) {
         switch value {
 
-        
 
-        
+
+
         case .OAuth(_ /* message is ignored*/):
             writeInt(&buf, Int32(1))
         case .LoginFailure(_ /* message is ignored*/):
@@ -2199,7 +1394,7 @@ public struct FfiConverterTypeQRCodeLoginError: FfiConverterRustBuffer {
         case .ServerReset(_ /* message is ignored*/):
             writeInt(&buf, Int32(11))
 
-        
+
         }
     }
 }
@@ -2226,7 +1421,7 @@ public func FfiConverterTypeQRCodeLoginError_lower(_ value: QrCodeLoginError) ->
  */
 
 public enum RoomMemberRole: Equatable, Hashable {
-    
+
     /**
      * The member is a creator.
      *
@@ -2272,38 +1467,38 @@ public struct FfiConverterTypeRoomMemberRole: FfiConverterRustBuffer {
     public static func read(from buf: inout (data: Data, offset: Data.Index)) throws -> RoomMemberRole {
         let variant: Int32 = try readInt(&buf)
         switch variant {
-        
+
         case 1: return .creator
-        
+
         case 2: return .administrator
-        
+
         case 3: return .moderator
-        
+
         case 4: return .user
-        
+
         default: throw UniffiInternalError.unexpectedEnumCase
         }
     }
 
     public static func write(_ value: RoomMemberRole, into buf: inout [UInt8]) {
         switch value {
-        
-        
+
+
         case .creator:
             writeInt(&buf, Int32(1))
-        
-        
+
+
         case .administrator:
             writeInt(&buf, Int32(2))
-        
-        
+
+
         case .moderator:
             writeInt(&buf, Int32(3))
-        
-        
+
+
         case .user:
             writeInt(&buf, Int32(4))
-        
+
         }
     }
 }
@@ -2343,150 +1538,6 @@ fileprivate struct FfiConverterOptionInt64: FfiConverterRustBuffer {
         switch try readInt(&buf) as Int8 {
         case 0: return nil
         case 1: return try FfiConverterInt64.read(from: &buf)
-        default: throw UniffiInternalError.unexpectedOptionalTag
-        }
-    }
-}
-
-#if swift(>=5.8)
-@_documentation(visibility: private)
-#endif
-fileprivate struct FfiConverterOptionDouble: FfiConverterRustBuffer {
-    typealias SwiftType = Double?
-
-    public static func write(_ value: SwiftType, into buf: inout [UInt8]) {
-        guard let value = value else {
-            writeInt(&buf, Int8(0))
-            return
-        }
-        writeInt(&buf, Int8(1))
-        FfiConverterDouble.write(value, into: &buf)
-    }
-
-    public static func read(from buf: inout (data: Data, offset: Data.Index)) throws -> SwiftType {
-        switch try readInt(&buf) as Int8 {
-        case 0: return nil
-        case 1: return try FfiConverterDouble.read(from: &buf)
-        default: throw UniffiInternalError.unexpectedOptionalTag
-        }
-    }
-}
-
-#if swift(>=5.8)
-@_documentation(visibility: private)
-#endif
-fileprivate struct FfiConverterOptionBool: FfiConverterRustBuffer {
-    typealias SwiftType = Bool?
-
-    public static func write(_ value: SwiftType, into buf: inout [UInt8]) {
-        guard let value = value else {
-            writeInt(&buf, Int8(0))
-            return
-        }
-        writeInt(&buf, Int8(1))
-        FfiConverterBool.write(value, into: &buf)
-    }
-
-    public static func read(from buf: inout (data: Data, offset: Data.Index)) throws -> SwiftType {
-        switch try readInt(&buf) as Int8 {
-        case 0: return nil
-        case 1: return try FfiConverterBool.read(from: &buf)
-        default: throw UniffiInternalError.unexpectedOptionalTag
-        }
-    }
-}
-
-#if swift(>=5.8)
-@_documentation(visibility: private)
-#endif
-fileprivate struct FfiConverterOptionString: FfiConverterRustBuffer {
-    typealias SwiftType = String?
-
-    public static func write(_ value: SwiftType, into buf: inout [UInt8]) {
-        guard let value = value else {
-            writeInt(&buf, Int8(0))
-            return
-        }
-        writeInt(&buf, Int8(1))
-        FfiConverterString.write(value, into: &buf)
-    }
-
-    public static func read(from buf: inout (data: Data, offset: Data.Index)) throws -> SwiftType {
-        switch try readInt(&buf) as Int8 {
-        case 0: return nil
-        case 1: return try FfiConverterString.read(from: &buf)
-        default: throw UniffiInternalError.unexpectedOptionalTag
-        }
-    }
-}
-
-#if swift(>=5.8)
-@_documentation(visibility: private)
-#endif
-fileprivate struct FfiConverterOptionTypeHeaderStyle: FfiConverterRustBuffer {
-    typealias SwiftType = HeaderStyle?
-
-    public static func write(_ value: SwiftType, into buf: inout [UInt8]) {
-        guard let value = value else {
-            writeInt(&buf, Int8(0))
-            return
-        }
-        writeInt(&buf, Int8(1))
-        FfiConverterTypeHeaderStyle.write(value, into: &buf)
-    }
-
-    public static func read(from buf: inout (data: Data, offset: Data.Index)) throws -> SwiftType {
-        switch try readInt(&buf) as Int8 {
-        case 0: return nil
-        case 1: return try FfiConverterTypeHeaderStyle.read(from: &buf)
-        default: throw UniffiInternalError.unexpectedOptionalTag
-        }
-    }
-}
-
-#if swift(>=5.8)
-@_documentation(visibility: private)
-#endif
-fileprivate struct FfiConverterOptionTypeIntent: FfiConverterRustBuffer {
-    typealias SwiftType = Intent?
-
-    public static func write(_ value: SwiftType, into buf: inout [UInt8]) {
-        guard let value = value else {
-            writeInt(&buf, Int8(0))
-            return
-        }
-        writeInt(&buf, Int8(1))
-        FfiConverterTypeIntent.write(value, into: &buf)
-    }
-
-    public static func read(from buf: inout (data: Data, offset: Data.Index)) throws -> SwiftType {
-        switch try readInt(&buf) as Int8 {
-        case 0: return nil
-        case 1: return try FfiConverterTypeIntent.read(from: &buf)
-        default: throw UniffiInternalError.unexpectedOptionalTag
-        }
-    }
-}
-
-#if swift(>=5.8)
-@_documentation(visibility: private)
-#endif
-fileprivate struct FfiConverterOptionTypeNotificationType: FfiConverterRustBuffer {
-    typealias SwiftType = NotificationType?
-
-    public static func write(_ value: SwiftType, into buf: inout [UInt8]) {
-        guard let value = value else {
-            writeInt(&buf, Int8(0))
-            return
-        }
-        writeInt(&buf, Int8(1))
-        FfiConverterTypeNotificationType.write(value, into: &buf)
-    }
-
-    public static func read(from buf: inout (data: Data, offset: Data.Index)) throws -> SwiftType {
-        switch try readInt(&buf) as Int8 {
-        case 0: return nil
-        case 1: return try FfiConverterTypeNotificationType.read(from: &buf)
         default: throw UniffiInternalError.unexpectedOptionalTag
         }
     }
