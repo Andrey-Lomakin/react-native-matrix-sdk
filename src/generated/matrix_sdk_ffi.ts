@@ -3657,51 +3657,6 @@ const FfiConverterTypeGalleryUploadParameters = (() => {
   return new FFIConverter();
 })();
 
-export type GlobalSearchResult = {
-  roomId: string;
-  result: RoomSearchResult;
-};
-
-/**
- * Generated factory for {@link GlobalSearchResult} record objects.
- */
-export const GlobalSearchResult = (() => {
-  const defaults = () => ({});
-  const create = (() => {
-    return uniffiCreateRecord<GlobalSearchResult, ReturnType<typeof defaults>>(
-      defaults
-    );
-  })();
-  return Object.freeze({
-    create,
-    new: create,
-    defaults: () => Object.freeze(defaults()) as Partial<GlobalSearchResult>,
-  });
-})();
-
-const FfiConverterTypeGlobalSearchResult = (() => {
-  type TypeName = GlobalSearchResult;
-  class FFIConverter extends AbstractFfiConverterByteArray<TypeName> {
-    read(from: RustBuffer): TypeName {
-      return {
-        roomId: FfiConverterString.read(from),
-        result: FfiConverterTypeRoomSearchResult.read(from),
-      };
-    }
-    write(value: TypeName, into: RustBuffer): void {
-      FfiConverterString.write(value.roomId, into);
-      FfiConverterTypeRoomSearchResult.write(value.result, into);
-    }
-    allocationSize(value: TypeName): number {
-      return (
-        FfiConverterString.allocationSize(value.roomId) +
-        FfiConverterTypeRoomSearchResult.allocationSize(value.result)
-      );
-    }
-  }
-  return new FFIConverter();
-})();
-
 export type HttpPusherData = {
   url: string;
   format?: PushFormat;
@@ -6769,63 +6724,6 @@ const FfiConverterTypeRoomPreviewInfo = (() => {
         FfiConverterOptionalTypeJoinRule.allocationSize(value.joinRule) +
         FfiConverterOptionalBool.allocationSize(value.isDirect) +
         FfiConverterOptionalArrayTypeRoomHero.allocationSize(value.heroes)
-      );
-    }
-  }
-  return new FFIConverter();
-})();
-
-export type RoomSearchResult = {
-  eventId: string;
-  sender: string;
-  senderProfile: ProfileDetails;
-  content: TimelineItemContent;
-  timestamp: Timestamp;
-};
-
-/**
- * Generated factory for {@link RoomSearchResult} record objects.
- */
-export const RoomSearchResult = (() => {
-  const defaults = () => ({});
-  const create = (() => {
-    return uniffiCreateRecord<RoomSearchResult, ReturnType<typeof defaults>>(
-      defaults
-    );
-  })();
-  return Object.freeze({
-    create,
-    new: create,
-    defaults: () => Object.freeze(defaults()) as Partial<RoomSearchResult>,
-  });
-})();
-
-const FfiConverterTypeRoomSearchResult = (() => {
-  type TypeName = RoomSearchResult;
-  class FFIConverter extends AbstractFfiConverterByteArray<TypeName> {
-    read(from: RustBuffer): TypeName {
-      return {
-        eventId: FfiConverterString.read(from),
-        sender: FfiConverterString.read(from),
-        senderProfile: FfiConverterTypeProfileDetails.read(from),
-        content: FfiConverterTypeTimelineItemContent.read(from),
-        timestamp: FfiConverterTypeTimestamp.read(from),
-      };
-    }
-    write(value: TypeName, into: RustBuffer): void {
-      FfiConverterString.write(value.eventId, into);
-      FfiConverterString.write(value.sender, into);
-      FfiConverterTypeProfileDetails.write(value.senderProfile, into);
-      FfiConverterTypeTimelineItemContent.write(value.content, into);
-      FfiConverterTypeTimestamp.write(value.timestamp, into);
-    }
-    allocationSize(value: TypeName): number {
-      return (
-        FfiConverterString.allocationSize(value.eventId) +
-        FfiConverterString.allocationSize(value.sender) +
-        FfiConverterTypeProfileDetails.allocationSize(value.senderProfile) +
-        FfiConverterTypeTimelineItemContent.allocationSize(value.content) +
-        FfiConverterTypeTimestamp.allocationSize(value.timestamp)
       );
     }
   }
@@ -31766,206 +31664,6 @@ const FfiConverterTypeRuleKind = (() => {
   return new FFIConverter();
 })();
 
-// Error type: SearchError
-
-// Enum: SearchError
-export enum SearchError_Tags {
-  IndexError = 'IndexError',
-  EventLoadError = 'EventLoadError',
-}
-export const SearchError = (() => {
-  type IndexError__interface = {
-    tag: SearchError_Tags.IndexError;
-    inner: Readonly<[string]>;
-  };
-
-  class IndexError_ extends UniffiError implements IndexError__interface {
-    /**
-     * @private
-     * This field is private and should not be used, use `tag` instead.
-     */
-    readonly [uniffiTypeNameSymbol] = 'SearchError';
-    readonly tag = SearchError_Tags.IndexError;
-    readonly inner: Readonly<[string]>;
-    constructor(v0: string) {
-      super('SearchError', 'IndexError');
-      this.inner = Object.freeze([v0]);
-    }
-
-    static new(v0: string): IndexError_ {
-      return new IndexError_(v0);
-    }
-
-    static instanceOf(obj: any): obj is IndexError_ {
-      return obj.tag === SearchError_Tags.IndexError;
-    }
-
-    static hasInner(obj: any): obj is IndexError_ {
-      return IndexError_.instanceOf(obj);
-    }
-
-    static getInner(obj: IndexError_): Readonly<[string]> {
-      return obj.inner;
-    }
-  }
-
-  type EventLoadError__interface = {
-    tag: SearchError_Tags.EventLoadError;
-    inner: Readonly<[string]>;
-  };
-
-  class EventLoadError_
-    extends UniffiError
-    implements EventLoadError__interface
-  {
-    /**
-     * @private
-     * This field is private and should not be used, use `tag` instead.
-     */
-    readonly [uniffiTypeNameSymbol] = 'SearchError';
-    readonly tag = SearchError_Tags.EventLoadError;
-    readonly inner: Readonly<[string]>;
-    constructor(v0: string) {
-      super('SearchError', 'EventLoadError');
-      this.inner = Object.freeze([v0]);
-    }
-
-    static new(v0: string): EventLoadError_ {
-      return new EventLoadError_(v0);
-    }
-
-    static instanceOf(obj: any): obj is EventLoadError_ {
-      return obj.tag === SearchError_Tags.EventLoadError;
-    }
-
-    static hasInner(obj: any): obj is EventLoadError_ {
-      return EventLoadError_.instanceOf(obj);
-    }
-
-    static getInner(obj: EventLoadError_): Readonly<[string]> {
-      return obj.inner;
-    }
-  }
-
-  function instanceOf(obj: any): obj is SearchError {
-    return obj[uniffiTypeNameSymbol] === 'SearchError';
-  }
-
-  return Object.freeze({
-    instanceOf,
-    IndexError: IndexError_,
-    EventLoadError: EventLoadError_,
-  });
-})();
-
-export type SearchError = InstanceType<
-  (typeof SearchError)[keyof Omit<typeof SearchError, 'instanceOf'>]
->;
-
-// FfiConverter for enum SearchError
-const FfiConverterTypeSearchError = (() => {
-  const ordinalConverter = FfiConverterInt32;
-  type TypeName = SearchError;
-  class FFIConverter extends AbstractFfiConverterByteArray<TypeName> {
-    read(from: RustBuffer): TypeName {
-      switch (ordinalConverter.read(from)) {
-        case 1:
-          return new SearchError.IndexError(FfiConverterString.read(from));
-        case 2:
-          return new SearchError.EventLoadError(FfiConverterString.read(from));
-        default:
-          throw new UniffiInternalError.UnexpectedEnumCase();
-      }
-    }
-    write(value: TypeName, into: RustBuffer): void {
-      switch (value.tag) {
-        case SearchError_Tags.IndexError: {
-          ordinalConverter.write(1, into);
-          const inner = value.inner;
-          FfiConverterString.write(inner[0], into);
-          return;
-        }
-        case SearchError_Tags.EventLoadError: {
-          ordinalConverter.write(2, into);
-          const inner = value.inner;
-          FfiConverterString.write(inner[0], into);
-          return;
-        }
-        default:
-          // Throwing from here means that SearchError_Tags hasn't matched an ordinal.
-          throw new UniffiInternalError.UnexpectedEnumCase();
-      }
-    }
-    allocationSize(value: TypeName): number {
-      switch (value.tag) {
-        case SearchError_Tags.IndexError: {
-          const inner = value.inner;
-          let size = ordinalConverter.allocationSize(1);
-          size += FfiConverterString.allocationSize(inner[0]);
-          return size;
-        }
-        case SearchError_Tags.EventLoadError: {
-          const inner = value.inner;
-          let size = ordinalConverter.allocationSize(2);
-          size += FfiConverterString.allocationSize(inner[0]);
-          return size;
-        }
-        default:
-          throw new UniffiInternalError.UnexpectedEnumCase();
-      }
-    }
-  }
-  return new FFIConverter();
-})();
-
-export enum SearchRoomFilter {
-  /**
-   * All the joined rooms (= DMs + non-DMs).
-   */
-  Rooms,
-  /**
-   * Only joined DM rooms.
-   */
-  Dms,
-  /**
-   * Only joined non-DM (group) rooms.
-   */
-  NonDms,
-}
-
-const FfiConverterTypeSearchRoomFilter = (() => {
-  const ordinalConverter = FfiConverterInt32;
-  type TypeName = SearchRoomFilter;
-  class FFIConverter extends AbstractFfiConverterByteArray<TypeName> {
-    read(from: RustBuffer): TypeName {
-      switch (ordinalConverter.read(from)) {
-        case 1:
-          return SearchRoomFilter.Rooms;
-        case 2:
-          return SearchRoomFilter.Dms;
-        case 3:
-          return SearchRoomFilter.NonDms;
-        default:
-          throw new UniffiInternalError.UnexpectedEnumCase();
-      }
-    }
-    write(value: TypeName, into: RustBuffer): void {
-      switch (value) {
-        case SearchRoomFilter.Rooms:
-          return ordinalConverter.write(1, into);
-        case SearchRoomFilter.Dms:
-          return ordinalConverter.write(2, into);
-        case SearchRoomFilter.NonDms:
-          return ordinalConverter.write(3, into);
-      }
-    }
-    allocationSize(value: TypeName): number {
-      return ordinalConverter.allocationSize(0);
-    }
-  }
-  return new FFIConverter();
-})();
-
 // Enum: SecretStorageEncryptionAlgorithm
 export enum SecretStorageEncryptionAlgorithm_Tags {
   V1AesHmacSha2 = 'V1AesHmacSha2',
@@ -38778,16 +38476,6 @@ export interface ClientLike {
   getRecentEmojis(asyncOpts_?: {
     signal: AbortSignal;
   }) /*throws*/ : Promise<Array<RecentEmoji>>;
-  /**
-   * Search across all all rooms for the given query, returning an iterator
-   * over the results.
-   */
-  searchMessages(
-    query: string,
-    filter: SearchRoomFilter,
-    numResultsPerBatch: /*u32*/ number,
-    asyncOpts_?: { signal: AbortSignal }
-  ) /*throws*/ : Promise<GlobalSearchIteratorLike>;
 }
 /**
  * @deprecated Use `ClientLike` instead.
@@ -42652,53 +42340,6 @@ export class Client extends UniffiAbstractObject implements ClientLike {
   }
 
   /**
-   * Search across all all rooms for the given query, returning an iterator
-   * over the results.
-   */
-  async searchMessages(
-    query: string,
-    filter: SearchRoomFilter,
-    numResultsPerBatch: /*u32*/ number,
-    asyncOpts_?: { signal: AbortSignal }
-  ): Promise<GlobalSearchIteratorLike> /*throws*/ {
-    const __stack = uniffiIsDebug ? new Error().stack : undefined;
-    try {
-      return await uniffiRustCallAsync(
-        /*rustCaller:*/ uniffiCaller,
-        /*rustFutureFunc:*/ () => {
-          return nativeModule().ubrn_uniffi_matrix_sdk_ffi_fn_method_client_search_messages(
-            uniffiTypeClientObjectFactory.clonePointer(this),
-            FfiConverterString.lower(query),
-            FfiConverterTypeSearchRoomFilter.lower(filter),
-            FfiConverterUInt32.lower(numResultsPerBatch)
-          );
-        },
-        /*pollFunc:*/ nativeModule()
-          .ubrn_ffi_matrix_sdk_ffi_rust_future_poll_u64,
-        /*cancelFunc:*/ nativeModule()
-          .ubrn_ffi_matrix_sdk_ffi_rust_future_cancel_u64,
-        /*completeFunc:*/ nativeModule()
-          .ubrn_ffi_matrix_sdk_ffi_rust_future_complete_u64,
-        /*freeFunc:*/ nativeModule()
-          .ubrn_ffi_matrix_sdk_ffi_rust_future_free_u64,
-        /*liftFunc:*/ FfiConverterTypeGlobalSearchIterator.lift.bind(
-          FfiConverterTypeGlobalSearchIterator
-        ),
-        /*liftString:*/ FfiConverterString.lift,
-        /*asyncOpts:*/ asyncOpts_,
-        /*errorHandler:*/ FfiConverterTypeClientError.lift.bind(
-          FfiConverterTypeClientError
-        )
-      );
-    } catch (__error: any) {
-      if (uniffiIsDebug && __error instanceof Error) {
-        __error.stack = __stack;
-      }
-      throw __error;
-    }
-  }
-
-  /**
    * {@inheritDoc uniffi-bindgen-react-native#UniffiAbstractObject.uniffiDestroy}
    */
   uniffiDestroy(): void {
@@ -42879,23 +42520,6 @@ export interface ClientBuilderLike {
   ): ClientBuilderLike;
   userAgent(userAgent: string): ClientBuilderLike;
   username(username: string): ClientBuilderLike;
-  /**
-   * Set up the search index store for this client, which is used to store
-   * the message search index locally.
-   *
-   * As soon as this is enabled, messages will start to be indexed, and can
-   * be later queried for search.
-   *
-   * `path` is the directory where the search index will be stored. It must
-   * be unique per session.
-   *
-   * `password` is an optional password to encrypt the search index at rest.
-   * If `None`, the search index will be stored unencrypted.
-   */
-  withSearchIndexStore(
-    path: string,
-    password: string | undefined
-  ): ClientBuilderLike;
 }
 /**
  * @deprecated Use `ClientBuilderLike` instead.
@@ -43414,38 +43038,6 @@ export class ClientBuilder
           return nativeModule().ubrn_uniffi_matrix_sdk_ffi_fn_method_clientbuilder_username(
             uniffiTypeClientBuilderObjectFactory.clonePointer(this),
             FfiConverterString.lower(username),
-            callStatus
-          );
-        },
-        /*liftString:*/ FfiConverterString.lift
-      )
-    );
-  }
-
-  /**
-   * Set up the search index store for this client, which is used to store
-   * the message search index locally.
-   *
-   * As soon as this is enabled, messages will start to be indexed, and can
-   * be later queried for search.
-   *
-   * `path` is the directory where the search index will be stored. It must
-   * be unique per session.
-   *
-   * `password` is an optional password to encrypt the search index at rest.
-   * If `None`, the search index will be stored unencrypted.
-   */
-  withSearchIndexStore(
-    path: string,
-    password: string | undefined
-  ): ClientBuilderLike {
-    return FfiConverterTypeClientBuilder.lift(
-      uniffiCaller.rustCall(
-        /*caller:*/ (callStatus) => {
-          return nativeModule().ubrn_uniffi_matrix_sdk_ffi_fn_method_clientbuilder_with_search_index_store(
-            uniffiTypeClientBuilderObjectFactory.clonePointer(this),
-            FfiConverterString.lower(path),
-            FfiConverterOptionalString.lower(password),
             callStatus
           );
         },
@@ -44583,163 +44175,6 @@ const uniffiTypeEncryptionObjectFactory: UniffiObjectFactory<EncryptionLike> =
 // FfiConverter for EncryptionLike
 const FfiConverterTypeEncryption = new FfiConverterObject(
   uniffiTypeEncryptionObjectFactory
-);
-
-export interface GlobalSearchIteratorLike {
-  /**
-   * Return a list of events for the next batch of search results, or `None`
-   * if there are no more results.
-   */
-  nextEvents(asyncOpts_?: {
-    signal: AbortSignal;
-  }) /*throws*/ : Promise<Array<GlobalSearchResult> | undefined>;
-}
-/**
- * @deprecated Use `GlobalSearchIteratorLike` instead.
- */
-export type GlobalSearchIteratorInterface = GlobalSearchIteratorLike;
-
-export class GlobalSearchIterator
-  extends UniffiAbstractObject
-  implements GlobalSearchIteratorLike
-{
-  readonly [uniffiTypeNameSymbol] = 'GlobalSearchIterator';
-  readonly [destructorGuardSymbol]: UniffiGcObject;
-  readonly [pointerLiteralSymbol]: UniffiHandle;
-  // No primary constructor declared for this class.
-  private constructor(pointer: UniffiHandle) {
-    super();
-    this[pointerLiteralSymbol] = pointer;
-    this[destructorGuardSymbol] =
-      uniffiTypeGlobalSearchIteratorObjectFactory.bless(pointer);
-  }
-
-  /**
-   * Return a list of events for the next batch of search results, or `None`
-   * if there are no more results.
-   */
-  async nextEvents(asyncOpts_?: {
-    signal: AbortSignal;
-  }): Promise<Array<GlobalSearchResult> | undefined> /*throws*/ {
-    const __stack = uniffiIsDebug ? new Error().stack : undefined;
-    try {
-      return await uniffiRustCallAsync(
-        /*rustCaller:*/ uniffiCaller,
-        /*rustFutureFunc:*/ () => {
-          return nativeModule().ubrn_uniffi_matrix_sdk_ffi_fn_method_globalsearchiterator_next_events(
-            uniffiTypeGlobalSearchIteratorObjectFactory.clonePointer(this)
-          );
-        },
-        /*pollFunc:*/ nativeModule()
-          .ubrn_ffi_matrix_sdk_ffi_rust_future_poll_rust_buffer,
-        /*cancelFunc:*/ nativeModule()
-          .ubrn_ffi_matrix_sdk_ffi_rust_future_cancel_rust_buffer,
-        /*completeFunc:*/ nativeModule()
-          .ubrn_ffi_matrix_sdk_ffi_rust_future_complete_rust_buffer,
-        /*freeFunc:*/ nativeModule()
-          .ubrn_ffi_matrix_sdk_ffi_rust_future_free_rust_buffer,
-        /*liftFunc:*/ FfiConverterOptionalArrayTypeGlobalSearchResult.lift.bind(
-          FfiConverterOptionalArrayTypeGlobalSearchResult
-        ),
-        /*liftString:*/ FfiConverterString.lift,
-        /*asyncOpts:*/ asyncOpts_,
-        /*errorHandler:*/ FfiConverterTypeSearchError.lift.bind(
-          FfiConverterTypeSearchError
-        )
-      );
-    } catch (__error: any) {
-      if (uniffiIsDebug && __error instanceof Error) {
-        __error.stack = __stack;
-      }
-      throw __error;
-    }
-  }
-
-  /**
-   * {@inheritDoc uniffi-bindgen-react-native#UniffiAbstractObject.uniffiDestroy}
-   */
-  uniffiDestroy(): void {
-    const ptr = (this as any)[destructorGuardSymbol];
-    if (ptr !== undefined) {
-      const pointer = uniffiTypeGlobalSearchIteratorObjectFactory.pointer(this);
-      uniffiTypeGlobalSearchIteratorObjectFactory.freePointer(pointer);
-      uniffiTypeGlobalSearchIteratorObjectFactory.unbless(ptr);
-      delete (this as any)[destructorGuardSymbol];
-    }
-  }
-
-  static instanceOf(obj: any): obj is GlobalSearchIterator {
-    return uniffiTypeGlobalSearchIteratorObjectFactory.isConcreteType(obj);
-  }
-}
-
-const uniffiTypeGlobalSearchIteratorObjectFactory: UniffiObjectFactory<GlobalSearchIteratorLike> =
-  (() => {
-    return {
-      create(pointer: UniffiHandle): GlobalSearchIteratorLike {
-        const instance = Object.create(GlobalSearchIterator.prototype);
-        instance[pointerLiteralSymbol] = pointer;
-        instance[destructorGuardSymbol] = this.bless(pointer);
-        instance[uniffiTypeNameSymbol] = 'GlobalSearchIterator';
-        return instance;
-      },
-
-      bless(p: UniffiHandle): UniffiGcObject {
-        return uniffiCaller.rustCall(
-          /*caller:*/ (status) =>
-            nativeModule().ubrn_uniffi_internal_fn_method_globalsearchiterator_ffi__bless_pointer(
-              p,
-              status
-            ),
-          /*liftString:*/ FfiConverterString.lift
-        );
-      },
-
-      unbless(ptr: UniffiGcObject) {
-        ptr.markDestroyed();
-      },
-
-      pointer(obj: GlobalSearchIteratorLike): UniffiHandle {
-        if ((obj as any)[destructorGuardSymbol] === undefined) {
-          throw new UniffiInternalError.UnexpectedNullPointer();
-        }
-        return (obj as any)[pointerLiteralSymbol];
-      },
-
-      clonePointer(obj: GlobalSearchIteratorLike): UniffiHandle {
-        const pointer = this.pointer(obj);
-        return uniffiCaller.rustCall(
-          /*caller:*/ (callStatus) =>
-            nativeModule().ubrn_uniffi_matrix_sdk_ffi_fn_clone_globalsearchiterator(
-              pointer,
-              callStatus
-            ),
-          /*liftString:*/ FfiConverterString.lift
-        );
-      },
-
-      freePointer(pointer: UniffiHandle): void {
-        uniffiCaller.rustCall(
-          /*caller:*/ (callStatus) =>
-            nativeModule().ubrn_uniffi_matrix_sdk_ffi_fn_free_globalsearchiterator(
-              pointer,
-              callStatus
-            ),
-          /*liftString:*/ FfiConverterString.lift
-        );
-      },
-
-      isConcreteType(obj: any): obj is GlobalSearchIteratorLike {
-        return (
-          obj[destructorGuardSymbol] &&
-          obj[uniffiTypeNameSymbol] === 'GlobalSearchIterator'
-        );
-      },
-    };
-  })();
-// FfiConverter for GlobalSearchIteratorLike
-const FfiConverterTypeGlobalSearchIterator = new FfiConverterObject(
-  uniffiTypeGlobalSearchIteratorObjectFactory
 );
 
 export interface HomeserverCapabilitiesLike {
@@ -48749,15 +48184,6 @@ export interface RoomLike {
     sendHandle: SendHandleLike,
     asyncOpts_?: { signal: AbortSignal }
   ) /*throws*/ : Promise<void>;
-  /**
-   * Search for messages in this room matching the given query, returning an
-   * iterator over the results that yields `num_results_per_batch` results at
-   * a time.
-   */
-  searchMessages(
-    query: string,
-    numResultsPerBatch: /*u32*/ number
-  ): RoomSearchIteratorLike;
 }
 /**
  * @deprecated Use `RoomLike` instead.
@@ -52227,30 +51653,6 @@ export class Room extends UniffiAbstractObject implements RoomLike {
   }
 
   /**
-   * Search for messages in this room matching the given query, returning an
-   * iterator over the results that yields `num_results_per_batch` results at
-   * a time.
-   */
-  searchMessages(
-    query: string,
-    numResultsPerBatch: /*u32*/ number
-  ): RoomSearchIteratorLike {
-    return FfiConverterTypeRoomSearchIterator.lift(
-      uniffiCaller.rustCall(
-        /*caller:*/ (callStatus) => {
-          return nativeModule().ubrn_uniffi_matrix_sdk_ffi_fn_method_room_search_messages(
-            uniffiTypeRoomObjectFactory.clonePointer(this),
-            FfiConverterString.lower(query),
-            FfiConverterUInt32.lower(numResultsPerBatch),
-            callStatus
-          );
-        },
-        /*liftString:*/ FfiConverterString.lift
-      )
-    );
-  }
-
-  /**
    * {@inheritDoc uniffi-bindgen-react-native#UniffiAbstractObject.uniffiDestroy}
    */
   uniffiDestroy(): void {
@@ -54348,163 +53750,6 @@ const uniffiTypeRoomPreviewObjectFactory: UniffiObjectFactory<RoomPreviewLike> =
 // FfiConverter for RoomPreviewLike
 const FfiConverterTypeRoomPreview = new FfiConverterObject(
   uniffiTypeRoomPreviewObjectFactory
-);
-
-export interface RoomSearchIteratorLike {
-  /**
-   * Return a list of events for the next batch of search results, or `None`
-   * if there are no more results.
-   */
-  nextEvents(asyncOpts_?: {
-    signal: AbortSignal;
-  }) /*throws*/ : Promise<Array<RoomSearchResult> | undefined>;
-}
-/**
- * @deprecated Use `RoomSearchIteratorLike` instead.
- */
-export type RoomSearchIteratorInterface = RoomSearchIteratorLike;
-
-export class RoomSearchIterator
-  extends UniffiAbstractObject
-  implements RoomSearchIteratorLike
-{
-  readonly [uniffiTypeNameSymbol] = 'RoomSearchIterator';
-  readonly [destructorGuardSymbol]: UniffiGcObject;
-  readonly [pointerLiteralSymbol]: UniffiHandle;
-  // No primary constructor declared for this class.
-  private constructor(pointer: UniffiHandle) {
-    super();
-    this[pointerLiteralSymbol] = pointer;
-    this[destructorGuardSymbol] =
-      uniffiTypeRoomSearchIteratorObjectFactory.bless(pointer);
-  }
-
-  /**
-   * Return a list of events for the next batch of search results, or `None`
-   * if there are no more results.
-   */
-  async nextEvents(asyncOpts_?: {
-    signal: AbortSignal;
-  }): Promise<Array<RoomSearchResult> | undefined> /*throws*/ {
-    const __stack = uniffiIsDebug ? new Error().stack : undefined;
-    try {
-      return await uniffiRustCallAsync(
-        /*rustCaller:*/ uniffiCaller,
-        /*rustFutureFunc:*/ () => {
-          return nativeModule().ubrn_uniffi_matrix_sdk_ffi_fn_method_roomsearchiterator_next_events(
-            uniffiTypeRoomSearchIteratorObjectFactory.clonePointer(this)
-          );
-        },
-        /*pollFunc:*/ nativeModule()
-          .ubrn_ffi_matrix_sdk_ffi_rust_future_poll_rust_buffer,
-        /*cancelFunc:*/ nativeModule()
-          .ubrn_ffi_matrix_sdk_ffi_rust_future_cancel_rust_buffer,
-        /*completeFunc:*/ nativeModule()
-          .ubrn_ffi_matrix_sdk_ffi_rust_future_complete_rust_buffer,
-        /*freeFunc:*/ nativeModule()
-          .ubrn_ffi_matrix_sdk_ffi_rust_future_free_rust_buffer,
-        /*liftFunc:*/ FfiConverterOptionalArrayTypeRoomSearchResult.lift.bind(
-          FfiConverterOptionalArrayTypeRoomSearchResult
-        ),
-        /*liftString:*/ FfiConverterString.lift,
-        /*asyncOpts:*/ asyncOpts_,
-        /*errorHandler:*/ FfiConverterTypeSearchError.lift.bind(
-          FfiConverterTypeSearchError
-        )
-      );
-    } catch (__error: any) {
-      if (uniffiIsDebug && __error instanceof Error) {
-        __error.stack = __stack;
-      }
-      throw __error;
-    }
-  }
-
-  /**
-   * {@inheritDoc uniffi-bindgen-react-native#UniffiAbstractObject.uniffiDestroy}
-   */
-  uniffiDestroy(): void {
-    const ptr = (this as any)[destructorGuardSymbol];
-    if (ptr !== undefined) {
-      const pointer = uniffiTypeRoomSearchIteratorObjectFactory.pointer(this);
-      uniffiTypeRoomSearchIteratorObjectFactory.freePointer(pointer);
-      uniffiTypeRoomSearchIteratorObjectFactory.unbless(ptr);
-      delete (this as any)[destructorGuardSymbol];
-    }
-  }
-
-  static instanceOf(obj: any): obj is RoomSearchIterator {
-    return uniffiTypeRoomSearchIteratorObjectFactory.isConcreteType(obj);
-  }
-}
-
-const uniffiTypeRoomSearchIteratorObjectFactory: UniffiObjectFactory<RoomSearchIteratorLike> =
-  (() => {
-    return {
-      create(pointer: UniffiHandle): RoomSearchIteratorLike {
-        const instance = Object.create(RoomSearchIterator.prototype);
-        instance[pointerLiteralSymbol] = pointer;
-        instance[destructorGuardSymbol] = this.bless(pointer);
-        instance[uniffiTypeNameSymbol] = 'RoomSearchIterator';
-        return instance;
-      },
-
-      bless(p: UniffiHandle): UniffiGcObject {
-        return uniffiCaller.rustCall(
-          /*caller:*/ (status) =>
-            nativeModule().ubrn_uniffi_internal_fn_method_roomsearchiterator_ffi__bless_pointer(
-              p,
-              status
-            ),
-          /*liftString:*/ FfiConverterString.lift
-        );
-      },
-
-      unbless(ptr: UniffiGcObject) {
-        ptr.markDestroyed();
-      },
-
-      pointer(obj: RoomSearchIteratorLike): UniffiHandle {
-        if ((obj as any)[destructorGuardSymbol] === undefined) {
-          throw new UniffiInternalError.UnexpectedNullPointer();
-        }
-        return (obj as any)[pointerLiteralSymbol];
-      },
-
-      clonePointer(obj: RoomSearchIteratorLike): UniffiHandle {
-        const pointer = this.pointer(obj);
-        return uniffiCaller.rustCall(
-          /*caller:*/ (callStatus) =>
-            nativeModule().ubrn_uniffi_matrix_sdk_ffi_fn_clone_roomsearchiterator(
-              pointer,
-              callStatus
-            ),
-          /*liftString:*/ FfiConverterString.lift
-        );
-      },
-
-      freePointer(pointer: UniffiHandle): void {
-        uniffiCaller.rustCall(
-          /*caller:*/ (callStatus) =>
-            nativeModule().ubrn_uniffi_matrix_sdk_ffi_fn_free_roomsearchiterator(
-              pointer,
-              callStatus
-            ),
-          /*liftString:*/ FfiConverterString.lift
-        );
-      },
-
-      isConcreteType(obj: any): obj is RoomSearchIteratorLike {
-        return (
-          obj[destructorGuardSymbol] &&
-          obj[uniffiTypeNameSymbol] === 'RoomSearchIterator'
-        );
-      },
-    };
-  })();
-// FfiConverter for RoomSearchIteratorLike
-const FfiConverterTypeRoomSearchIterator = new FfiConverterObject(
-  uniffiTypeRoomSearchIteratorObjectFactory
 );
 
 /**
@@ -59913,11 +59158,6 @@ const FfiConverterArrayTypeConditionalPushRule = new FfiConverterArray(
   FfiConverterTypeConditionalPushRule
 );
 
-// FfiConverter for Array<GlobalSearchResult>
-const FfiConverterArrayTypeGlobalSearchResult = new FfiConverterArray(
-  FfiConverterTypeGlobalSearchResult
-);
-
 // FfiConverter for Array<KnockRequest>
 const FfiConverterArrayTypeKnockRequest = new FfiConverterArray(
   FfiConverterTypeKnockRequest
@@ -59961,11 +59201,6 @@ const FfiConverterArrayTypeRoomHero = new FfiConverterArray(
 // FfiConverter for Array<RoomMember>
 const FfiConverterArrayTypeRoomMember = new FfiConverterArray(
   FfiConverterTypeRoomMember
-);
-
-// FfiConverter for Array<RoomSearchResult>
-const FfiConverterArrayTypeRoomSearchResult = new FfiConverterArray(
-  FfiConverterTypeRoomSearchResult
 );
 
 // FfiConverter for Array<SimplePushRule>
@@ -60173,10 +59408,6 @@ const FfiConverterOptionalTypeUserIdentity = new FfiConverterOptional(
   FfiConverterTypeUserIdentity
 );
 
-// FfiConverter for Array<GlobalSearchResult> | undefined
-const FfiConverterOptionalArrayTypeGlobalSearchResult =
-  new FfiConverterOptional(FfiConverterArrayTypeGlobalSearchResult);
-
 // FfiConverter for Array<RoomHero> | undefined
 const FfiConverterOptionalArrayTypeRoomHero = new FfiConverterOptional(
   FfiConverterArrayTypeRoomHero
@@ -60185,11 +59416,6 @@ const FfiConverterOptionalArrayTypeRoomHero = new FfiConverterOptional(
 // FfiConverter for Array<RoomMember> | undefined
 const FfiConverterOptionalArrayTypeRoomMember = new FfiConverterOptional(
   FfiConverterArrayTypeRoomMember
-);
-
-// FfiConverter for Array<RoomSearchResult> | undefined
-const FfiConverterOptionalArrayTypeRoomSearchResult = new FfiConverterOptional(
-  FfiConverterArrayTypeRoomSearchResult
 );
 
 // FfiConverter for Array<string> | undefined
@@ -61385,14 +60611,6 @@ function uniffiEnsureInitialized() {
     );
   }
   if (
-    nativeModule().ubrn_uniffi_matrix_sdk_ffi_checksum_method_client_search_messages() !==
-    64254
-  ) {
-    throw new UniffiInternalError.ApiChecksumMismatch(
-      'uniffi_matrix_sdk_ffi_checksum_method_client_search_messages'
-    );
-  }
-  if (
     nativeModule().ubrn_uniffi_matrix_sdk_ffi_checksum_method_homeservercapabilities_can_change_avatar() !==
     42689
   ) {
@@ -61686,14 +60904,6 @@ function uniffiEnsureInitialized() {
   ) {
     throw new UniffiInternalError.ApiChecksumMismatch(
       'uniffi_matrix_sdk_ffi_checksum_method_clientbuilder_username'
-    );
-  }
-  if (
-    nativeModule().ubrn_uniffi_matrix_sdk_ffi_checksum_method_clientbuilder_with_search_index_store() !==
-    6477
-  ) {
-    throw new UniffiInternalError.ApiChecksumMismatch(
-      'uniffi_matrix_sdk_ffi_checksum_method_clientbuilder_with_search_index_store'
     );
   }
   if (
@@ -63041,14 +62251,6 @@ function uniffiEnsureInitialized() {
     );
   }
   if (
-    nativeModule().ubrn_uniffi_matrix_sdk_ffi_checksum_method_room_search_messages() !==
-    55573
-  ) {
-    throw new UniffiInternalError.ApiChecksumMismatch(
-      'uniffi_matrix_sdk_ffi_checksum_method_room_search_messages'
-    );
-  }
-  if (
     nativeModule().ubrn_uniffi_matrix_sdk_ffi_checksum_method_roommembersiterator_len() !==
     59145
   ) {
@@ -63414,22 +62616,6 @@ function uniffiEnsureInitialized() {
   ) {
     throw new UniffiInternalError.ApiChecksumMismatch(
       'uniffi_matrix_sdk_ffi_checksum_method_mediasource_url'
-    );
-  }
-  if (
-    nativeModule().ubrn_uniffi_matrix_sdk_ffi_checksum_method_globalsearchiterator_next_events() !==
-    2634
-  ) {
-    throw new UniffiInternalError.ApiChecksumMismatch(
-      'uniffi_matrix_sdk_ffi_checksum_method_globalsearchiterator_next_events'
-    );
-  }
-  if (
-    nativeModule().ubrn_uniffi_matrix_sdk_ffi_checksum_method_roomsearchiterator_next_events() !==
-    63851
-  ) {
-    throw new UniffiInternalError.ApiChecksumMismatch(
-      'uniffi_matrix_sdk_ffi_checksum_method_roomsearchiterator_next_events'
     );
   }
   if (
@@ -64500,8 +63686,6 @@ export default Object.freeze({
     FfiConverterTypeGalleryItemType,
     FfiConverterTypeGalleryMessageContent,
     FfiConverterTypeGalleryUploadParameters,
-    FfiConverterTypeGlobalSearchIterator,
-    FfiConverterTypeGlobalSearchResult,
     FfiConverterTypeHistoryVisibility,
     FfiConverterTypeHomeserverCapabilities,
     FfiConverterTypeHomeserverLoginDetails,
@@ -64618,8 +63802,6 @@ export default Object.freeze({
     FfiConverterTypeRoomPreset,
     FfiConverterTypeRoomPreview,
     FfiConverterTypeRoomPreviewInfo,
-    FfiConverterTypeRoomSearchIterator,
-    FfiConverterTypeRoomSearchResult,
     FfiConverterTypeRoomSendQueueUpdate,
     FfiConverterTypeRoomType,
     FfiConverterTypeRoomVisibility,
@@ -64628,8 +63810,6 @@ export default Object.freeze({
     FfiConverterTypeRtcNotificationType,
     FfiConverterTypeRuleKind,
     FfiConverterTypeRuleset,
-    FfiConverterTypeSearchError,
-    FfiConverterTypeSearchRoomFilter,
     FfiConverterTypeSearchUsersResults,
     FfiConverterTypeSecretStorageEncryptionAlgorithm,
     FfiConverterTypeSecretStorageV1AesHmacSha2Properties,

@@ -982,12 +982,6 @@ extern "C" {
     /*handle*/ uint64_t uniffi_matrix_sdk_ffi_fn_method_client_get_recent_emojis(
         /*handle*/ uint64_t ptr
     );
-    /*handle*/ uint64_t uniffi_matrix_sdk_ffi_fn_method_client_search_messages(
-        /*handle*/ uint64_t ptr, 
-        RustBuffer query, 
-        RustBuffer filter, 
-        uint32_t num_results_per_batch
-    );
     /*handle*/ uint64_t uniffi_matrix_sdk_ffi_fn_clone_homeservercapabilities(
         /*handle*/ uint64_t handle, 
         RustCallStatus *uniffi_out_err
@@ -1175,12 +1169,6 @@ extern "C" {
     /*handle*/ uint64_t uniffi_matrix_sdk_ffi_fn_method_clientbuilder_username(
         /*handle*/ uint64_t ptr, 
         RustBuffer username, 
-        RustCallStatus *uniffi_out_err
-    );
-    /*handle*/ uint64_t uniffi_matrix_sdk_ffi_fn_method_clientbuilder_with_search_index_store(
-        /*handle*/ uint64_t ptr, 
-        RustBuffer path, 
-        RustBuffer password, 
         RustCallStatus *uniffi_out_err
     );
     /*handle*/ uint64_t uniffi_matrix_sdk_ffi_fn_clone_encryption(
@@ -1960,12 +1948,6 @@ extern "C" {
         RustBuffer user_ids, 
         /*handle*/ uint64_t send_handle
     );
-    /*handle*/ uint64_t uniffi_matrix_sdk_ffi_fn_method_room_search_messages(
-        /*handle*/ uint64_t ptr, 
-        RustBuffer query, 
-        uint32_t num_results_per_batch, 
-        RustCallStatus *uniffi_out_err
-    );
     /*handle*/ uint64_t uniffi_matrix_sdk_ffi_fn_clone_roommembersiterator(
         /*handle*/ uint64_t handle, 
         RustCallStatus *uniffi_out_err
@@ -2248,28 +2230,6 @@ extern "C" {
     RustBuffer uniffi_matrix_sdk_ffi_fn_method_mediasource_url(
         /*handle*/ uint64_t ptr, 
         RustCallStatus *uniffi_out_err
-    );
-    /*handle*/ uint64_t uniffi_matrix_sdk_ffi_fn_clone_globalsearchiterator(
-        /*handle*/ uint64_t handle, 
-        RustCallStatus *uniffi_out_err
-    );
-    void uniffi_matrix_sdk_ffi_fn_free_globalsearchiterator(
-        /*handle*/ uint64_t handle, 
-        RustCallStatus *uniffi_out_err
-    );
-    /*handle*/ uint64_t uniffi_matrix_sdk_ffi_fn_method_globalsearchiterator_next_events(
-        /*handle*/ uint64_t ptr
-    );
-    /*handle*/ uint64_t uniffi_matrix_sdk_ffi_fn_clone_roomsearchiterator(
-        /*handle*/ uint64_t handle, 
-        RustCallStatus *uniffi_out_err
-    );
-    void uniffi_matrix_sdk_ffi_fn_free_roomsearchiterator(
-        /*handle*/ uint64_t handle, 
-        RustCallStatus *uniffi_out_err
-    );
-    /*handle*/ uint64_t uniffi_matrix_sdk_ffi_fn_method_roomsearchiterator_next_events(
-        /*handle*/ uint64_t ptr
     );
     /*handle*/ uint64_t uniffi_matrix_sdk_ffi_fn_clone_sqlitestorebuilder(
         /*handle*/ uint64_t handle, 
@@ -3414,8 +3374,6 @@ extern "C" {
     );
     uint16_t uniffi_matrix_sdk_ffi_checksum_method_client_get_recent_emojis(
     );
-    uint16_t uniffi_matrix_sdk_ffi_checksum_method_client_search_messages(
-    );
     uint16_t uniffi_matrix_sdk_ffi_checksum_method_homeservercapabilities_can_change_avatar(
     );
     uint16_t uniffi_matrix_sdk_ffi_checksum_method_homeservercapabilities_can_change_displayname(
@@ -3489,8 +3447,6 @@ extern "C" {
     uint16_t uniffi_matrix_sdk_ffi_checksum_method_clientbuilder_user_agent(
     );
     uint16_t uniffi_matrix_sdk_ffi_checksum_method_clientbuilder_username(
-    );
-    uint16_t uniffi_matrix_sdk_ffi_checksum_method_clientbuilder_with_search_index_store(
     );
     uint16_t uniffi_matrix_sdk_ffi_checksum_method_encryption_backup_exists_on_server(
     );
@@ -3828,8 +3784,6 @@ extern "C" {
     );
     uint16_t uniffi_matrix_sdk_ffi_checksum_method_room_withdraw_verification_and_resend(
     );
-    uint16_t uniffi_matrix_sdk_ffi_checksum_method_room_search_messages(
-    );
     uint16_t uniffi_matrix_sdk_ffi_checksum_method_roommembersiterator_len(
     );
     uint16_t uniffi_matrix_sdk_ffi_checksum_method_roommembersiterator_next_chunk(
@@ -3921,10 +3875,6 @@ extern "C" {
     uint16_t uniffi_matrix_sdk_ffi_checksum_method_mediasource_to_json(
     );
     uint16_t uniffi_matrix_sdk_ffi_checksum_method_mediasource_url(
-    );
-    uint16_t uniffi_matrix_sdk_ffi_checksum_method_globalsearchiterator_next_events(
-    );
-    uint16_t uniffi_matrix_sdk_ffi_checksum_method_roomsearchiterator_next_events(
     );
     uint16_t uniffi_matrix_sdk_ffi_checksum_method_sqlitestorebuilder_cache_size(
     );
@@ -20322,14 +20272,6 @@ NativeMatrixSdkFfi::NativeMatrixSdkFfi(
             return this->cpp_uniffi_matrix_sdk_ffi_fn_method_client_get_recent_emojis(rt, thisVal, args, count);
         }
     );
-    props["ubrn_uniffi_matrix_sdk_ffi_fn_method_client_search_messages"] = jsi::Function::createFromHostFunction(
-        rt,
-        jsi::PropNameID::forAscii(rt, "ubrn_uniffi_matrix_sdk_ffi_fn_method_client_search_messages"),
-        4,
-        [this](jsi::Runtime &rt, const jsi::Value &thisVal, const jsi::Value *args, size_t count) -> jsi::Value {
-            return this->cpp_uniffi_matrix_sdk_ffi_fn_method_client_search_messages(rt, thisVal, args, count);
-        }
-    );
     props["ubrn_uniffi_matrix_sdk_ffi_fn_clone_homeservercapabilities"] = jsi::Function::createFromHostFunction(
         rt,
         jsi::PropNameID::forAscii(rt, "ubrn_uniffi_matrix_sdk_ffi_fn_clone_homeservercapabilities"),
@@ -20680,14 +20622,6 @@ NativeMatrixSdkFfi::NativeMatrixSdkFfi(
         2,
         [this](jsi::Runtime &rt, const jsi::Value &thisVal, const jsi::Value *args, size_t count) -> jsi::Value {
             return this->cpp_uniffi_matrix_sdk_ffi_fn_method_clientbuilder_username(rt, thisVal, args, count);
-        }
-    );
-    props["ubrn_uniffi_matrix_sdk_ffi_fn_method_clientbuilder_with_search_index_store"] = jsi::Function::createFromHostFunction(
-        rt,
-        jsi::PropNameID::forAscii(rt, "ubrn_uniffi_matrix_sdk_ffi_fn_method_clientbuilder_with_search_index_store"),
-        3,
-        [this](jsi::Runtime &rt, const jsi::Value &thisVal, const jsi::Value *args, size_t count) -> jsi::Value {
-            return this->cpp_uniffi_matrix_sdk_ffi_fn_method_clientbuilder_with_search_index_store(rt, thisVal, args, count);
         }
     );
     props["ubrn_uniffi_matrix_sdk_ffi_fn_clone_encryption"] = jsi::Function::createFromHostFunction(
@@ -22234,14 +22168,6 @@ NativeMatrixSdkFfi::NativeMatrixSdkFfi(
             return this->cpp_uniffi_matrix_sdk_ffi_fn_method_room_withdraw_verification_and_resend(rt, thisVal, args, count);
         }
     );
-    props["ubrn_uniffi_matrix_sdk_ffi_fn_method_room_search_messages"] = jsi::Function::createFromHostFunction(
-        rt,
-        jsi::PropNameID::forAscii(rt, "ubrn_uniffi_matrix_sdk_ffi_fn_method_room_search_messages"),
-        3,
-        [this](jsi::Runtime &rt, const jsi::Value &thisVal, const jsi::Value *args, size_t count) -> jsi::Value {
-            return this->cpp_uniffi_matrix_sdk_ffi_fn_method_room_search_messages(rt, thisVal, args, count);
-        }
-    );
     props["ubrn_uniffi_matrix_sdk_ffi_fn_clone_roommembersiterator"] = jsi::Function::createFromHostFunction(
         rt,
         jsi::PropNameID::forAscii(rt, "ubrn_uniffi_matrix_sdk_ffi_fn_clone_roommembersiterator"),
@@ -22768,54 +22694,6 @@ NativeMatrixSdkFfi::NativeMatrixSdkFfi(
         1,
         [this](jsi::Runtime &rt, const jsi::Value &thisVal, const jsi::Value *args, size_t count) -> jsi::Value {
             return this->cpp_uniffi_matrix_sdk_ffi_fn_method_mediasource_url(rt, thisVal, args, count);
-        }
-    );
-    props["ubrn_uniffi_matrix_sdk_ffi_fn_clone_globalsearchiterator"] = jsi::Function::createFromHostFunction(
-        rt,
-        jsi::PropNameID::forAscii(rt, "ubrn_uniffi_matrix_sdk_ffi_fn_clone_globalsearchiterator"),
-        1,
-        [this](jsi::Runtime &rt, const jsi::Value &thisVal, const jsi::Value *args, size_t count) -> jsi::Value {
-            return this->cpp_uniffi_matrix_sdk_ffi_fn_clone_globalsearchiterator(rt, thisVal, args, count);
-        }
-    );
-    props["ubrn_uniffi_matrix_sdk_ffi_fn_free_globalsearchiterator"] = jsi::Function::createFromHostFunction(
-        rt,
-        jsi::PropNameID::forAscii(rt, "ubrn_uniffi_matrix_sdk_ffi_fn_free_globalsearchiterator"),
-        1,
-        [this](jsi::Runtime &rt, const jsi::Value &thisVal, const jsi::Value *args, size_t count) -> jsi::Value {
-            return this->cpp_uniffi_matrix_sdk_ffi_fn_free_globalsearchiterator(rt, thisVal, args, count);
-        }
-    );
-    props["ubrn_uniffi_matrix_sdk_ffi_fn_method_globalsearchiterator_next_events"] = jsi::Function::createFromHostFunction(
-        rt,
-        jsi::PropNameID::forAscii(rt, "ubrn_uniffi_matrix_sdk_ffi_fn_method_globalsearchiterator_next_events"),
-        1,
-        [this](jsi::Runtime &rt, const jsi::Value &thisVal, const jsi::Value *args, size_t count) -> jsi::Value {
-            return this->cpp_uniffi_matrix_sdk_ffi_fn_method_globalsearchiterator_next_events(rt, thisVal, args, count);
-        }
-    );
-    props["ubrn_uniffi_matrix_sdk_ffi_fn_clone_roomsearchiterator"] = jsi::Function::createFromHostFunction(
-        rt,
-        jsi::PropNameID::forAscii(rt, "ubrn_uniffi_matrix_sdk_ffi_fn_clone_roomsearchiterator"),
-        1,
-        [this](jsi::Runtime &rt, const jsi::Value &thisVal, const jsi::Value *args, size_t count) -> jsi::Value {
-            return this->cpp_uniffi_matrix_sdk_ffi_fn_clone_roomsearchiterator(rt, thisVal, args, count);
-        }
-    );
-    props["ubrn_uniffi_matrix_sdk_ffi_fn_free_roomsearchiterator"] = jsi::Function::createFromHostFunction(
-        rt,
-        jsi::PropNameID::forAscii(rt, "ubrn_uniffi_matrix_sdk_ffi_fn_free_roomsearchiterator"),
-        1,
-        [this](jsi::Runtime &rt, const jsi::Value &thisVal, const jsi::Value *args, size_t count) -> jsi::Value {
-            return this->cpp_uniffi_matrix_sdk_ffi_fn_free_roomsearchiterator(rt, thisVal, args, count);
-        }
-    );
-    props["ubrn_uniffi_matrix_sdk_ffi_fn_method_roomsearchiterator_next_events"] = jsi::Function::createFromHostFunction(
-        rt,
-        jsi::PropNameID::forAscii(rt, "ubrn_uniffi_matrix_sdk_ffi_fn_method_roomsearchiterator_next_events"),
-        1,
-        [this](jsi::Runtime &rt, const jsi::Value &thisVal, const jsi::Value *args, size_t count) -> jsi::Value {
-            return this->cpp_uniffi_matrix_sdk_ffi_fn_method_roomsearchiterator_next_events(rt, thisVal, args, count);
         }
     );
     props["ubrn_uniffi_matrix_sdk_ffi_fn_clone_sqlitestorebuilder"] = jsi::Function::createFromHostFunction(
@@ -25602,14 +25480,6 @@ NativeMatrixSdkFfi::NativeMatrixSdkFfi(
             return this->cpp_uniffi_matrix_sdk_ffi_checksum_method_client_get_recent_emojis(rt, thisVal, args, count);
         }
     );
-    props["ubrn_uniffi_matrix_sdk_ffi_checksum_method_client_search_messages"] = jsi::Function::createFromHostFunction(
-        rt,
-        jsi::PropNameID::forAscii(rt, "ubrn_uniffi_matrix_sdk_ffi_checksum_method_client_search_messages"),
-        0,
-        [this](jsi::Runtime &rt, const jsi::Value &thisVal, const jsi::Value *args, size_t count) -> jsi::Value {
-            return this->cpp_uniffi_matrix_sdk_ffi_checksum_method_client_search_messages(rt, thisVal, args, count);
-        }
-    );
     props["ubrn_uniffi_matrix_sdk_ffi_checksum_method_homeservercapabilities_can_change_avatar"] = jsi::Function::createFromHostFunction(
         rt,
         jsi::PropNameID::forAscii(rt, "ubrn_uniffi_matrix_sdk_ffi_checksum_method_homeservercapabilities_can_change_avatar"),
@@ -25904,14 +25774,6 @@ NativeMatrixSdkFfi::NativeMatrixSdkFfi(
         0,
         [this](jsi::Runtime &rt, const jsi::Value &thisVal, const jsi::Value *args, size_t count) -> jsi::Value {
             return this->cpp_uniffi_matrix_sdk_ffi_checksum_method_clientbuilder_username(rt, thisVal, args, count);
-        }
-    );
-    props["ubrn_uniffi_matrix_sdk_ffi_checksum_method_clientbuilder_with_search_index_store"] = jsi::Function::createFromHostFunction(
-        rt,
-        jsi::PropNameID::forAscii(rt, "ubrn_uniffi_matrix_sdk_ffi_checksum_method_clientbuilder_with_search_index_store"),
-        0,
-        [this](jsi::Runtime &rt, const jsi::Value &thisVal, const jsi::Value *args, size_t count) -> jsi::Value {
-            return this->cpp_uniffi_matrix_sdk_ffi_checksum_method_clientbuilder_with_search_index_store(rt, thisVal, args, count);
         }
     );
     props["ubrn_uniffi_matrix_sdk_ffi_checksum_method_encryption_backup_exists_on_server"] = jsi::Function::createFromHostFunction(
@@ -27258,14 +27120,6 @@ NativeMatrixSdkFfi::NativeMatrixSdkFfi(
             return this->cpp_uniffi_matrix_sdk_ffi_checksum_method_room_withdraw_verification_and_resend(rt, thisVal, args, count);
         }
     );
-    props["ubrn_uniffi_matrix_sdk_ffi_checksum_method_room_search_messages"] = jsi::Function::createFromHostFunction(
-        rt,
-        jsi::PropNameID::forAscii(rt, "ubrn_uniffi_matrix_sdk_ffi_checksum_method_room_search_messages"),
-        0,
-        [this](jsi::Runtime &rt, const jsi::Value &thisVal, const jsi::Value *args, size_t count) -> jsi::Value {
-            return this->cpp_uniffi_matrix_sdk_ffi_checksum_method_room_search_messages(rt, thisVal, args, count);
-        }
-    );
     props["ubrn_uniffi_matrix_sdk_ffi_checksum_method_roommembersiterator_len"] = jsi::Function::createFromHostFunction(
         rt,
         jsi::PropNameID::forAscii(rt, "ubrn_uniffi_matrix_sdk_ffi_checksum_method_roommembersiterator_len"),
@@ -27632,22 +27486,6 @@ NativeMatrixSdkFfi::NativeMatrixSdkFfi(
         0,
         [this](jsi::Runtime &rt, const jsi::Value &thisVal, const jsi::Value *args, size_t count) -> jsi::Value {
             return this->cpp_uniffi_matrix_sdk_ffi_checksum_method_mediasource_url(rt, thisVal, args, count);
-        }
-    );
-    props["ubrn_uniffi_matrix_sdk_ffi_checksum_method_globalsearchiterator_next_events"] = jsi::Function::createFromHostFunction(
-        rt,
-        jsi::PropNameID::forAscii(rt, "ubrn_uniffi_matrix_sdk_ffi_checksum_method_globalsearchiterator_next_events"),
-        0,
-        [this](jsi::Runtime &rt, const jsi::Value &thisVal, const jsi::Value *args, size_t count) -> jsi::Value {
-            return this->cpp_uniffi_matrix_sdk_ffi_checksum_method_globalsearchiterator_next_events(rt, thisVal, args, count);
-        }
-    );
-    props["ubrn_uniffi_matrix_sdk_ffi_checksum_method_roomsearchiterator_next_events"] = jsi::Function::createFromHostFunction(
-        rt,
-        jsi::PropNameID::forAscii(rt, "ubrn_uniffi_matrix_sdk_ffi_checksum_method_roomsearchiterator_next_events"),
-        0,
-        [this](jsi::Runtime &rt, const jsi::Value &thisVal, const jsi::Value *args, size_t count) -> jsi::Value {
-            return this->cpp_uniffi_matrix_sdk_ffi_checksum_method_roomsearchiterator_next_events(rt, thisVal, args, count);
         }
     );
     props["ubrn_uniffi_matrix_sdk_ffi_checksum_method_sqlitestorebuilder_cache_size"] = jsi::Function::createFromHostFunction(
@@ -28842,22 +28680,6 @@ NativeMatrixSdkFfi::NativeMatrixSdkFfi(
             return this->cpp_uniffi_internal_fn_method_mediasource_ffi__bless_pointer(rt, thisVal, args, count);
         }
     );
-    props["ubrn_uniffi_internal_fn_method_globalsearchiterator_ffi__bless_pointer"] = jsi::Function::createFromHostFunction(
-        rt,
-        jsi::PropNameID::forAscii(rt, "ubrn_uniffi_internal_fn_method_globalsearchiterator_ffi__bless_pointer"),
-        1,
-        [this](jsi::Runtime &rt, const jsi::Value &thisVal, const jsi::Value *args, size_t count) -> jsi::Value {
-            return this->cpp_uniffi_internal_fn_method_globalsearchiterator_ffi__bless_pointer(rt, thisVal, args, count);
-        }
-    );
-    props["ubrn_uniffi_internal_fn_method_roomsearchiterator_ffi__bless_pointer"] = jsi::Function::createFromHostFunction(
-        rt,
-        jsi::PropNameID::forAscii(rt, "ubrn_uniffi_internal_fn_method_roomsearchiterator_ffi__bless_pointer"),
-        1,
-        [this](jsi::Runtime &rt, const jsi::Value &thisVal, const jsi::Value *args, size_t count) -> jsi::Value {
-            return this->cpp_uniffi_internal_fn_method_roomsearchiterator_ffi__bless_pointer(rt, thisVal, args, count);
-        }
-    );
     props["ubrn_uniffi_internal_fn_method_sqlitestorebuilder_ffi__bless_pointer"] = jsi::Function::createFromHostFunction(
         rt,
         jsi::PropNameID::forAscii(rt, "ubrn_uniffi_internal_fn_method_sqlitestorebuilder_ffi__bless_pointer"),
@@ -29322,24 +29144,6 @@ jsi::Value NativeMatrixSdkFfi::cpp_uniffi_internal_fn_func_ffi__arraybuffer_to_s
     auto static destructor = [](uint64_t p) {
         RustCallStatus status = {0};
         uniffi_matrix_sdk_ffi_fn_free_mediasource(p, &status);
-    };
-    auto ptrObj = std::make_shared<uniffi_jsi::DestructibleObject>(pointer, destructor);
-    auto obj = jsi::Object::createFromHostObject(rt, ptrObj);
-    return jsi::Value(rt, obj);
-}jsi::Value NativeMatrixSdkFfi::cpp_uniffi_internal_fn_method_globalsearchiterator_ffi__bless_pointer(jsi::Runtime& rt, const jsi::Value& thisVal, const jsi::Value* args, size_t count) {
-    auto pointer = uniffi_jsi::Bridging<uint64_t>::fromJs(rt, callInvoker, args[0]);
-    auto static destructor = [](uint64_t p) {
-        RustCallStatus status = {0};
-        uniffi_matrix_sdk_ffi_fn_free_globalsearchiterator(p, &status);
-    };
-    auto ptrObj = std::make_shared<uniffi_jsi::DestructibleObject>(pointer, destructor);
-    auto obj = jsi::Object::createFromHostObject(rt, ptrObj);
-    return jsi::Value(rt, obj);
-}jsi::Value NativeMatrixSdkFfi::cpp_uniffi_internal_fn_method_roomsearchiterator_ffi__bless_pointer(jsi::Runtime& rt, const jsi::Value& thisVal, const jsi::Value* args, size_t count) {
-    auto pointer = uniffi_jsi::Bridging<uint64_t>::fromJs(rt, callInvoker, args[0]);
-    auto static destructor = [](uint64_t p) {
-        RustCallStatus status = {0};
-        uniffi_matrix_sdk_ffi_fn_free_roomsearchiterator(p, &status);
     };
     auto ptrObj = std::make_shared<uniffi_jsi::DestructibleObject>(pointer, destructor);
     auto obj = jsi::Object::createFromHostObject(rt, ptrObj);
@@ -30433,13 +30237,6 @@ jsi::Value NativeMatrixSdkFfi::cpp_uniffi_matrix_sdk_ffi_fn_method_client_get_re
         
         return uniffi_jsi::Bridging</*handle*/ uint64_t>::toJs(rt, callInvoker, value);
 }
-jsi::Value NativeMatrixSdkFfi::cpp_uniffi_matrix_sdk_ffi_fn_method_client_search_messages(jsi::Runtime& rt, const jsi::Value& thisVal, const jsi::Value* args, size_t count) {
-        auto value = uniffi_matrix_sdk_ffi_fn_method_client_search_messages(uniffi_jsi::Bridging</*handle*/ uint64_t>::fromJs(rt, callInvoker, args[0]), uniffi::matrix_sdk_ffi::Bridging<RustBuffer>::fromJs(rt, callInvoker, args[1]), uniffi::matrix_sdk_ffi::Bridging<RustBuffer>::fromJs(rt, callInvoker, args[2]), uniffi_jsi::Bridging<uint32_t>::fromJs(rt, callInvoker, args[3])
-        );
-
-        
-        return uniffi_jsi::Bridging</*handle*/ uint64_t>::toJs(rt, callInvoker, value);
-}
 jsi::Value NativeMatrixSdkFfi::cpp_uniffi_matrix_sdk_ffi_fn_clone_homeservercapabilities(jsi::Runtime& rt, const jsi::Value& thisVal, const jsi::Value* args, size_t count) {
         RustCallStatus status = uniffi::matrix_sdk_ffi::Bridging<RustCallStatus>::rustSuccess(rt);
         auto value = uniffi_matrix_sdk_ffi_fn_clone_homeservercapabilities(uniffi_jsi::Bridging</*handle*/ uint64_t>::fromJs(rt, callInvoker, args[0]), 
@@ -30845,16 +30642,6 @@ jsi::Value NativeMatrixSdkFfi::cpp_uniffi_matrix_sdk_ffi_fn_method_clientbuilder
 jsi::Value NativeMatrixSdkFfi::cpp_uniffi_matrix_sdk_ffi_fn_method_clientbuilder_username(jsi::Runtime& rt, const jsi::Value& thisVal, const jsi::Value* args, size_t count) {
         RustCallStatus status = uniffi::matrix_sdk_ffi::Bridging<RustCallStatus>::rustSuccess(rt);
         auto value = uniffi_matrix_sdk_ffi_fn_method_clientbuilder_username(uniffi_jsi::Bridging</*handle*/ uint64_t>::fromJs(rt, callInvoker, args[0]), uniffi::matrix_sdk_ffi::Bridging<RustBuffer>::fromJs(rt, callInvoker, args[1]), 
-            &status
-        );
-        uniffi::matrix_sdk_ffi::Bridging<RustCallStatus>::copyIntoJs(rt, callInvoker, status, args[count - 1]);
-
-        
-        return uniffi_jsi::Bridging</*handle*/ uint64_t>::toJs(rt, callInvoker, value);
-}
-jsi::Value NativeMatrixSdkFfi::cpp_uniffi_matrix_sdk_ffi_fn_method_clientbuilder_with_search_index_store(jsi::Runtime& rt, const jsi::Value& thisVal, const jsi::Value* args, size_t count) {
-        RustCallStatus status = uniffi::matrix_sdk_ffi::Bridging<RustCallStatus>::rustSuccess(rt);
-        auto value = uniffi_matrix_sdk_ffi_fn_method_clientbuilder_with_search_index_store(uniffi_jsi::Bridging</*handle*/ uint64_t>::fromJs(rt, callInvoker, args[0]), uniffi::matrix_sdk_ffi::Bridging<RustBuffer>::fromJs(rt, callInvoker, args[1]), uniffi::matrix_sdk_ffi::Bridging<RustBuffer>::fromJs(rt, callInvoker, args[2]), 
             &status
         );
         uniffi::matrix_sdk_ffi::Bridging<RustCallStatus>::copyIntoJs(rt, callInvoker, status, args[count - 1]);
@@ -32428,16 +32215,6 @@ jsi::Value NativeMatrixSdkFfi::cpp_uniffi_matrix_sdk_ffi_fn_method_room_withdraw
         
         return uniffi_jsi::Bridging</*handle*/ uint64_t>::toJs(rt, callInvoker, value);
 }
-jsi::Value NativeMatrixSdkFfi::cpp_uniffi_matrix_sdk_ffi_fn_method_room_search_messages(jsi::Runtime& rt, const jsi::Value& thisVal, const jsi::Value* args, size_t count) {
-        RustCallStatus status = uniffi::matrix_sdk_ffi::Bridging<RustCallStatus>::rustSuccess(rt);
-        auto value = uniffi_matrix_sdk_ffi_fn_method_room_search_messages(uniffi_jsi::Bridging</*handle*/ uint64_t>::fromJs(rt, callInvoker, args[0]), uniffi::matrix_sdk_ffi::Bridging<RustBuffer>::fromJs(rt, callInvoker, args[1]), uniffi_jsi::Bridging<uint32_t>::fromJs(rt, callInvoker, args[2]), 
-            &status
-        );
-        uniffi::matrix_sdk_ffi::Bridging<RustCallStatus>::copyIntoJs(rt, callInvoker, status, args[count - 1]);
-
-        
-        return uniffi_jsi::Bridging</*handle*/ uint64_t>::toJs(rt, callInvoker, value);
-}
 jsi::Value NativeMatrixSdkFfi::cpp_uniffi_matrix_sdk_ffi_fn_clone_roommembersiterator(jsi::Runtime& rt, const jsi::Value& thisVal, const jsi::Value* args, size_t count) {
         RustCallStatus status = uniffi::matrix_sdk_ffi::Bridging<RustCallStatus>::rustSuccess(rt);
         auto value = uniffi_matrix_sdk_ffi_fn_clone_roommembersiterator(uniffi_jsi::Bridging</*handle*/ uint64_t>::fromJs(rt, callInvoker, args[0]), 
@@ -33079,60 +32856,6 @@ jsi::Value NativeMatrixSdkFfi::cpp_uniffi_matrix_sdk_ffi_fn_method_mediasource_u
 
         
         return uniffi::matrix_sdk_ffi::Bridging<RustBuffer>::toJs(rt, callInvoker, value);
-}
-jsi::Value NativeMatrixSdkFfi::cpp_uniffi_matrix_sdk_ffi_fn_clone_globalsearchiterator(jsi::Runtime& rt, const jsi::Value& thisVal, const jsi::Value* args, size_t count) {
-        RustCallStatus status = uniffi::matrix_sdk_ffi::Bridging<RustCallStatus>::rustSuccess(rt);
-        auto value = uniffi_matrix_sdk_ffi_fn_clone_globalsearchiterator(uniffi_jsi::Bridging</*handle*/ uint64_t>::fromJs(rt, callInvoker, args[0]), 
-            &status
-        );
-        uniffi::matrix_sdk_ffi::Bridging<RustCallStatus>::copyIntoJs(rt, callInvoker, status, args[count - 1]);
-
-        
-        return uniffi_jsi::Bridging</*handle*/ uint64_t>::toJs(rt, callInvoker, value);
-}
-jsi::Value NativeMatrixSdkFfi::cpp_uniffi_matrix_sdk_ffi_fn_free_globalsearchiterator(jsi::Runtime& rt, const jsi::Value& thisVal, const jsi::Value* args, size_t count) {
-        RustCallStatus status = uniffi::matrix_sdk_ffi::Bridging<RustCallStatus>::rustSuccess(rt);
-        uniffi_matrix_sdk_ffi_fn_free_globalsearchiterator(uniffi_jsi::Bridging</*handle*/ uint64_t>::fromJs(rt, callInvoker, args[0]), 
-            &status
-        );
-        uniffi::matrix_sdk_ffi::Bridging<RustCallStatus>::copyIntoJs(rt, callInvoker, status, args[count - 1]);
-
-        
-        return jsi::Value::undefined();
-}
-jsi::Value NativeMatrixSdkFfi::cpp_uniffi_matrix_sdk_ffi_fn_method_globalsearchiterator_next_events(jsi::Runtime& rt, const jsi::Value& thisVal, const jsi::Value* args, size_t count) {
-        auto value = uniffi_matrix_sdk_ffi_fn_method_globalsearchiterator_next_events(uniffi_jsi::Bridging</*handle*/ uint64_t>::fromJs(rt, callInvoker, args[0])
-        );
-
-        
-        return uniffi_jsi::Bridging</*handle*/ uint64_t>::toJs(rt, callInvoker, value);
-}
-jsi::Value NativeMatrixSdkFfi::cpp_uniffi_matrix_sdk_ffi_fn_clone_roomsearchiterator(jsi::Runtime& rt, const jsi::Value& thisVal, const jsi::Value* args, size_t count) {
-        RustCallStatus status = uniffi::matrix_sdk_ffi::Bridging<RustCallStatus>::rustSuccess(rt);
-        auto value = uniffi_matrix_sdk_ffi_fn_clone_roomsearchiterator(uniffi_jsi::Bridging</*handle*/ uint64_t>::fromJs(rt, callInvoker, args[0]), 
-            &status
-        );
-        uniffi::matrix_sdk_ffi::Bridging<RustCallStatus>::copyIntoJs(rt, callInvoker, status, args[count - 1]);
-
-        
-        return uniffi_jsi::Bridging</*handle*/ uint64_t>::toJs(rt, callInvoker, value);
-}
-jsi::Value NativeMatrixSdkFfi::cpp_uniffi_matrix_sdk_ffi_fn_free_roomsearchiterator(jsi::Runtime& rt, const jsi::Value& thisVal, const jsi::Value* args, size_t count) {
-        RustCallStatus status = uniffi::matrix_sdk_ffi::Bridging<RustCallStatus>::rustSuccess(rt);
-        uniffi_matrix_sdk_ffi_fn_free_roomsearchiterator(uniffi_jsi::Bridging</*handle*/ uint64_t>::fromJs(rt, callInvoker, args[0]), 
-            &status
-        );
-        uniffi::matrix_sdk_ffi::Bridging<RustCallStatus>::copyIntoJs(rt, callInvoker, status, args[count - 1]);
-
-        
-        return jsi::Value::undefined();
-}
-jsi::Value NativeMatrixSdkFfi::cpp_uniffi_matrix_sdk_ffi_fn_method_roomsearchiterator_next_events(jsi::Runtime& rt, const jsi::Value& thisVal, const jsi::Value* args, size_t count) {
-        auto value = uniffi_matrix_sdk_ffi_fn_method_roomsearchiterator_next_events(uniffi_jsi::Bridging</*handle*/ uint64_t>::fromJs(rt, callInvoker, args[0])
-        );
-
-        
-        return uniffi_jsi::Bridging</*handle*/ uint64_t>::toJs(rt, callInvoker, value);
 }
 jsi::Value NativeMatrixSdkFfi::cpp_uniffi_matrix_sdk_ffi_fn_clone_sqlitestorebuilder(jsi::Runtime& rt, const jsi::Value& thisVal, const jsi::Value* args, size_t count) {
         RustCallStatus status = uniffi::matrix_sdk_ffi::Bridging<RustCallStatus>::rustSuccess(rt);
@@ -36237,13 +35960,6 @@ jsi::Value NativeMatrixSdkFfi::cpp_uniffi_matrix_sdk_ffi_checksum_method_client_
         
         return uniffi_jsi::Bridging<uint16_t>::toJs(rt, callInvoker, value);
 }
-jsi::Value NativeMatrixSdkFfi::cpp_uniffi_matrix_sdk_ffi_checksum_method_client_search_messages(jsi::Runtime& rt, const jsi::Value& thisVal, const jsi::Value* args, size_t count) {
-        auto value = uniffi_matrix_sdk_ffi_checksum_method_client_search_messages(
-        );
-
-        
-        return uniffi_jsi::Bridging<uint16_t>::toJs(rt, callInvoker, value);
-}
 jsi::Value NativeMatrixSdkFfi::cpp_uniffi_matrix_sdk_ffi_checksum_method_homeservercapabilities_can_change_avatar(jsi::Runtime& rt, const jsi::Value& thisVal, const jsi::Value* args, size_t count) {
         auto value = uniffi_matrix_sdk_ffi_checksum_method_homeservercapabilities_can_change_avatar(
         );
@@ -36498,13 +36214,6 @@ jsi::Value NativeMatrixSdkFfi::cpp_uniffi_matrix_sdk_ffi_checksum_method_clientb
 }
 jsi::Value NativeMatrixSdkFfi::cpp_uniffi_matrix_sdk_ffi_checksum_method_clientbuilder_username(jsi::Runtime& rt, const jsi::Value& thisVal, const jsi::Value* args, size_t count) {
         auto value = uniffi_matrix_sdk_ffi_checksum_method_clientbuilder_username(
-        );
-
-        
-        return uniffi_jsi::Bridging<uint16_t>::toJs(rt, callInvoker, value);
-}
-jsi::Value NativeMatrixSdkFfi::cpp_uniffi_matrix_sdk_ffi_checksum_method_clientbuilder_with_search_index_store(jsi::Runtime& rt, const jsi::Value& thisVal, const jsi::Value* args, size_t count) {
-        auto value = uniffi_matrix_sdk_ffi_checksum_method_clientbuilder_with_search_index_store(
         );
 
         
@@ -37686,13 +37395,6 @@ jsi::Value NativeMatrixSdkFfi::cpp_uniffi_matrix_sdk_ffi_checksum_method_room_wi
         
         return uniffi_jsi::Bridging<uint16_t>::toJs(rt, callInvoker, value);
 }
-jsi::Value NativeMatrixSdkFfi::cpp_uniffi_matrix_sdk_ffi_checksum_method_room_search_messages(jsi::Runtime& rt, const jsi::Value& thisVal, const jsi::Value* args, size_t count) {
-        auto value = uniffi_matrix_sdk_ffi_checksum_method_room_search_messages(
-        );
-
-        
-        return uniffi_jsi::Bridging<uint16_t>::toJs(rt, callInvoker, value);
-}
 jsi::Value NativeMatrixSdkFfi::cpp_uniffi_matrix_sdk_ffi_checksum_method_roommembersiterator_len(jsi::Runtime& rt, const jsi::Value& thisVal, const jsi::Value* args, size_t count) {
         auto value = uniffi_matrix_sdk_ffi_checksum_method_roommembersiterator_len(
         );
@@ -38010,20 +37712,6 @@ jsi::Value NativeMatrixSdkFfi::cpp_uniffi_matrix_sdk_ffi_checksum_method_mediaso
 }
 jsi::Value NativeMatrixSdkFfi::cpp_uniffi_matrix_sdk_ffi_checksum_method_mediasource_url(jsi::Runtime& rt, const jsi::Value& thisVal, const jsi::Value* args, size_t count) {
         auto value = uniffi_matrix_sdk_ffi_checksum_method_mediasource_url(
-        );
-
-        
-        return uniffi_jsi::Bridging<uint16_t>::toJs(rt, callInvoker, value);
-}
-jsi::Value NativeMatrixSdkFfi::cpp_uniffi_matrix_sdk_ffi_checksum_method_globalsearchiterator_next_events(jsi::Runtime& rt, const jsi::Value& thisVal, const jsi::Value* args, size_t count) {
-        auto value = uniffi_matrix_sdk_ffi_checksum_method_globalsearchiterator_next_events(
-        );
-
-        
-        return uniffi_jsi::Bridging<uint16_t>::toJs(rt, callInvoker, value);
-}
-jsi::Value NativeMatrixSdkFfi::cpp_uniffi_matrix_sdk_ffi_checksum_method_roomsearchiterator_next_events(jsi::Runtime& rt, const jsi::Value& thisVal, const jsi::Value* args, size_t count) {
-        auto value = uniffi_matrix_sdk_ffi_checksum_method_roomsearchiterator_next_events(
         );
 
         

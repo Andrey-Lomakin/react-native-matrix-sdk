@@ -141,7 +141,6 @@ class NativeMatrixSdkFfi : public jsi::HostObject {
     jsi::Value cpp_uniffi_matrix_sdk_ffi_fn_method_client_user_id_server_name(jsi::Runtime& rt, const jsi::Value& thisVal, const jsi::Value* args, size_t count);
     jsi::Value cpp_uniffi_matrix_sdk_ffi_fn_method_client_add_recent_emoji(jsi::Runtime& rt, const jsi::Value& thisVal, const jsi::Value* args, size_t count);
     jsi::Value cpp_uniffi_matrix_sdk_ffi_fn_method_client_get_recent_emojis(jsi::Runtime& rt, const jsi::Value& thisVal, const jsi::Value* args, size_t count);
-    jsi::Value cpp_uniffi_matrix_sdk_ffi_fn_method_client_search_messages(jsi::Runtime& rt, const jsi::Value& thisVal, const jsi::Value* args, size_t count);
     jsi::Value cpp_uniffi_matrix_sdk_ffi_fn_clone_homeservercapabilities(jsi::Runtime& rt, const jsi::Value& thisVal, const jsi::Value* args, size_t count);
     jsi::Value cpp_uniffi_matrix_sdk_ffi_fn_free_homeservercapabilities(jsi::Runtime& rt, const jsi::Value& thisVal, const jsi::Value* args, size_t count);
     jsi::Value cpp_uniffi_matrix_sdk_ffi_fn_method_homeservercapabilities_can_change_avatar(jsi::Runtime& rt, const jsi::Value& thisVal, const jsi::Value* args, size_t count);
@@ -186,7 +185,6 @@ class NativeMatrixSdkFfi : public jsi::HostObject {
     jsi::Value cpp_uniffi_matrix_sdk_ffi_fn_method_clientbuilder_threads_enabled(jsi::Runtime& rt, const jsi::Value& thisVal, const jsi::Value* args, size_t count);
     jsi::Value cpp_uniffi_matrix_sdk_ffi_fn_method_clientbuilder_user_agent(jsi::Runtime& rt, const jsi::Value& thisVal, const jsi::Value* args, size_t count);
     jsi::Value cpp_uniffi_matrix_sdk_ffi_fn_method_clientbuilder_username(jsi::Runtime& rt, const jsi::Value& thisVal, const jsi::Value* args, size_t count);
-    jsi::Value cpp_uniffi_matrix_sdk_ffi_fn_method_clientbuilder_with_search_index_store(jsi::Runtime& rt, const jsi::Value& thisVal, const jsi::Value* args, size_t count);
     jsi::Value cpp_uniffi_matrix_sdk_ffi_fn_clone_encryption(jsi::Runtime& rt, const jsi::Value& thisVal, const jsi::Value* args, size_t count);
     jsi::Value cpp_uniffi_matrix_sdk_ffi_fn_free_encryption(jsi::Runtime& rt, const jsi::Value& thisVal, const jsi::Value* args, size_t count);
     jsi::Value cpp_uniffi_matrix_sdk_ffi_fn_method_encryption_backup_exists_on_server(jsi::Runtime& rt, const jsi::Value& thisVal, const jsi::Value* args, size_t count);
@@ -380,7 +378,6 @@ class NativeMatrixSdkFfi : public jsi::HostObject {
     jsi::Value cpp_uniffi_matrix_sdk_ffi_fn_method_room_update_room_visibility(jsi::Runtime& rt, const jsi::Value& thisVal, const jsi::Value* args, size_t count);
     jsi::Value cpp_uniffi_matrix_sdk_ffi_fn_method_room_upload_avatar(jsi::Runtime& rt, const jsi::Value& thisVal, const jsi::Value* args, size_t count);
     jsi::Value cpp_uniffi_matrix_sdk_ffi_fn_method_room_withdraw_verification_and_resend(jsi::Runtime& rt, const jsi::Value& thisVal, const jsi::Value* args, size_t count);
-    jsi::Value cpp_uniffi_matrix_sdk_ffi_fn_method_room_search_messages(jsi::Runtime& rt, const jsi::Value& thisVal, const jsi::Value* args, size_t count);
     jsi::Value cpp_uniffi_matrix_sdk_ffi_fn_clone_roommembersiterator(jsi::Runtime& rt, const jsi::Value& thisVal, const jsi::Value* args, size_t count);
     jsi::Value cpp_uniffi_matrix_sdk_ffi_fn_free_roommembersiterator(jsi::Runtime& rt, const jsi::Value& thisVal, const jsi::Value* args, size_t count);
     jsi::Value cpp_uniffi_matrix_sdk_ffi_fn_method_roommembersiterator_len(jsi::Runtime& rt, const jsi::Value& thisVal, const jsi::Value* args, size_t count);
@@ -447,12 +444,6 @@ class NativeMatrixSdkFfi : public jsi::HostObject {
     jsi::Value cpp_uniffi_matrix_sdk_ffi_fn_constructor_mediasource_from_url(jsi::Runtime& rt, const jsi::Value& thisVal, const jsi::Value* args, size_t count);
     jsi::Value cpp_uniffi_matrix_sdk_ffi_fn_method_mediasource_to_json(jsi::Runtime& rt, const jsi::Value& thisVal, const jsi::Value* args, size_t count);
     jsi::Value cpp_uniffi_matrix_sdk_ffi_fn_method_mediasource_url(jsi::Runtime& rt, const jsi::Value& thisVal, const jsi::Value* args, size_t count);
-    jsi::Value cpp_uniffi_matrix_sdk_ffi_fn_clone_globalsearchiterator(jsi::Runtime& rt, const jsi::Value& thisVal, const jsi::Value* args, size_t count);
-    jsi::Value cpp_uniffi_matrix_sdk_ffi_fn_free_globalsearchiterator(jsi::Runtime& rt, const jsi::Value& thisVal, const jsi::Value* args, size_t count);
-    jsi::Value cpp_uniffi_matrix_sdk_ffi_fn_method_globalsearchiterator_next_events(jsi::Runtime& rt, const jsi::Value& thisVal, const jsi::Value* args, size_t count);
-    jsi::Value cpp_uniffi_matrix_sdk_ffi_fn_clone_roomsearchiterator(jsi::Runtime& rt, const jsi::Value& thisVal, const jsi::Value* args, size_t count);
-    jsi::Value cpp_uniffi_matrix_sdk_ffi_fn_free_roomsearchiterator(jsi::Runtime& rt, const jsi::Value& thisVal, const jsi::Value* args, size_t count);
-    jsi::Value cpp_uniffi_matrix_sdk_ffi_fn_method_roomsearchiterator_next_events(jsi::Runtime& rt, const jsi::Value& thisVal, const jsi::Value* args, size_t count);
     jsi::Value cpp_uniffi_matrix_sdk_ffi_fn_clone_sqlitestorebuilder(jsi::Runtime& rt, const jsi::Value& thisVal, const jsi::Value* args, size_t count);
     jsi::Value cpp_uniffi_matrix_sdk_ffi_fn_free_sqlitestorebuilder(jsi::Runtime& rt, const jsi::Value& thisVal, const jsi::Value* args, size_t count);
     jsi::Value cpp_uniffi_matrix_sdk_ffi_fn_constructor_sqlitestorebuilder_new(jsi::Runtime& rt, const jsi::Value& thisVal, const jsi::Value* args, size_t count);
@@ -801,7 +792,6 @@ class NativeMatrixSdkFfi : public jsi::HostObject {
     jsi::Value cpp_uniffi_matrix_sdk_ffi_checksum_method_client_user_id_server_name(jsi::Runtime& rt, const jsi::Value& thisVal, const jsi::Value* args, size_t count);
     jsi::Value cpp_uniffi_matrix_sdk_ffi_checksum_method_client_add_recent_emoji(jsi::Runtime& rt, const jsi::Value& thisVal, const jsi::Value* args, size_t count);
     jsi::Value cpp_uniffi_matrix_sdk_ffi_checksum_method_client_get_recent_emojis(jsi::Runtime& rt, const jsi::Value& thisVal, const jsi::Value* args, size_t count);
-    jsi::Value cpp_uniffi_matrix_sdk_ffi_checksum_method_client_search_messages(jsi::Runtime& rt, const jsi::Value& thisVal, const jsi::Value* args, size_t count);
     jsi::Value cpp_uniffi_matrix_sdk_ffi_checksum_method_homeservercapabilities_can_change_avatar(jsi::Runtime& rt, const jsi::Value& thisVal, const jsi::Value* args, size_t count);
     jsi::Value cpp_uniffi_matrix_sdk_ffi_checksum_method_homeservercapabilities_can_change_displayname(jsi::Runtime& rt, const jsi::Value& thisVal, const jsi::Value* args, size_t count);
     jsi::Value cpp_uniffi_matrix_sdk_ffi_checksum_method_homeservercapabilities_can_change_password(jsi::Runtime& rt, const jsi::Value& thisVal, const jsi::Value* args, size_t count);
@@ -839,7 +829,6 @@ class NativeMatrixSdkFfi : public jsi::HostObject {
     jsi::Value cpp_uniffi_matrix_sdk_ffi_checksum_method_clientbuilder_threads_enabled(jsi::Runtime& rt, const jsi::Value& thisVal, const jsi::Value* args, size_t count);
     jsi::Value cpp_uniffi_matrix_sdk_ffi_checksum_method_clientbuilder_user_agent(jsi::Runtime& rt, const jsi::Value& thisVal, const jsi::Value* args, size_t count);
     jsi::Value cpp_uniffi_matrix_sdk_ffi_checksum_method_clientbuilder_username(jsi::Runtime& rt, const jsi::Value& thisVal, const jsi::Value* args, size_t count);
-    jsi::Value cpp_uniffi_matrix_sdk_ffi_checksum_method_clientbuilder_with_search_index_store(jsi::Runtime& rt, const jsi::Value& thisVal, const jsi::Value* args, size_t count);
     jsi::Value cpp_uniffi_matrix_sdk_ffi_checksum_method_encryption_backup_exists_on_server(jsi::Runtime& rt, const jsi::Value& thisVal, const jsi::Value* args, size_t count);
     jsi::Value cpp_uniffi_matrix_sdk_ffi_checksum_method_encryption_backup_state(jsi::Runtime& rt, const jsi::Value& thisVal, const jsi::Value* args, size_t count);
     jsi::Value cpp_uniffi_matrix_sdk_ffi_checksum_method_encryption_backup_state_listener(jsi::Runtime& rt, const jsi::Value& thisVal, const jsi::Value* args, size_t count);
@@ -1008,7 +997,6 @@ class NativeMatrixSdkFfi : public jsi::HostObject {
     jsi::Value cpp_uniffi_matrix_sdk_ffi_checksum_method_room_update_room_visibility(jsi::Runtime& rt, const jsi::Value& thisVal, const jsi::Value* args, size_t count);
     jsi::Value cpp_uniffi_matrix_sdk_ffi_checksum_method_room_upload_avatar(jsi::Runtime& rt, const jsi::Value& thisVal, const jsi::Value* args, size_t count);
     jsi::Value cpp_uniffi_matrix_sdk_ffi_checksum_method_room_withdraw_verification_and_resend(jsi::Runtime& rt, const jsi::Value& thisVal, const jsi::Value* args, size_t count);
-    jsi::Value cpp_uniffi_matrix_sdk_ffi_checksum_method_room_search_messages(jsi::Runtime& rt, const jsi::Value& thisVal, const jsi::Value* args, size_t count);
     jsi::Value cpp_uniffi_matrix_sdk_ffi_checksum_method_roommembersiterator_len(jsi::Runtime& rt, const jsi::Value& thisVal, const jsi::Value* args, size_t count);
     jsi::Value cpp_uniffi_matrix_sdk_ffi_checksum_method_roommembersiterator_next_chunk(jsi::Runtime& rt, const jsi::Value& thisVal, const jsi::Value* args, size_t count);
     jsi::Value cpp_uniffi_matrix_sdk_ffi_checksum_method_roompowerlevels_can_own_user_ban(jsi::Runtime& rt, const jsi::Value& thisVal, const jsi::Value* args, size_t count);
@@ -1055,8 +1043,6 @@ class NativeMatrixSdkFfi : public jsi::HostObject {
     jsi::Value cpp_uniffi_matrix_sdk_ffi_checksum_method_roompreview_own_membership_details(jsi::Runtime& rt, const jsi::Value& thisVal, const jsi::Value* args, size_t count);
     jsi::Value cpp_uniffi_matrix_sdk_ffi_checksum_method_mediasource_to_json(jsi::Runtime& rt, const jsi::Value& thisVal, const jsi::Value* args, size_t count);
     jsi::Value cpp_uniffi_matrix_sdk_ffi_checksum_method_mediasource_url(jsi::Runtime& rt, const jsi::Value& thisVal, const jsi::Value* args, size_t count);
-    jsi::Value cpp_uniffi_matrix_sdk_ffi_checksum_method_globalsearchiterator_next_events(jsi::Runtime& rt, const jsi::Value& thisVal, const jsi::Value* args, size_t count);
-    jsi::Value cpp_uniffi_matrix_sdk_ffi_checksum_method_roomsearchiterator_next_events(jsi::Runtime& rt, const jsi::Value& thisVal, const jsi::Value* args, size_t count);
     jsi::Value cpp_uniffi_matrix_sdk_ffi_checksum_method_sqlitestorebuilder_cache_size(jsi::Runtime& rt, const jsi::Value& thisVal, const jsi::Value* args, size_t count);
     jsi::Value cpp_uniffi_matrix_sdk_ffi_checksum_method_sqlitestorebuilder_journal_size_limit(jsi::Runtime& rt, const jsi::Value& thisVal, const jsi::Value* args, size_t count);
     jsi::Value cpp_uniffi_matrix_sdk_ffi_checksum_method_sqlitestorebuilder_key(jsi::Runtime& rt, const jsi::Value& thisVal, const jsi::Value* args, size_t count);
@@ -1206,8 +1192,6 @@ class NativeMatrixSdkFfi : public jsi::HostObject {
     jsi::Value cpp_uniffi_internal_fn_method_unreadnotificationscount_ffi__bless_pointer(jsi::Runtime& rt, const jsi::Value& thisVal, const jsi::Value* args, size_t count);
     jsi::Value cpp_uniffi_internal_fn_method_roompreview_ffi__bless_pointer(jsi::Runtime& rt, const jsi::Value& thisVal, const jsi::Value* args, size_t count);
     jsi::Value cpp_uniffi_internal_fn_method_mediasource_ffi__bless_pointer(jsi::Runtime& rt, const jsi::Value& thisVal, const jsi::Value* args, size_t count);
-    jsi::Value cpp_uniffi_internal_fn_method_globalsearchiterator_ffi__bless_pointer(jsi::Runtime& rt, const jsi::Value& thisVal, const jsi::Value* args, size_t count);
-    jsi::Value cpp_uniffi_internal_fn_method_roomsearchiterator_ffi__bless_pointer(jsi::Runtime& rt, const jsi::Value& thisVal, const jsi::Value* args, size_t count);
     jsi::Value cpp_uniffi_internal_fn_method_sqlitestorebuilder_ffi__bless_pointer(jsi::Runtime& rt, const jsi::Value& thisVal, const jsi::Value* args, size_t count);
     jsi::Value cpp_uniffi_internal_fn_method_syncservice_ffi__bless_pointer(jsi::Runtime& rt, const jsi::Value& thisVal, const jsi::Value* args, size_t count);
     jsi::Value cpp_uniffi_internal_fn_method_syncservicebuilder_ffi__bless_pointer(jsi::Runtime& rt, const jsi::Value& thisVal, const jsi::Value* args, size_t count);
